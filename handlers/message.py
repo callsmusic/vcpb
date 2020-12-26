@@ -13,6 +13,11 @@ async def message(client, message):
     if not is_youtube(message.text):
         await message.reply_text("This (link) is not valid.")
         return
+    
+    if "list=" in message.text:
+        await message.reply_text("Send me a video link, not a playlist link.")
+        return
+    
     await message.reply_text("Download scheduled.", quote=True)
     download(
         (
