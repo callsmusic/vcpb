@@ -1,7 +1,7 @@
 # Pyrogram bot to automate streaming music in voice chats
 
 ## Inspiration
-Enormous and huge credits to my boy [@itayki](https://t.me/itayki) from Israel for being with me while
+Enormous and huge credits to [@itayki](https://t.me/itayki) from Israel for being with me while
 waiting for Mr. [@TwitFace, AKA Andrew Lungers](https://t.me/TwitFace) to release [pytgcalls](https://github.com/pytgcalls/pytgcalls) to write this bot.
 
 ## Idea
