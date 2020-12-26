@@ -37,7 +37,7 @@ So xquiz me for being messy.
 
 3. Install the required Python packages:
 ```
-    pip(3) install pyrogram tgcrypto youtube_dl
+    pip(3) install -U -r requirements.txt
 ```
 4. Make sure pulseaudio is running and load a null sink named `MySink` by running:
 ```
