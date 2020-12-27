@@ -34,10 +34,10 @@ async def stream(client, message):
                     ]
                 ] if LOG_GROUP else None
             )
-            if stream == 0:
-                await message.reply_text(
-                    "Streaming..."
-                )
+
+            await message.reply_text(
+                "Streaming..."
+            )
 
 __handlers__ = [
     [
