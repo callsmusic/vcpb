@@ -11,7 +11,8 @@ __handlers__ = [
         MessageHandler(
             n4u,
             (filters.command("pause", "/")
-             | filters.command("skip", "/"))
+             | filters.command("skip", "/")
+            | filters.command("stream", "/"))
             & (filters.private)
         )
     ]
