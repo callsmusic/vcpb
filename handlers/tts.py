@@ -6,7 +6,7 @@ from pyrogram.handlers import MessageHandler
 
 
 async def tts(client, message):
-    if message.text.replace("/tts ", "") == "":
+    if message.text.replace("/tts", "") == "":
         await message.reply_text("Give me some text to speak.")
     else:
         try:
