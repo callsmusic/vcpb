@@ -21,7 +21,7 @@ So xquiz me for being messy.
 ## Running
 1. Clone the repository and change the dir:
 ```
-    git clone https://github.com/rojserbest/music && cd music
+    git clone https://github.com/rojserbest/VoiceChatPyroBot.git && cd VoiceChatPyroBot
 ```
 2. Modify `sample_config.py` to use your credenitals and then rename/copy it to `config.py`:
 
