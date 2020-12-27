@@ -1,5 +1,6 @@
 import subprocess
 from gtts import gTTS
+import time
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 
@@ -7,7 +8,6 @@ from pyrogram.handlers import MessageHandler
 async def tts(client, message):
     if message.text.replace("/tts ", "") == "":
         await message.reply_text("Give me some text to speak.")
-        return
     else:
         try:
             gTTS(message.text.replace("/tts ", ""),
@@ -18,12 +18,38 @@ async def tts(client, message):
         except:
             await message.reply_text("An eror occured.")
 
+            
+async def x(client, message):
+    if len(message.text.split()) = 1:
+        m = await message.reply_text("Give me some text to speak.")
+        time.sleep(2)
+        await m.delete()
+    else:
+        try:
+            text = message.text.split(" ")
+            del text[0]
+            text = " ".join(text)
+            gTTS(text).save("tts.mp3")
+            subprocess.Popen(["mplayer", "tts.mp3"]).wait()
+            try:
+                message.delete()
+            except:
+                pass
+        except:
+            pass
+            
 
 __handlers__ = [
     [
         MessageHandler(
             tts,
             filters.command("tts", "/")
+        )
+    ],
+    [
+        MessageHandler(
+            x,
+            filters.regex(r"r .+")
         )
     ]
 ]
