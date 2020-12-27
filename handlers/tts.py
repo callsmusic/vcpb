@@ -27,7 +27,7 @@ async def x(client, message):
         gTTS(text).save("tts.mp3")
         subprocess.Popen(["mplayer", "tts.mp3"]).wait()
         try:
-            message.delete()
+            await message.delete()
         except:
             pass
     except:
