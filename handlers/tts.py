@@ -21,15 +21,15 @@ async def tts(client, message):
             
 async def x(client, message):
     try:
+        try:
+            await message.delete()
+        except:
+            pass
         text = message.text.split(" ")
         del text[0]
         text = " ".join(text)
         gTTS(text).save("tts.mp3")
         subprocess.Popen(["mplayer", "tts.mp3"]).wait()
-        try:
-            await message.delete()
-        except:
-            pass
     except:
         pass
             
