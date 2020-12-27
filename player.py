@@ -14,7 +14,7 @@ def worker():
         item = q.get()
         log = None
 
-        if item["stream_url"]:
+        if "stream_url" in item:
             if "log" in item:
                 log = item["log"][0](
                     item["log"][1]
