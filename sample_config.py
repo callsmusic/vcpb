@@ -10,7 +10,9 @@ SUDO_USERS = [
     951435494,
     1392620345
 ]
-LOG_GROUP = None # Just keep it like this if you are not going to use one
+LOG_GROUP = None  # Just keep it like this if you are not going to use one
 
 # No need to touch this
 SUDO_FILTER = filters.user(SUDO_USERS)
+
+LANG = "en"
