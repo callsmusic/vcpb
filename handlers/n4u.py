@@ -1,5 +1,6 @@
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
+from config import SUDO_FILTER
 
 
 async def n4u(client, message):
@@ -14,6 +15,7 @@ __handlers__ = [
              | filters.command("skip", "/")
             | filters.command("stream", "/"))
             & (filters.private)
+            & ~ SUDO_FILTER
         )
     ]
 ]
