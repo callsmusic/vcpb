@@ -8,10 +8,7 @@ async def song(client, message):
     get = player.currently_playing()
     if get:
         await message.reply_text(
-            """
-TITLE: {}
-REQUESTED BY: {}
-            """.format(
+            _("song").format(
                 "<a href=\"{}\">{}</a>".format(
                     get["url"],
                     get["title"]

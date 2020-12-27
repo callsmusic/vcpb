@@ -16,7 +16,7 @@ async def clear_downloads(client, message):
                 pass
         await message.reply_text(_("cleaned_downloads"))
     except:
-        await message.reply_text(_("clean_error"))
+        await message.reply_text(_("err_occ"))
 
 __handlers__ = [
     [

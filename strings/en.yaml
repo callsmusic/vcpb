@@ -1,32 +1,56 @@
-not_for_you: "This is not for you."
-current_volume: "Current volume is {0}"
-cleaned_downloads: "Removed all files in your downloads folder."
-clean_error: "An error occured while trying to clean your downloads folder."
+send_yt_link: "Hi, send me a YouTube link to play it."
+
+
 not_valid: "This (link) is not valid."
 not_playlist: "Send me a video URL, not a playlist."
-not_live: "You can't download live vidoes."
 download_scheduled: "Download scheduled."
+not_live: "You can't download live vidoes."
 downloading: "Downloading..."
 downloaded_scheduled: "Downlaoded and scheduled to be played at position {0}."
 playing: "Playing..."
-group_log: "<b>NOW PLAYING</b>\n
-Title: {0}\n
-Requested By: {1}"
-group_log_stream: "<b>NOW STREAMING</b>\n
-<pre>{}</pre>"
-mistake: "I assume that was a mistake."
-paused: "Toggled pause."
-skipped: "Skipped."
-nothing_playing_pause: "There is nothing playing to be paused."
-nothing_playing_skip: "There is nothing playing to be skipped."
-no_song_playing: "No song is currently playing."
-send_yt_link: "Hi, send me a YouTube link to play it."
-cant_stream: "Can't stream while music is playing."
+finished_playing: "Finished playing."
+
+
 url_arg: "Give me a stream URL."
 more_than_one_args: "You provided more than an arg."
+cant_stream: "Can't stream while music is playing."
 streaming: "Streaming..."
+
+
 give_text: "Give me some text to speak."
 speaking: "Speaking..."
 spoke: "Spoke."
+
+
+skipped: "Skipped."
+nothing_playing_skip: "There is nothing playing to be skipped."
+
+
+paused: "Toggled pause."
+nothing_playing_pause: "There is nothing playing to be paused."
+
+
+group_log_stream: "<b>NOW STREAMING</b>\n
+<pre>{0}</pre>"
+group_log: "<b>NOW PLAYING</b>\n
+Title: {0}\n
+Requested By: {1}"
+
+
+song: "TITLE: {0}\n
+REQUESTED BY: {1}"
+no_song_playing: "No song is currently playing."
+
+
+not_for_you: "This is not for you."
+
+
+mistake: "I assume that was a mistake."
 err_occ: "An eror occured."
+
+
+current_volume: "Current volume is {0}"
 volume_set: "Volume set to {0}"
+
+
+cleaned_downloads: "Removed all files in your downloads folder."
