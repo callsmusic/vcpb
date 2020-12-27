@@ -12,9 +12,9 @@ async def tts(client, message):
     else:
         try:
             gTTS(message.text.replace("/tts ", ""),
-                 lang="en-US").save("tts.mp3")
+                 lang="en-US").save("downloads/tts.mp3")
             m = await message.reply_text("Speaking...")
-            subprocess.Popen(["mplayer", "tts.mp3"]).wait()
+            subprocess.Popen(["mplayer", "downloads/tts.mp3"]).wait()
             await m.edit("Spoke.")
         except:
             await message.reply_text("An eror occured.")
@@ -29,9 +29,9 @@ async def x(client, message):
         text = message.text.split(" ")
         del text[0]
         text = " ".join(text)
-        gTTS(text, lang="en-US").save("tts.mp3")
+        gTTS(text, lang="en-US").save("downloads/tts.mp3")
         _thread.start_new_thread(
-            subprocess.Popen(["mplayer", "tts.mp3"]).wait,
+            subprocess.Popen(["mplayer", "downloads/tts.mp3"]).wait,
             ()
         )
     except:
