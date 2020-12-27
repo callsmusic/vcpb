@@ -44,15 +44,15 @@ async def message(client, message):
                 None,
                 message.from_user.id,
                 message.from_user.first_name,
-                (
+                [
                     client.send_message,
-                    (
+                    [
                         LOG_GROUP,
                         "<b>NOW PLAYING</b>\n"
                         "Title: <a href=\"{}\">{}</a>\n"
                         "Requested By: <a href=\"tg://user?id={}\">{}</a>"
-                    )
-                ) if LOG_GROUP else None
+                    ]
+                ] if LOG_GROUP else None
             ]
         ],
         (
