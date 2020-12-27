@@ -15,7 +15,7 @@ def worker():
         log = None
 
         if item["stream_url"]:
-            if item["log"]:
+            if "log" in item:
                 log = item["log"][0](
                     item["log"][1]
                 )
@@ -28,7 +28,7 @@ def worker():
                 quote=True
             )
 
-            if item["log"]:
+            if "log" in item:
                 args = item["log"][1]
                 args[1] = args[1].format(
                     item["url"],
