@@ -12,32 +12,44 @@ def worker():
     global current, process
     while True:
         item = q.get()
-        current = item
-        item["start"][0](
-            *item["start"][1],
-            quote=True
-        )
         log = None
-        if item["log"]:
-            args = item["log"][1]
-            args[1] = args[1].format(
-                item["url"],
-                item["title"],
-                item["sent_by_id"],
-                item["sent_by_name"]
+
+        if item["stream_url"]:
+            if item["log"]:
+                log = item["log"][0](
+                    item["log"][1]
+                )
+            process = Popen(["mplayer", item["stream_url"]], stdin=PIPE)
+            process.wait()
+        else:
+            current = item
+            item["start"][0](
+                *item["start"][1],
+                quote=True
             )
-            log = item["log"][0](
-                *args
+
+            if item["log"]:
+                args = item["log"][1]
+                args[1] = args[1].format(
+                    item["url"],
+                    item["title"],
+                    item["sent_by_id"],
+                    item["sent_by_name"]
+                )
+                log = item["log"][0](
+                    *args
+                )
+            process = Popen(["mplayer", item["file"]], stdin=PIPE)
+            process.wait()
+            item["end"][0](
+                *item["end"][1],
+                quote=True
             )
-        process = Popen(["mplayer", item["file"]], stdin=PIPE)
-        process.wait()
-        item["end"][0](
-            *item["end"][1],
-            quote=True
-        )
+            current = {}
+
         if log:
             log.delete()
-        current = {}
+
         process = None
         q.task_done()
 
@@ -55,6 +67,16 @@ def play(file, start, end, title, url, sent_by_id, sent_by_name, log):
             "url": url,
             "sent_by_id": sent_by_id,
             "sent_by_name": sent_by_name,
+            "log": log
+        }
+    )
+    return q.qsize()
+
+
+def stream(stream_url, log):
+    q.put(
+        {
+            "stream_url": stream_url,
             "log": log
         }
     )
