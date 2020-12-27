@@ -51,6 +51,5 @@ So xquiz me for being messy.
     python(3) bot.py
 ```
 6. Open Telegram desktop, join a voice chat and set `MySink` as your microphone.
-7. Once you've done the steps above, you can start using and sending YouTube video links to your bot and play them
-        in the voice chat you are currently in with Telegram desktop!
+7. Once you've done the steps above, you can start using and sending commands to your bot to stream in the voice chat you are currently in with Telegram desktop!
 
