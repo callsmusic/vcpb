@@ -20,23 +20,18 @@ async def tts(client, message):
 
             
 async def x(client, message):
-    if len(message.text.split()) == 1:
-        m = await message.reply_text("Give me some text to speak.")
-        time.sleep(2)
-        await m.delete()
-    else:
+    try:
+        text = message.text.split(" ")
+        del text[0]
+        text = " ".join(text)
+        gTTS(text).save("tts.mp3")
+        subprocess.Popen(["mplayer", "tts.mp3"]).wait()
         try:
-            text = message.text.split(" ")
-            del text[0]
-            text = " ".join(text)
-            gTTS(text).save("tts.mp3")
-            subprocess.Popen(["mplayer", "tts.mp3"]).wait()
-            try:
-                message.delete()
-            except:
-                pass
+            message.delete()
         except:
             pass
+    except:
+        pass
             
 
 __handlers__ = [
