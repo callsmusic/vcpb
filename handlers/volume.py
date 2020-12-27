@@ -5,6 +5,7 @@ from pyrogram.handlers import MessageHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import player
 from config import SUDO_USERS
+from strings import get_string as _
 
 
 async def volume(client, message):
@@ -22,7 +23,7 @@ async def volume(client, message):
                     ]
                 ).wait()
                 await message.reply_text(
-                    f"Volume set to {volume}"
+                    _("volume_set").format({volume})
                 )
                 return
         except:
@@ -33,7 +34,7 @@ async def volume(client, message):
 
     if message.from_user.id in SUDO_USERS:
         await message.reply_text(
-            f"Current volume is {current_volume}",
+            _("current_volume").format(current_volume),
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -52,7 +53,7 @@ async def volume(client, message):
         )
     else:
         await message.reply_text(
-            f"Current volume is {current_volume}",
+            _("current_volume").format(current_volume),
         )
 
 __handlers__ = [

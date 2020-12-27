@@ -1,6 +1,7 @@
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 import player
+from strings import get_string as _
 
 
 async def song(client, message):
@@ -8,19 +9,23 @@ async def song(client, message):
     if get:
         await message.reply_text(
             """
-TITLE: <a href="{}">{}</a>
-REQUESTED BY: <a href="tg://user?id={}">{}</a>
+TITLE: {}
+REQUESTED BY: {}
             """.format(
-                get["url"],
-                get["title"],
-                get["sent_by_id"],
-                get["sent_by_name"]
+                "<a href=\"{}\">{}</a>".format(
+                    get["url"],
+                    get["title"]
+                ),
+                "<a href=\"tg://user?id={}\">{}</a>".format(
+                    get["sent_by_id"],
+                    get["sent_by_name"]
+                ),
             ),
             parse_mode="HTML"
         )
     else:
         await message.reply_text(
-            "No song is currently playing."
+            _("no_song_playing")
         )
 
 __handlers__ = [

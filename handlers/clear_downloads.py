@@ -3,6 +3,7 @@ from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 import player
 from config import SUDO_FILTER
+from strings import get_string as _
 
 
 async def clear_downloads(client, message):
@@ -13,9 +14,9 @@ async def clear_downloads(client, message):
                 os.remove("downloads/" + file)
             except:
                 pass
-        await message.reply_text("Removed all files in your downloads folder.")
+        await message.reply_text(_("cleaned_downloads"))
     except:
-        await message.reply_text("An error occured, your downloads folder might be empty.")
+        await message.reply_text(_("clean_error"))
 
 __handlers__ = [
     [

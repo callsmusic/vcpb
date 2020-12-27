@@ -4,6 +4,7 @@ from helpers import is_youtube
 from ytdl import download
 import player
 from config import LOG_GROUP
+from strings import get_string as _
 
 
 async def message(client, message):
@@ -11,22 +12,22 @@ async def message(client, message):
         return
 
     if not is_youtube(message.text):
-        await message.reply_text("This (link) is not valid.")
+        await message.reply_text(_("not_valid"))
         return
 
     if "list=" in message.text:
-        await message.reply_text("Send me a video link, not a playlist link.")
+        await message.reply_text(_("not_playlist"))
         return
 
-    await message.reply_text("Download scheduled.", quote=True)
+    await message.reply_text(_("download_scheduled"), quote=True)
     download(
         (
             message.reply_text,
-            ("Downloading...",)
+            (_("downloading"),)
         ),
         (
             message.reply_text,
-            (f"Downloaded and scheduled to play at position {player.q.qsize() + 1}.",)
+            (_("downloaded_scheduled").format({player.q.qsize() + 1}),)
         ),
         [
             player.play,
@@ -34,11 +35,11 @@ async def message(client, message):
                 None,
                 (
                     message.reply_text,
-                    ("Playing...",)
+                    (_("playing"),)
                 ),
                 (
                     message.reply_text,
-                    ("Finished playing...",)
+                    (_("finished_playing"),)
                 ),
                 None,
                 None,
@@ -48,16 +49,17 @@ async def message(client, message):
                     client.send_message,
                     [
                         LOG_GROUP,
-                        "<b>NOW PLAYING</b>\n"
-                        "Title: <a href=\"{}\">{}</a>\n"
-                        "Requested By: <a href=\"tg://user?id={}\">{}</a>"
+                        _("group_log").format(
+                            "<a href=\"{}\">{}</a>",
+                            "<a href=\"tg://user?id={}\">{}</a>"
+                        )
                     ]
                 ] if LOG_GROUP else None
             ]
         ],
         (
             message.reply_text,
-            "You can't download live videos."
+            _("not_live")
         ),
         message.text,
     )

@@ -3,6 +3,7 @@ from pyrogram import filters
 from pyrogram.handlers import CallbackQueryHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import player
+from strings import get_string as _
 
 
 async def callback(client, query):
@@ -26,7 +27,7 @@ async def callback(client, query):
         ).wait()
 
         await query.message.reply_text(
-            f"Current volume is {volume}",
+            _("current_volume").format(volume),
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -63,7 +64,7 @@ async def callback(client, query):
         ).wait()
 
         await query.message.reply_text(
-            f"Current volume is {volume}",
+            _("current_volume").format(volume),
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
