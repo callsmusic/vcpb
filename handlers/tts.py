@@ -11,7 +11,7 @@ async def tts(client, message):
     else:
         try:
             gTTS(message.text.replace("/tts ", ""),
-                 lang="en-GB").save("tts.mp3")
+                 lang="en-US").save("tts.mp3")
             m = await message.reply_text("Speaking...")
             subprocess.Popen(["mplayer", "tts.mp3"]).wait()
             await m.edit("Spoke.")
@@ -28,7 +28,7 @@ async def x(client, message):
         text = message.text.split(" ")
         del text[0]
         text = " ".join(text)
-        gTTS(text).save("tts.mp3")
+        gTTS(text, lang="en-US").save("tts.mp3")
         subprocess.Popen(["mplayer", "tts.mp3"]).wait()
     except:
         pass
