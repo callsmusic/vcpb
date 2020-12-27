@@ -17,7 +17,7 @@ def worker():
         if "stream_url" in item:
             if "log" in item:
                 log = item["log"][0](
-                    item["log"][1]
+                    *item["log"][1]
                 )
             process = Popen(["mplayer", item["stream_url"]], stdin=PIPE)
             process.wait()
