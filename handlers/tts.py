@@ -20,7 +20,7 @@ async def tts(client, message):
 
             
 async def x(client, message):
-    if len(message.text.split()) = 1:
+    if len(message.text.split()) == 1:
         m = await message.reply_text("Give me some text to speak.")
         time.sleep(2)
         await m.delete()
