@@ -18,59 +18,78 @@ q = queue.Queue()
 def worker():
     while True:
         item = q.get()
-        start_func = item["start"]
-        start_func[0](*start_func[1], quote=True)
-        end_func = item["end"]
-        play_func = item["play"]
-        vid = item["vid"]
+
+        item["on_start"][0](
+            *item["on_start"][1],
+            quote=True
+        )
 
         file_name = ""
 
         info = ydl.extract_info(
-            vid,
+            item["video"],
             download=False
         )
 
-        file_name = info["id"] + "." + info["ext"]
-
-        if file_name in os.listdir("downloads"):
-            args = play_func[1]
-            args[0] = "downloads/" + file_name
-            args[3] = info["title"]
-            args[4] = "https://youtu.be/" + info["id"]
-            play_func[0](*args)
-        else:
-            ydl.download([vid])
-            os.rename(
-                [
-                    i
-                    for i in os.listdir()
-                    if i.endswith(info["ext"])
-                ][0],
-                "downloads/" + file_name
+        if info["is_live"]:
+            item["on_live_err"][0](
+                *item["on_live_err"][1],
+                quote=True
             )
-            args = play_func[1]
-            args[0] = "downloads/" + file_name
-            args[3] = info["title"]
-            args[4] = "https://youtu.be/" + info["id"]
-            play_func[0](*args)
+            q.task_done()
+        else:
+            file_name = info["id"] + "." + info["ext"]
 
-        if player.q.qsize() != 0:
-            end_func[0](*end_func[1], quote=True)
+            if file_name in os.listdir("downloads"):
+                args = item["play_func"][1]
+                args[0] = "downloads/" + file_name
+                args[3] = info["title"]
+                args[4] = "https://youtu.be/" + info["id"]
+                item["play_func"][0](
+                    *args
+                )
+            else:
+                ydl.download(
+                    [
+                        item["video"]
+                    ]
+                )
+                os.rename(
+                    [
+                        i
+                        for i in os.listdir()
+                        if i.endswith(info["ext"])
+                    ][0],
+                    "downloads/" + file_name
+                )
+                args = item["play_func"][1]
+                args[0] = "downloads/" + file_name
+                args[3] = info["title"]
+                args[4] = "https://youtu.be/" + info["id"]
+                item["play_func"][0](
+                    *args
+                )
 
-        q.task_done()
+            if player.q.qsize() != 0:
+                item["on_end"][0](
+                    *item["on_end"][1],
+                    quote=True
+                )
+
+            q.task_done()
 
 
 threading.Thread(target=worker, daemon=True).start()
 
 
-def download(start, end, play, vid):
+def download(on_start, on_end, play_func, on_is_live_err, video):
     q.put(
         {
-            "start": start,
-            "end": end,
-            "play": play,
-            "vid": vid
+            "on_start": on_start,
+            "on_end": on_end,
+            "play_func": play_func,
+            "on_is_live_err": on_is_live_err,
+            "video": video
         }
     )
     return q.qsize()

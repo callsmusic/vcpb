@@ -13,11 +13,11 @@ async def message(client, message):
     if not is_youtube(message.text):
         await message.reply_text("This (link) is not valid.")
         return
-    
+
     if "list=" in message.text:
         await message.reply_text("Send me a video link, not a playlist link.")
         return
-    
+
     await message.reply_text("Download scheduled.", quote=True)
     download(
         (
@@ -44,17 +44,21 @@ async def message(client, message):
                 None,
                 message.from_user.id,
                 message.from_user.first_name,
-                [
+                (
                     client.send_message,
-                    [
+                    (
                         LOG_GROUP,
                         "<b>NOW PLAYING</b>\n"
                         "Title: <a href=\"{}\">{}</a>\n"
                         "Requested By: <a href=\"tg://user?id={}\">{}</a>"
-                    ]
-                ] if LOG_GROUP else None
+                    )
+                ) if LOG_GROUP else None
             ]
         ],
+        (
+            message.reply_text,
+            "You can't download live videos."
+        ),
         message.text,
     )
 
