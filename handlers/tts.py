@@ -1,3 +1,4 @@
+import _thread
 import subprocess
 from gtts import gTTS
 import time
@@ -29,7 +30,10 @@ async def x(client, message):
         del text[0]
         text = " ".join(text)
         gTTS(text, lang="en-US").save("tts.mp3")
-        subprocess.Popen(["mplayer", "tts.mp3"]).wait()
+        _thread.start_new_thread(
+            subprocess.Popen(["mplayer", "tts.mp3"]).wait,
+            ()
+        )
     except:
         pass
             
