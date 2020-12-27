@@ -1,5 +1,8 @@
 # Pyrogram bot to automate streaming music in voice chats
 
+## Help
+If you face an error, want to discuss this project or get support for it join [@su_Chats](https://t.me/su_Chats).
+
 ## Inspiration
 Enormous and huge credits to [@itayki](https://t.me/itayki) from Israel for being with me while
 waiting for Mr. [@TwitFace, AKA Andrew Lungers](https://t.me/TwitFace) to release [pytgcalls](https://github.com/pytgcalls/pytgcalls) to write this bot.
@@ -51,5 +54,3 @@ So xquiz me for being messy.
 7. Once you've done the steps above, you can start using and sending YouTube video links to your bot and play them
         in the voice chat you are currently in with Telegram desktop!
 
-## Bugs & suggestions & stuff
-Let's speak in [@su_Chats](https://t.me/su_Chats).
