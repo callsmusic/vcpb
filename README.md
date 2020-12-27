@@ -10,9 +10,6 @@ waiting for Mr. [@TwitFace, AKA Andrew Lungers](https://t.me/TwitFace) to releas
 ## Idea
 From Mr. [@TwitFace, AKA Andrew Lungers](https://t.me/TwitFace).
 
-## This is my first README
-So xquiz me for being messy.
-
 ## Requirements
 * A computer running a Linux distribution with a desktop environment,
 * the latest version of Telegram desktop,
