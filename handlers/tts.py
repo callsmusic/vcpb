@@ -48,7 +48,7 @@ __handlers__ = [
     [
         MessageHandler(
             x,
-            filters.regex(r"x .+")
+            filters.regex(r"^x .+")
         )
     ]
 ]
