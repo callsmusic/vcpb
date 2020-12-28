@@ -23,7 +23,7 @@ async def volume(client, message):
                     ]
                 ).wait()
                 await message.reply_text(
-                    _("volume_set").format({volume})
+                    _("volume_set").format(volume)
                 )
                 return
         except:
