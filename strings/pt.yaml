@@ -1,0 +1,56 @@
+send_yt_link: "Olá, envie-me um link do YouTube para reproduzi-lo."
+
+
+not_valid: "Este (link) não é válido."
+not_playlist: "Envie-me a URL de um vídeo, não uma playlist."
+download_scheduled: "Download agendado."
+not_live: "Você não pode baixar vídeos ao vivo."
+downloading: "Baixando..."
+downloaded_scheduled: "Baixado e programado para ser reproduzido na posição {0}."
+playing: "Reproduzindo..."
+finished_playing: "Reprodução finalizada"
+
+
+url_arg: "Dê-me um URL de stream."
+more_than_one_args: "Você forneceu mais de um argumento."
+cant_stream: "Não é possível transmitir enquanto a música está tocando."
+streaming: "Transmitindo..."
+
+
+give_text: "Dê-me algum texto para falar."
+speaking: "Falando..."
+spoke: "Falou."
+
+
+skipped: "Pulada."
+nothing_playing_skip: "Não há nada reproduzindo para ser pulado."
+
+
+paused: "Alternar pausa."
+nothing_playing_pause: "Não há nada tocando para ser pausado."
+
+
+group_log_stream: "<b>TRANSMITINDO AGORA</b>\n
+<pre>{0}</pre>"
+group_log: "<b>TOCANDO AGORA</b>\n
+Título: {0}\n
+Pedido Por: {1}"
+
+
+song: "TÍTULO: {0}\n
+PEDIDO POR: {1}"
+no_song_playing: "Nenhuma música está tocando."
+
+
+not_for_you: "Isso não é para você."
+
+
+mistake: "Presumo que tenha sido um erro."
+err_occ: "Um erro ocorreu."
+
+
+current_volume: "O volume atual é {0}"
+volume_set: "Volume definido para {0}"
+
+
+cleaned_downloads: "Todos os arquivos removidos da pasta de downloads."
