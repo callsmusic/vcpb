@@ -32,8 +32,8 @@ def worker():
         )
 
         if info["is_live"]:
-            item["on_live_err"][0](
-                *item["on_live_err"][1],
+            item["on_is_live_err"][0](
+                *item["on_is_live_err"][1],
                 quote=True
             )
             q.task_done()
