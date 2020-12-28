@@ -1,0 +1,56 @@
+send_yt_link: "Merhaba, bana oynatmam için YouTube linki gönder!"
+
+
+not_valid: "Bu link geçersiz."
+not_playlist: "Bana sadece video gönder!"
+download_scheduled: "İndirme işlemi sıraya alındı."
+not_live: "Canlı videoları indiremezsiniz!"
+downloading: "İndiriliyor..."
+downloaded_scheduled: "Video indirildi ve {0}. sıraya alındı."
+playing: "Oynatılıyor..."
+finished_playing: "Oynatma bitti."
+
+
+url_arg: "Bana bir yayın adresi ver."
+more_than_one_args: "Birden daha fazla parametre verdiniz."
+cant_stream: "Müzik çalarken yayın yapamam."
+streaming: "Yayınlanıyor..."
+
+
+give_text: "Konuşmam için bana birkaç kelime ver."
+speaking: "Konuşuyorum..."
+spoke: "Konuştum."
+
+
+skipped: "Geçildi."
+nothing_playing_skip: "Hiçbir şey oynatmadığınız için geçemiyorum."
+
+
+paused: "Durduruldu."
+nothing_playing_pause: "Durdurmam için bir şeylerin oynaması gerek, değil mi?"
+
+
+group_log_stream: "<b>OYNATILIYOR</b>\n
+<pre>{0}</pre>"
+group_log: "<b>OYNATILIYOR</b>\n
+Başlık: {0}\n
+İsteyen: {1}"
+
+
+song: "BAŞLIK: {0}\n
+İSTEYEN: {1}"
+no_song_playing: "Şu an hiçbir şarkı çalmıyor."
+
+
+not_for_you: "Bu sana göre değil."
+
+
+mistake: "Sanırım bir hata oldu?"
+err_occ: "Bir hata gerçekleşti."
+
+
+current_volume: "Şu anki ses seviyesi: {0}"
+volume_set: "Ses seviyesi {0} seviyesine ayarlandı."
+
+
+cleaned_downloads: "Downloads klasöründeki temizlendi."
