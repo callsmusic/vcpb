@@ -3,10 +3,15 @@ from pyrogram import filters
 from pyrogram.handlers import CallbackQueryHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import player
+from config import SUDO_USERS
 from strings import get_string as _
 
 
 async def callback(client, query):
+    if query.from_user.id not in SUDO_USERS:
+        await query.answer()
+        return
+
     current_volume = int(query.message.text.split()[-1].replace("%", ""))
 
     if query.data == "decrease_volume":
