@@ -1,7 +1,9 @@
-import subprocess
+import asyncio
+
 from pyrogram import filters
 from pyrogram.handlers import CallbackQueryHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
 import player
 from config import SUDO_USERS
 from strings import get_string as _
@@ -22,13 +24,8 @@ async def callback(client, query):
 
         volume = f"{volume}%"
 
-        subprocess.Popen(
-            [
-                "pactl",
-                "set-sink-volume",
-                "MySink",
-                volume
-            ]
+        await asyncio.create_subprocess_exec(
+            ["pactl", "set-sink-volume", "MySink", volume]
         ).wait()
 
         await query.message.reply_text(
@@ -36,18 +33,12 @@ async def callback(client, query):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(
-                            "➖",
-                            callback_data="decrease_volume"
-                        ),
-                        InlineKeyboardButton(
-                            "➕",
-                            callback_data="increase_volume"
-                        )
+                        InlineKeyboardButton("➖", callback_data="decrease_volume"),
+                        InlineKeyboardButton("➕", callback_data="increase_volume"),
                     ]
                 ]
             ),
-            quote=False
+            quote=False,
         )
         await query.message.delete()
         await query.answer()
@@ -59,13 +50,8 @@ async def callback(client, query):
 
         volume = f"{volume}%"
 
-        subprocess.Popen(
-            [
-                "pactl",
-                "set-sink-volume",
-                "MySink",
-                volume
-            ]
+        await asyncio.create_subprocess_exec(
+            ["pactl", "set-sink-volume", "MySink", volume]
         ).wait()
 
         await query.message.reply_text(
@@ -73,26 +59,15 @@ async def callback(client, query):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(
-                            "➖",
-                            callback_data="decrease_volume"
-                        ),
-                        InlineKeyboardButton(
-                            "➕",
-                            callback_data="increase_volume"
-                        )
+                        InlineKeyboardButton("➖", callback_data="decrease_volume"),
+                        InlineKeyboardButton("➕", callback_data="increase_volume"),
                     ]
                 ]
             ),
-            quote=False
+            quote=False,
         )
         await query.message.delete()
         await query.answer()
 
-__handlers__ = [
-    [
-        CallbackQueryHandler(
-            callback
-        )
-    ]
-]
+
+__handlers__ = [[CallbackQueryHandler(callback)]]
