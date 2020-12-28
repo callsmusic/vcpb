@@ -6,7 +6,7 @@ not_playlist: "Send me a video URL, not a playlist."
 download_scheduled: "Download scheduled."
 not_live: "You can't download live vidoes."
 downloading: "Downloading..."
-downloaded_scheduled: "Downlaoded and scheduled to be played at position {0}."
+downloaded_scheduled: "Downloaded and scheduled to be played at position {0}."
 playing: "Playing..."
 finished_playing: "Finished playing."
 
