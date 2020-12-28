@@ -30,16 +30,17 @@ def worker():
             )
 
             if "log" in item:
-                args = item["log"][1]
-                args[1] = args[1].format(
-                    item["url"],
-                    item["title"],
-                    item["sent_by_id"],
-                    item["sent_by_name"]
-                )
-                log = item["log"][0](
-                    *args
-                )
+                if item["log"]:
+                    args = item["log"][1]
+                    args[1] = args[1].format(
+                        item["url"],
+                        item["title"],
+                        item["sent_by_id"],
+                        item["sent_by_name"]
+                    )
+                    log = item["log"][0](
+                        *args
+                    )
             process = Popen(["mplayer", item["file"]], stdin=PIPE)
             process.wait()
             item["end"][0](
