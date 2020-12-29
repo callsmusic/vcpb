@@ -46,7 +46,7 @@ not_for_you: "This is not for you."
 
 
 mistake: "I assume that was a mistake."
-err_occ: "An eror occured."
+err_occ: "An error occured."
 
 
 current_volume: "Current volume is {0}"
