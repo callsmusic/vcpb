@@ -21,7 +21,7 @@ From Mr. [@TwitFace, AKA Andrew Lungers](https://t.me/TwitFace).
 ## Running
 1. Clone the repository and change the dir:
 ```
-    git clone https://github.com/rojserbest/VoiceChatPyroBot.git && cd VoiceChatPyroBot
+    git clone https://github.com/suprojects/VoiceChatPyroBot.git tgvcbot && cd tgvcbot
 ```
 2. Modify `sample_config.py` to use your credenitals and then rename/copy it to `config.py`:
 
