@@ -1,0 +1,6 @@
+*pyc
+*session
+*journal
+config.py
+downloads/*
+__pycache__

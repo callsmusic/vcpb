@@ -1,0 +1,5 @@
+pyrogram
+tgcrypto
+youtube_dl
+gTTS
+pyaml
