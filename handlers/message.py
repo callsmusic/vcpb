@@ -19,14 +19,15 @@ async def message(client, message):
         await message.reply_text(_("not_playlist"))
         return
 
-    await message.reply_text(_("download_scheduled"), quote=True)
+    m = await message.reply_text(_("download_scheduled"), quote=True)
+
     download(
         (
-            message.reply_text,
+            m.edit,
             (_("downloading"),)
         ),
         (
-            message.reply_text,
+            m.edit,
             (_("downloaded_scheduled").format({player.q.qsize() + 1}),)
         ),
         [
@@ -58,10 +59,14 @@ async def message(client, message):
             ]
         ],
         (
-            message.reply_text,
-            _("not_live")
+            m.edit,
+            (_("not_live"),)
         ),
         message.text,
+        (
+            m.edit,
+            (_("err_occ"),)
+        )
     )
 
 
