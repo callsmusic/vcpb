@@ -50,3 +50,4 @@ From Mr. [@TwitFace, AKA Andrew Lungers](https://t.me/TwitFace).
 6. Open Telegram desktop, join a voice chat and set `MySink` as your microphone.
 7. Once you've done the steps above, you can start using and sending commands to your bot to stream in the voice chat you are currently in with Telegram desktop!
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/profiregod/VoiceChatPyroBot.git)
