@@ -31,7 +31,6 @@ __handlers__ = [
         MessageHandler(
             song,
             filters.command("song", "/")
-            & filters.private
         )
     ]
 ]

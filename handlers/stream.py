@@ -1,3 +1,4 @@
+from asyncio import sleep
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 import player
@@ -7,22 +8,22 @@ from strings import get_string as _
 
 async def stream(client, message):
     if player.q_list:
-        await message.reply_text(
+        m = await message.reply_text(
             _("cant_stream")
         )
     else:
         args = message.text.split()
 
         if len(args) == 1:
-            await message.reply_text(
+            m = await message.reply_text(
                 _("url_arg")
             )
         elif len(args) != 2:
-            await message.reply_text(
+            m = await message.reply_text(
                 _("more_than_one_args")
             )
         else:
-            stream = player.stream(
+            player.stream(
                 args[1],
                 [
                     client.send_message,
@@ -38,6 +39,15 @@ async def stream(client, message):
             await message.reply_text(
                 _("streaming")
             )
+
+    if m and message.chat.type != "private":
+        await sleep(5)
+        await m.delete()
+
+        try:
+            await message.delete()
+        except:
+            pass
 
 __handlers__ = [
     [

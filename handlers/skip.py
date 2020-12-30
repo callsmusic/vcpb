@@ -1,3 +1,4 @@
+from asyncio import sleep
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 import player
@@ -7,9 +8,18 @@ from strings import get_string as _
 
 async def skip(client, message):
     if player.abort():
-        await message.reply_text(_("skipped"))
+        m = await message.reply_text(_("skipped"))
     else:
-        await message.reply_text(_("nothing_playing_skip"))
+        m = await message.reply_text(_("nothing_playing_skip"))
+
+    if m and message.chat.type != "private":
+        await sleep(5)
+        await m.delete()
+
+        try:
+            await message.delete()
+        except:
+            pass
 
 __handlers__ = [
     [

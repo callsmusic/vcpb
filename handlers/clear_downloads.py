@@ -1,3 +1,4 @@
+from asyncio import sleep
 import os
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
@@ -14,9 +15,18 @@ async def clear_downloads(client, message):
                 os.remove("downloads/" + file)
             except:
                 pass
-        await message.reply_text(_("cleaned_downloads"))
+        m = await message.reply_text(_("cleaned_downloads"))
     except:
-        await message.reply_text(_("err_occ"))
+        m = await message.reply_text(_("err_occ"))
+
+    if m and message.chat.type != "private":
+        await sleep(5)
+        await m.delete()
+
+        try:
+            await message.delete()
+        except:
+            pass
 
 __handlers__ = [
     [

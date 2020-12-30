@@ -90,7 +90,7 @@ def stream(stream_url, log):
 
 
 def currently_playing():
-    return q_list[0] if q_list else False
+    return q_list[0] if q_list else []
 
 
 def abort():
