@@ -72,7 +72,7 @@ def worker():
 threading.Thread(target=worker, daemon=True).start()
 
 
-def play(file, on_start, on_end, title, url, sent_by_id, sent_by_name, log, dur, on_skip, seek):
+def play(file, on_start, on_end, title, url, sent_by_id, sent_by_name, log, dur, on_skip):
     args = {
         "file": file,
         "on_start": on_start,
