@@ -36,7 +36,6 @@ __handlers__ = [
         MessageHandler(
             queue,
             filters.command("queue", "/")
-            & SUDO_FILTER
         )
     ]
 ]
