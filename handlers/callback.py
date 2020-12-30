@@ -1,4 +1,4 @@
-import asyncio
+import subprocess
 from pyrogram import filters
 from pyrogram.handlers import CallbackQueryHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -22,7 +22,7 @@ async def callback(client, query):
 
         volume = f"{volume}%"
 
-        await asyncio.create_subprocess_exec(
+        subprocess.Popen(
             ["pactl", "set-sink-volume", "MySink", volume]
         ).wait()
 
@@ -54,7 +54,7 @@ async def callback(client, query):
 
         volume = f"{volume}%"
 
-        await asyncio.create_subprocess_exec(
+        subprocess.Popen(
             ["pactl", "set-sink-volume", "MySink", volume]
         ).wait()
 
