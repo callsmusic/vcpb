@@ -57,7 +57,11 @@ async def message(client, message):
                         )
                     ]
                 ] if LOG_GROUP else None,
-                None
+                None,
+                (
+                    message.reply_text,
+                    (_("on_skip"),)
+                )
             ]
         ],
         (

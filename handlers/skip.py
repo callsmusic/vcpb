@@ -2,12 +2,15 @@ from asyncio import sleep
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 import player
+from helpers import State
 from config import SUDO_FILTER
 from strings import get_string as _
 
 
 async def skip(client, message):
-    if player.abort():
+    if player.STATE in (State.Playing or State.Streaming or State.Paused):
+        player.STATE = State.Skipped
+        player.abort()
         m = await message.reply_text(_("skipped"))
     else:
         m = await message.reply_text(_("nothing_playing_skip"))

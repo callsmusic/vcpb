@@ -1,12 +1,12 @@
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 import player
+from helpers import State
 from strings import get_string as _
 
 
 async def song(client, message):
-    get = player.currently_playing()
-    if get:
+    if player.STATE in (State.Playing, State.Paused):
         await message.reply_text(
             _("song").format(
                 "<a href=\"{}\">{}</a>".format(

@@ -1,6 +1,14 @@
 import re
 
 
+class State():
+    Playing = "PLAYING"
+    NothingSpecial = "NOTHING_SPECIAL"
+    Paused = "PAUSED"
+    Skipped = "SKIPPED"
+    Streaming = "STREAMING"
+
+
 def is_youtube(url):
     exp1 = r"(http|https)\:\/\/(www\.|)youtu\.be\/.+"
     exp2 = r"(http|https)\:\/\/(www\.|)youtube\.com\/watch.+"

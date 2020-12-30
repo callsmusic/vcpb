@@ -2,12 +2,13 @@ from asyncio import sleep
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 import player
+from helpers import State
 from config import SUDO_FILTER, LOG_GROUP
 from strings import get_string as _
 
 
 async def stream(client, message):
-    if player.q_list:
+    if player.STATE in (State.Playing, State.Paused):
         m = await message.reply_text(
             _("cant_stream")
         )

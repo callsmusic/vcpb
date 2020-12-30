@@ -24,9 +24,11 @@ spoke: "Konuştum."
 
 skipped: "Geçildi."
 nothing_playing_skip: "Hiçbir şey oynatmadığınız için geçemiyorum."
+on_skip: "This song was skipped by an admin."
 
 
-paused: "Durduruldu."
+paused: "Paused."
+cant_pause: "Can't pause because already paused."
 nothing_playing_pause: "Durdurmam için bir şeylerin oynaması gerek, değil mi?"
 
 

@@ -1,20 +1,23 @@
 import threading
 import queue
 from subprocess import Popen, PIPE
+from helpers import State
 
 q = queue.Queue()
 q_list = []
 
 process = None
+STATE = State.NothingSpecial
 
 
 def worker():
-    global current, process, q_list
+    global process, q_list, STATE
     while True:
         item = q.get()
         log = None
 
         if "stream_url" in item:
+            STATE = State.Streaming
             if "log" in item:
                 if item["log"]:
                     log = item["log"][0](
@@ -23,8 +26,9 @@ def worker():
             process = Popen(["mplayer", item["stream_url"]], stdin=PIPE)
             process.wait()
         else:
-            item["start"][0](
-                *item["start"][1],
+            STATE = State.Playing
+            item["on_start"][0](
+                *item["on_start"][1],
                 quote=True
             )
 
@@ -41,16 +45,26 @@ def worker():
                     log = item["log"][0](
                         *args
                     )
+
             process = Popen(["mplayer", item["file"]], stdin=PIPE)
             process.wait()
-            item["end"][0](
-                *item["end"][1],
-                quote=True
-            )
+
+            if STATE == State.Playing:
+                item["on_end"][0](
+                    *item["on_end"][1],
+                    quote=True
+                )
+            elif STATE == State.Skipped:
+                item["on_skip"][0](
+                    *item["on_skip"][1],
+                    quote=True
+                )
+
             del q_list[0]
         if log:
             log.delete()
 
+        STATE = State.NothingSpecial
         process = None
         q.task_done()
 
@@ -58,17 +72,18 @@ def worker():
 threading.Thread(target=worker, daemon=True).start()
 
 
-def play(file, start, end, title, url, sent_by_id, sent_by_name, log, dur):
+def play(file, on_start, on_end, title, url, sent_by_id, sent_by_name, log, dur, on_skip, seek):
     args = {
         "file": file,
-        "start": start,
-        "end": end,
+        "on_start": on_start,
+        "on_end": on_end,
         "title": title,
         "url": url,
         "sent_by_id": sent_by_id,
         "sent_by_name": sent_by_name,
         "log": log,
-        "dur": dur
+        "dur": dur,
+        "on_skip": on_skip
     }
     q.put(
         args
@@ -103,6 +118,14 @@ def abort():
 def pause_resume():
     if process:
         process.stdin.write(b"p")
+        process.stdin.flush()
+        return True
+    return False
+
+
+def sf():
+    if process:
+        process.stdin.write(b"\x1B[D")
         process.stdin.flush()
         return True
     return False
