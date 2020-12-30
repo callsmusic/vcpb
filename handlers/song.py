@@ -7,6 +7,7 @@ from strings import get_string as _
 
 async def song(client, message):
     if player.STATE in (State.Playing, State.Paused):
+        get = player.q_list[0]
         await message.reply_text(
             _("song").format(
                 "<a href=\"{}\">{}</a>".format(
