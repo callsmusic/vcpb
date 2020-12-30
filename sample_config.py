@@ -19,8 +19,11 @@ SUDO_USERS = [
 # Example group ID: -1001402753006
 LOG_GROUP = None  # Just keep it like this if you are not going to use one
 
+# Choose the preferred language for your bot. If English leave as it is, or change to the code of any supported language.
+LANG = "en"
+
+# Max video duration allowed for downloads in minutes
+DUR_LIMIT = 5
+
 # No need to touch the following.
 SUDO_FILTER = filters.user(SUDO_USERS)
-
-#Choose the preferred language for your bot. If English leave as it is . Or chane to the  letter code of supported languages. 
-LANG = "en"

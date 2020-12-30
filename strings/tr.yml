@@ -57,3 +57,6 @@ cleaned_downloads: "Downloads klasöründeki temizlendi."
 
 listing: "Listing {0} out of {1}."
 list_item: "{0}. {1} by {2}"
+
+
+dur_limit: "You can't download videos longer than {0} minutes."

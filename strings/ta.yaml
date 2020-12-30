@@ -30,3 +30,4 @@ volume_set: "ஒலி அளவு {0} ஆக அமைக்கப்பட்
 cleaned_downloads: "உங்கள் பதிவிறக்கக் கோப்புறையில் உள்ள எல்லா கோப்புகளும் நீக்கப்பட்டது."
 listing: "Listing {0} out of {1}."
 list_item: "{0}. {1} by {2}"
+dur_limit: "You can't download videos longer than {0} minutes."

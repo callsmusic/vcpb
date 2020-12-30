@@ -7,6 +7,7 @@ import threading
 import queue
 import youtube_dl
 import player
+from config import DUR_LIMIT
 
 ydl_opts = {
     "format": "bestaudio/best"
@@ -31,7 +32,14 @@ def worker():
                 download=False
             )
 
-            if info["is_live"]:
+            if int(info["duration"] / 60) > DUR_LIMIT:
+                args = item["on_dur_limit"][1]
+                args[0] = args[0].format(DUR_LIMIT)
+                item["on_dur_limit"][0](
+                    *args
+                )
+                q.task_done()
+            elif info["is_live"]:
                 item["on_is_live_err"][0](
                     *item["on_is_live_err"][1]
                 )
@@ -85,7 +93,7 @@ def worker():
 threading.Thread(target=worker, daemon=True).start()
 
 
-def download(on_start, on_end, play_func, on_is_live_err, video, on_err):
+def download(on_start, on_end, play_func, on_is_live_err, video, on_err, on_dur_limit):
     q.put(
         {
             "on_start": on_start,
@@ -93,7 +101,8 @@ def download(on_start, on_end, play_func, on_is_live_err, video, on_err):
             "play_func": play_func,
             "on_is_live_err": on_is_live_err,
             "video": video,
-            "on_err": on_err
+            "on_err": on_err,
+            "on_dur_limit": on_dur_limit
         }
     )
     return q.qsize()

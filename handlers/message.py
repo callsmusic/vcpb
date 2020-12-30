@@ -66,7 +66,11 @@ async def message(client, message):
         (
             m.edit,
             (_("err_occ"),)
-        )
+        ),
+        [
+            m.edit,
+            [_("dur_limit"), ]
+        ]
     )
 
 
