@@ -33,12 +33,14 @@ nothing_playing_pause: "There is nothing playing to be paused."
 group_log_stream: "<b>NOW STREAMING</b>\n
 <pre>{0}</pre>"
 group_log: "<b>NOW PLAYING</b>\n
-Title: {0}\n
-Requested By: {1}"
+TITLE: {0}\n
+REQUESTED BY: {1}\n
+DURATION: {2}"
 
 
 song: "TITLE: {0}\n
-REQUESTED BY: {1}"
+REQUESTED BY: {1}\n
+DURATION: {2}"
 no_song_playing: "No song is currently playing."
 
 

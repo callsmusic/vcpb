@@ -19,8 +19,13 @@ nothing_playing_skip: "שום דבר לא מנוגן בשביל לדלג."
 paused: "הניגון הופסק/המשיך."
 nothing_playing_pause: "שום דבר לא מנוגן בשביל לעצור."
 group_log_stream: "<b>עכשיו מזרים</b>\n <pre>{0}</pre>"
-group_log: "<b>עכשיו מנגן</b>\n כותרת: {0}\n מבוקש על ידי: {1}"
-song: "כותרת: {0}\n מבוקש על ידי: {1}"
+group_log: "<b>NOW PLAYING</b>\n
+TITLE: {0}\n
+REQUESTED BY: {1}\n
+DURATION: {2}"
+song: "TITLE: {0}\n
+REQUESTED BY: {1}\n
+DURATION: {2}"
 no_song_playing: "אין שיר שמנוגן כרגע."
 not_for_you: "זה לא בשבילך."
 mistake: "אני חושב שהייתה טעות."

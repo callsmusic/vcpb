@@ -52,10 +52,12 @@ async def message(client, message):
                         LOG_GROUP,
                         _("group_log").format(
                             "<a href=\"{}\">{}</a>",
-                            "<a href=\"tg://user?id={}\">{}</a>"
+                            "<a href=\"tg://user?id={}\">{}</a>",
+                            "{}"
                         )
                     ]
-                ] if LOG_GROUP else None
+                ] if LOG_GROUP else None,
+                None
             ]
         ],
         (

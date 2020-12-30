@@ -17,9 +17,10 @@ async def queue(client, message):
             item = first_10[i]
             res += _("list_item").format(
                 i + 1,
-                "<a href=\"{}\">{}</a>".format(
+                "<a href=\"{}\">{}</a> ({})".format(
                     item["url"],
-                    item["title"]
+                    item["title"],
+                    item["dur"]
                 ),
                 "<a href=\"tg://user?id={}\">{}</a>".format(
                     item["sent_by_id"],

@@ -8,6 +8,7 @@ import queue
 import youtube_dl
 import player
 from config import DUR_LIMIT
+from helpers import format_dur
 
 ydl_opts = {
     "format": "bestaudio/best"
@@ -52,6 +53,7 @@ def worker():
                     args[0] = "downloads/" + file_name
                     args[3] = info["title"]
                     args[4] = "https://youtu.be/" + info["id"]
+                    args[8] = format_dur(int(info["duration"]))
                     item["play_func"][0](
                         *args
                     )

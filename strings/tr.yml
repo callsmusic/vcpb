@@ -32,13 +32,15 @@ nothing_playing_pause: "Durdurmam için bir şeylerin oynaması gerek, değil mi
 
 group_log_stream: "<b>OYNATILIYOR</b>\n
 <pre>{0}</pre>"
-group_log: "<b>OYNATILIYOR</b>\n
-Başlık: {0}\n
-İsteyen: {1}"
+group_log: "<b>NOW PLAYING</b>\n
+TITLE: {0}\n
+REQUESTED BY: {1}\n
+DURATION: {2}"
 
 
-song: "BAŞLIK: {0}\n
-İSTEYEN: {1}"
+song: "TITLE: {0}\n
+REQUESTED BY: {1}\n
+DURATION: {2}"
 no_song_playing: "Şu an hiçbir şarkı çalmıyor."
 
 

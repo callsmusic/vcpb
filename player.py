@@ -6,7 +6,6 @@ q = queue.Queue()
 q_list = []
 
 process = None
-current = {}
 
 
 def worker():
@@ -24,7 +23,6 @@ def worker():
             process = Popen(["mplayer", item["stream_url"]], stdin=PIPE)
             process.wait()
         else:
-            current = item
             item["start"][0](
                 *item["start"][1],
                 quote=True
@@ -37,7 +35,8 @@ def worker():
                         item["url"],
                         item["title"],
                         item["sent_by_id"],
-                        item["sent_by_name"]
+                        item["sent_by_name"],
+                        item["dur"]
                     )
                     log = item["log"][0](
                         *args
@@ -49,7 +48,6 @@ def worker():
                 quote=True
             )
             del q_list[0]
-            current = {}
         if log:
             log.delete()
 
@@ -60,7 +58,7 @@ def worker():
 threading.Thread(target=worker, daemon=True).start()
 
 
-def play(file, start, end, title, url, sent_by_id, sent_by_name, log):
+def play(file, start, end, title, url, sent_by_id, sent_by_name, log, dur):
     args = {
         "file": file,
         "start": start,
@@ -69,7 +67,8 @@ def play(file, start, end, title, url, sent_by_id, sent_by_name, log):
         "url": url,
         "sent_by_id": sent_by_id,
         "sent_by_name": sent_by_name,
-        "log": log
+        "log": log,
+        "dur": dur
     }
     q.put(
         args
@@ -91,7 +90,7 @@ def stream(stream_url, log):
 
 
 def currently_playing():
-    return current
+    return q_list[0] if q_list else False
 
 
 def abort():

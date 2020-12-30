@@ -17,6 +17,7 @@ async def song(client, message):
                     get["sent_by_id"],
                     get["sent_by_name"]
                 ),
+                get["dur"]
             ),
             parse_mode="HTML"
         )
