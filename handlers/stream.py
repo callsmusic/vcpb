@@ -6,7 +6,7 @@ from strings import get_string as _
 
 
 async def stream(client, message):
-    if player.current:
+    if player.q_list:
         await message.reply_text(
             _("cant_stream")
         )
