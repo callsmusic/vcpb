@@ -37,15 +37,10 @@ cant_resume: "There is nothing paused to resume."
 
 group_log_stream: "<b>NOW STREAMING</b>\n
 <pre>{0}</pre>"
-group_log: "<b>NOW PLAYING</b>\n
-TITLE: {0}\n
-REQUESTED BY: {1}\n
-DURATION: {2}"
+group_log: "<b>NOW PLAYING</b>\nTITLE: {0}\nREQUESTED BY: {1}\nDURATION: {2}"
 
 
-song: "TITLE: {0}\n
-REQUESTED BY: {1}\n
-DURATION: {2}"
+song: "TITLE: {0}\nREQUESTED BY: {1}\nDURATION: {2}"
 no_song_playing: "No song is currently playing."
 
 
