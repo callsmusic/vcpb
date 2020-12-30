@@ -21,3 +21,6 @@ LOG_GROUP = None  # Just keep it like this if you are not going to use one
 
 # No need to touch the following.
 SUDO_FILTER = filters.user(SUDO_USERS)
+
+#Choose the preferred language for your bot. If English leave as it is . Or chane to the  letter code of supported languages. 
+LANG = "en"
