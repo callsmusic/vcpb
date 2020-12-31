@@ -1,3 +1,22 @@
+# Help
+help_ban: "ban a user"
+help_unban: "unban a user"
+help_bans: "see banned users"
+help_cleardownloads: "delete all downloads"
+help_help: "see this list"
+help_pause: "pause the playing song"
+help_resume: "resume the paused song"
+help_play: "same as resume"
+help_queue: "check songs in the queue"
+help_skip: "skip the playing song"
+help_song: "check the playing song"
+help_start: "start the bot"
+help_stream: "stream a radio"
+help_tts: "say something"
+help_volume: "check the current volume"
+help_1: "User commands:"
+help_2: "Admin commands:"
+
 # Bot
 bot: "Bot is updating and restarting..."
 

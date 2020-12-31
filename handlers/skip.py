@@ -33,3 +33,6 @@ __handlers__ = [
         )
     ]
 ]
+__help__ = {
+    "skip": [_("help_skip"), True]
+}

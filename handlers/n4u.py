@@ -24,7 +24,13 @@ __handlers__ = [
             n4u,
             (filters.command("pause", "/")
              | filters.command("skip", "/")
-             | filters.command("stream", "/"))
+             | filters.command("resume", "/")
+             | filters.command("stream", "/")
+             | filters.command("bans", "/")
+             | filters.command("ban", "/")
+             | filters.command("unban", "/")
+             | filters.command("cleardownloads", "/")
+             | filters.command("play", "/"))
             & ~ SUDO_FILTER
             & ~ BANNED
         )

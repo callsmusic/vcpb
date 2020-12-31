@@ -80,7 +80,7 @@ async def bans(client, message):
     m = await message.reply_text(res)
 
     if m and message.chat.type != "private":
-        await sleep(5)
+        await sleep(10)
         await m.delete()
 
         try:
@@ -111,3 +111,8 @@ __handlers__ = [
         )
     ]
 ]
+__help__ = {
+    "ban": [_("help_ban"), True],
+    "unban": [_("help_unban"), True],
+    "bans": [_("help_bans"), True]
+}

@@ -37,3 +37,6 @@ __handlers__ = [
         )
     ]
 ]
+__help__ = {
+    "cleardownloads": [_("help_cleardownloads"), True]
+}

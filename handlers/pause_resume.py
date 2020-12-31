@@ -61,3 +61,8 @@ __handlers__ = [
         )
     ]
 ]
+__help__ = {
+    "pause": [_("help_pause"), True],
+    "resume": [_("help_resume"), True],
+    "play": [_("help_play"), True]
+}

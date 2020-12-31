@@ -16,6 +16,12 @@ a = [
 ]
 
 all_handlers = []
+all_help = []
 
 for i in a:
-    all_handlers += importlib.import_module("handlers." + i).__handlers__
+    handler = importlib.import_module("handlers." + i)
+    all_handlers += handler.__handlers__
+    try:
+        all_help.append(handler.__help__)
+    except:
+        pass

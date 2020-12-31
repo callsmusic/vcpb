@@ -59,3 +59,6 @@ __handlers__ = [
         )
     ]
 ]
+__help__ = {
+    "stream": [_("help_stream"), True]
+}

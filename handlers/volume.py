@@ -4,7 +4,7 @@ from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import player
-from config import SUDO_USERS
+from config import SUDO_USERS, BANNED
 from strings import get_string as _
 
 
@@ -61,6 +61,10 @@ __handlers__ = [
         MessageHandler(
             volume,
             filters.command("volume", "/")
+            & ~ BANNED
         )
     ]
 ]
+__help__ = {
+    "volume": [_("help_volume"), False]
+}

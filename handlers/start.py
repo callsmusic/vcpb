@@ -24,3 +24,6 @@ __handlers__ = [
         )
     ]
 ]
+__help__ = {
+    "start": [_("help_start"), False]
+}

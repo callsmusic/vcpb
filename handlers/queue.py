@@ -66,3 +66,6 @@ __handlers__ = [
         )
     ]
 ]
+__help__ = {
+    "queue": [_("help_queue"), False]
+}
