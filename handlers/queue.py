@@ -45,7 +45,7 @@ async def queue(client, message):
                             callback_data="pause"
                         ),
                         InlineKeyboardButton(
-                            "⏩",
+                            "⏭",
                             callback_data="skip"
                         )
                     ]
