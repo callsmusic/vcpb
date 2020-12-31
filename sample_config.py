@@ -25,7 +25,7 @@ LANG = "en"
 # Max video duration allowed for downloads in minutes
 DUR_LIMIT = 5
 
-# Show a small credit for @su_Bots in messages
+# Show a small credit for @su_Bots in the start message
 CREDIT = True
 
 # No need to touch the following.

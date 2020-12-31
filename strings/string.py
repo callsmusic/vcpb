@@ -9,8 +9,8 @@ class String:
         self.languages = {}
         self.reload_strings()
 
-    def get_string(self, string):
-        credit = "\n\nMade with ❤️ by @su_Bots." if CREDIT else ""
+    def get_string(self, string, c=False):
+        credit = "\n\nMade with ❤️ by @su_Bots." if CREDIT and c else ""
 
         try:
             return self.languages[LANG][string] + credit
