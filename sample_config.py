@@ -15,6 +15,15 @@ SUDO_USERS = [
     1392620345
 ]
 
+
+# id of the banned users
+
+BANNED_USERS = [
+    1,
+    2,
+    3
+]
+
 # A group ID to send messages to when a song starts playing
 # Example group ID: -1001402753006
 LOG_GROUP = None  # Just keep it like this if you are not going to use one
@@ -30,3 +39,4 @@ CREDIT = True
 
 # No need to touch the following.
 SUDO_FILTER = filters.user(SUDO_USERS)
+BANNED_FILTER = filters.user(BANNED_USERS)
