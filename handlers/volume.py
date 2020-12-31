@@ -23,7 +23,7 @@ async def volume(client, message):
                     ]
                 ).wait()
                 await message.reply_text(
-                    _("volume_set").format(volume)
+                    _("volume_2").format(volume)
                 )
                 return
         except:
@@ -34,7 +34,7 @@ async def volume(client, message):
 
     if message.from_user.id in SUDO_USERS:
         await message.reply_text(
-            _("current_volume").format(current_volume),
+            _("volume_1").format(current_volume),
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -53,7 +53,7 @@ async def volume(client, message):
         )
     else:
         await message.reply_text(
-            _("current_volume").format(current_volume),
+            _("volume_1").format(current_volume),
         )
 
 __handlers__ = [

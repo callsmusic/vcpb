@@ -6,7 +6,7 @@ from strings import get_string as _
 
 
 async def n4u(client, message):
-    m = await message.reply_text(_("not_for_you"))
+    m = await message.reply_text(_("n4u"))
 
     if m and message.chat.type != "private":
         await sleep(5)

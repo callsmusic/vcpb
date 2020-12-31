@@ -10,18 +10,18 @@ from strings import get_string as _
 async def stream(client, message):
     if player.STATE in (State.Playing, State.Paused):
         m = await message.reply_text(
-            _("cant_stream")
+            _("stream_3")
         )
     else:
         args = message.text.split()
 
         if len(args) == 1:
             m = await message.reply_text(
-                _("url_arg")
+                _("stream_1")
             )
         elif len(args) != 2:
             m = await message.reply_text(
-                _("more_than_one_args")
+                _("stream_2")
             )
         else:
             player.stream(
@@ -30,7 +30,7 @@ async def stream(client, message):
                     client.send_message,
                     [
                         LOG_GROUP,
-                        _("group_log_stream").format(
+                        _("group_2").format(
                             args[1]
                         )
                     ]
@@ -38,7 +38,7 @@ async def stream(client, message):
             )
 
             await message.reply_text(
-                _("streaming")
+                _("stream_4")
             )
 
     if m and message.chat.type != "private":
