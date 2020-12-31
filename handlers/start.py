@@ -5,7 +5,7 @@ from strings import get_string as _
 
 async def start(client, message):
     await message.reply_text(
-        _("send_yt_link", True)
+        _("start", True)
     )
 
 __handlers__ = [

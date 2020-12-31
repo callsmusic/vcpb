@@ -1,66 +1,66 @@
-send_yt_link: "Merhaba, bana oynatmam için YouTube linki gönder!"
+start: "Merhaba, bana oynatmam için YouTube linki gönder!"
 
 
-not_valid: "Bu link geçersiz."
-not_playlist: "Bana sadece video gönder!"
-download_scheduled: "İndirme işlemi sıraya alındı."
-not_live: "Canlı videoları indiremezsiniz!"
-downloading: "İndiriliyor..."
-downloaded_scheduled: "Video indirildi ve {0}. sıraya alındı."
-playing: "Oynatılıyor..."
-finished_playing: "Oynatma bitti."
+message_1: "Bu link geçersiz."
+message_2: "Bana sadece video gönder!"
+message_3: "İndirme işlemi sıraya alındı."
+ytdl_3: "Canlı videoları indiremezsiniz!"
+ytdl_1: "İndiriliyor..."
+ytdl_2: "Video indirildi ve {0}. sıraya alındı."
+player_1: "Oynatılıyor..."
+player_2: "Oynatma bitti."
 
 
-url_arg: "Bana bir yayın adresi ver."
-more_than_one_args: "Birden daha fazla parametre verdiniz."
-cant_stream: "Müzik çalarken yayın yapamam."
-streaming: "Yayınlanıyor..."
+stream_1: "Bana bir yayın adresi ver."
+stream_2: "Birden daha fazla parametre verdiniz."
+stream_3: "Müzik çalarken yayın yapamam."
+stream_4: "Yayınlanıyor..."
 
 
-give_text: "Konuşmam için bana birkaç kelime ver."
-speaking: "Konuşuyorum..."
-spoke: "Konuştum."
+tts_1: "Konuşmam için bana birkaç kelime ver."
+tts_2: "Konuşuyorum..."
+tts_3: "Konuştum."
 
 
-skipped: "Geçildi."
-nothing_playing_skip: "Hiçbir şey oynatmadığınız için geçemiyorum."
-on_skip: "This song was skipped by an admin."
+skip_1: "Geçildi."
+skip_2: "Hiçbir şey oynatmadığınız için geçemiyorum."
+skip_3: "This song was skipped by an admin."
 
 
-paused: "Paused."
-cant_pause: "Can't pause because already paused."
-nothing_playing_pause: "Durdurmam için bir şeylerin oynaması gerek, değil mi?"
+pause_1: "Paused."
+pause_2: "Can't pause because already paused."
+pause_3: "Durdurmam için bir şeylerin oynaması gerek, değil mi?"
 
 
-group_log_stream: "<b>OYNATILIYOR</b>\n
+group_2: "<b>OYNATILIYOR</b>\n
 <pre>{0}</pre>"
-group_log: "<b>NOW PLAYING</b>\n
+group_1: "<b>NOW PLAYING</b>\n
 TITLE: {0}\n
 REQUESTED BY: {1}\n
 DURATION: {2}"
 
 
-song: "TITLE: {0}\n
+song_1: "TITLE: {0}\n
 REQUESTED BY: {1}\n
 DURATION: {2}"
-no_song_playing: "Şu an hiçbir şarkı çalmıyor."
+song_2: "Şu an hiçbir şarkı çalmıyor."
 
 
-not_for_you: "Bu sana göre değil."
+n4u: "Bu sana göre değil."
 
 
 mistake: "Sanırım bir hata oldu?"
-err_occ: "Bir hata gerçekleşti."
+error: "Bir hata gerçekleşti."
 
 
-current_volume: "Şu anki ses seviyesi: {0}"
-volume_set: "Ses seviyesi {0} seviyesine ayarlandı."
+volume_1: "Şu anki ses seviyesi: {0}"
+volume_2: "Ses seviyesi {0} seviyesine ayarlandı."
 
 
-cleaned_downloads: "Downloads klasöründeki temizlendi."
+cleardownloads: "Downloads klasöründeki temizlendi."
 
-listing: "Listing {0} out of {1}."
-list_item: "{0}. {1} by {2}"
+queue_1: "Listing {0} out of {1}."
+queue_2: "{0}. {1} by {2}"
 
 
-dur_limit: "You can't download videos longer than {0} minutes."
+ytdl_4: "You can't download videos longer than {0} minutes."

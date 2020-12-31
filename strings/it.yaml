@@ -1,65 +1,65 @@
-send_yt_link: "Ciao, mandami un link di YouTube per ascoltarlo."
+start: "Ciao, mandami un link di YouTube per ascoltarlo."
 
 
-not_valid: "Questo (link) non è valido."
-not_playlist: "Mandami l'URL di un video, non di una playlist."
-download_scheduled: "Download programmato."
-not_live: "Non puoi scaricare le live."
-downloading: "Scaricando..."
-downloaded_scheduled: "Scaricato e programmato per la posizione {0}."
-playing: "Riproucendo..."
-finished_playing: "Riproduzione terminata."
+message_1: "Questo (link) non è valido."
+message_2: "Mandami l'URL di un video, non di una playlist."
+message_3: "Download programmato."
+ytdl_3: "Non puoi scaricare le live."
+ytdl_1: "Scaricando..."
+ytdl_2: "Scaricato e programmato per la posizione {0}."
+player_1: "Riproucendo..."
+player_2: "Riproduzione terminata."
 
 
-url_arg: "Mandami l'URL di uno stream."
-more_than_one_args: "Mi hai mandato più di un arg."
-cant_stream: "Non posso riprodurre lo stream finché la musica va."
-streaming: "Streaming..."
+stream_1: "Mandami l'URL di uno stream."
+stream_2: "Mi hai mandato più di un arg."
+stream_3: "Non posso riprodurre lo stream finché la musica va."
+stream_4: "Streaming..."
 
 
-give_text: "Mandami del testo da pronunciare."
-speaking: "Parlando..."
-spoke: "Pronunciato."
+tts_1: "Mandami del testo da pronunciare."
+tts_2: "Parlando..."
+tts_3: "Pronunciato."
 
 
-skipped: "Saltato."
-nothing_playing_skip: "Non c'è niente in riproduzione da poter saltare."
-on_skip: "Questa canzone è stata saltata da un admin"
+skip_1: "Saltato."
+skip_2: "Non c'è niente in riproduzione da poter saltare."
+skip_3: "Questa canzone è stata saltata da un admin"
 
 
-paused: "In pausa."
-cant_pause: "Non si può mettere in pausa perché è già in pausa."
-nothing_playing_pause: "Non c'è niente in riproduzione da poter mettere in pausa."
+pause_1: "In pausa."
+pause_2: "Non si può mettere in pausa perché è già in pausa."
+pause_3: "Non c'è niente in riproduzione da poter mettere in pausa."
 
-resumed: "In riproduzione."
-cant_resume: "Non c'è niente in pausa da riprodurre."
+pause_4: "In riproduzione."
+pause_5: "Non c'è niente in pausa da riprodurre."
 
 
-group_log_stream: "<b>IN RIPRODUZIONE ORA</b>\n
+group_2: "<b>IN RIPRODUZIONE ORA</b>\n
 <pre>{0}</pre>"
-group_log: "<b>IN RIPRODUZIONE</b>\nTITOLO: {0}\nRICHIESTO DA: {1}\nDURATA: {2}"
+group_1: "<b>IN RIPRODUZIONE</b>\nTITOLO: {0}\nRICHIESTO DA: {1}\nDURATA: {2}"
 
 
-song: "TITOLO: {0}\nRICHIESTO DA: {1}\nDURATA: {2}"
-no_song_playing: "Nessuna canzone sta venendo riprodotta."
+song_1: "TITOLO: {0}\nRICHIESTO DA: {1}\nDURATA: {2}"
+song_2: "Nessuna canzone sta venendo riprodotta."
 
 
-not_for_you: "Questo non è per te."
+n4u: "Questo non è per te."
 
 
 mistake: "Credo che questo sia un errore."
-err_occ: "C'è stato un errore."
+error: "C'è stato un errore."
 
 
-current_volume: "Il volume attuale è {0}"
-volume_set: "Volume impostato a {0}"
+volume_1: "Il volume attuale è {0}"
+volume_2: "Volume impostato a {0}"
 
 
-cleaned_downloads: "Rimossi tutti i file dalla cartella dei download."
+cleardownloads: "Rimossi tutti i file dalla cartella dei download."
 
 
-listing: "Elenco {0} di {1}."
-list_item: "{0}. {1} da {2}"
+queue_1: "Elenco {0} di {1}."
+queue_2: "{0}. {1} da {2}"
 
 
-dur_limit: "Non puoi scaricare file più lunghi di {0} minuti."
+ytdl_4: "Non puoi scaricare file più lunghi di {0} minuti."

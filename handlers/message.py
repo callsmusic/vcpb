@@ -12,23 +12,23 @@ async def message(client, message):
         return
 
     if not is_youtube(message.text):
-        await message.reply_text(_("not_valid"))
+        await message.reply_text(_("message_1"))
         return
 
     if "list=" in message.text:
-        await message.reply_text(_("not_playlist"))
+        await message.reply_text(_("message_2"))
         return
 
-    m = await message.reply_text(_("download_scheduled"), quote=True)
+    m = await message.reply_text(_("message_3"), quote=True)
 
     download(
         (
             m.edit,
-            (_("downloading"),)
+            (_("ytdl_1"),)
         ),
         (
             m.edit,
-            (_("downloaded_scheduled").format(player.q.qsize() + 1),)
+            (_("ytdl_2").format(player.q.qsize() + 1),)
         ),
         [
             player.play,
@@ -36,11 +36,11 @@ async def message(client, message):
                 None,
                 (
                     message.reply_text,
-                    (_("playing"),)
+                    (_("player_1"),)
                 ),
                 (
                     message.reply_text,
-                    (_("finished_playing"),)
+                    (_("player_2"),)
                 ),
                 None,
                 None,
@@ -50,7 +50,7 @@ async def message(client, message):
                     client.send_message,
                     [
                         LOG_GROUP,
-                        _("group_log").format(
+                        _("group_1").format(
                             "<a href=\"{}\">{}</a>",
                             "<a href=\"tg://user?id={}\">{}</a>",
                             "{}"
@@ -60,22 +60,22 @@ async def message(client, message):
                 None,
                 (
                     message.reply_text,
-                    (_("on_skip"),)
+                    (_("skip_3"),)
                 )
             ]
         ],
         (
             m.edit,
-            (_("not_live"),)
+            (_("ytdl_3"),)
         ),
         message.text,
         (
             m.edit,
-            (_("err_occ"),)
+            (_("error"),)
         ),
         [
             m.edit,
-            [_("dur_limit"), ]
+            [_("ytdl_4"), ]
         ]
     )
 

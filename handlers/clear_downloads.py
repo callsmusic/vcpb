@@ -15,9 +15,9 @@ async def clear_downloads(client, message):
                 os.remove("downloads/" + file)
             except:
                 pass
-        m = await message.reply_text(_("cleaned_downloads"))
+        m = await message.reply_text(_("cleardownloads"))
     except:
-        m = await message.reply_text(_("err_occ"))
+        m = await message.reply_text(_("error"))
 
     if m and message.chat.type != "private":
         await sleep(5)

@@ -1,65 +1,70 @@
-send_yt_link: "Hi, send me a YouTube link to play it."
+# Start
+start: "Hi, send me a YouTube link to play it."
+
+# Message
+message_1: "This (link) is not valid."
+message_2: "Send me a video URL, not a playlist."
+message_3: "Download scheduled."
+
+# Player
+player_1: "Playing..."
+player_2: "Finished playing."
 
 
-not_valid: "This (link) is not valid."
-not_playlist: "Send me a video URL, not a playlist."
-download_scheduled: "Download scheduled."
-not_live: "You can't download live vidoes."
-downloading: "Downloading..."
-downloaded_scheduled: "Downloaded and scheduled to play at position {0}."
-playing: "Playing..."
-finished_playing: "Finished playing."
+# Stream
+stream_1: "Give me a stream URL."
+stream_2: "You provided more than an arg."
+stream_3: "Can't stream while music is playing."
+stream_4: "Streaming..."
+
+# TTS
+tts_1: "Give me some text to speak."
+tts_2: "Speaking..."
+tts_3: "Spoke."
+
+# Skip
+skip_1: "Skipped."
+skip_2: "There is nothing playing to skip."
+skip_3: "This song was skipped by an admin."
+
+# Pause
+pause_1: "Paused."
+pause_2: "Can't pause because already paused."
+pause_3: "There is nothing playing to pause."
+pause_4: "Resumed."
+pause_5: "There is nothing paused to resume."
+
+# Group
+group_1: "<b>NOW PLAYING</b>\nTITLE: {0}\nREQUESTED BY: {1}\nDURATION: {2}"
+group_2: "<b>NOW STREAMING</b>\n<pre>{0}</pre>"
+
+# Song
+song_1: "TITLE: {0}\nREQUESTED BY: {1}\nDURATION: {2}"
+song_2: "No song is currently playing."
 
 
-url_arg: "Give me a stream URL."
-more_than_one_args: "You provided more than an arg."
-cant_stream: "Can't stream while music is playing."
-streaming: "Streaming..."
+# Not for you
+n4u: "This is not for you."
 
-
-give_text: "Give me some text to speak."
-speaking: "Speaking..."
-spoke: "Spoke."
-
-
-skipped: "Skipped."
-nothing_playing_skip: "There is nothing playing to skip."
-on_skip: "This song was skipped by an admin."
-
-
-paused: "Paused."
-cant_pause: "Can't pause because already paused."
-nothing_playing_pause: "There is nothing playing to pause."
-
-resumed: "Resumed."
-cant_resume: "There is nothing paused to resume."
-
-
-group_log_stream: "<b>NOW STREAMING</b>\n
-<pre>{0}</pre>"
-group_log: "<b>NOW PLAYING</b>\nTITLE: {0}\nREQUESTED BY: {1}\nDURATION: {2}"
-
-
-song: "TITLE: {0}\nREQUESTED BY: {1}\nDURATION: {2}"
-no_song_playing: "No song is currently playing."
-
-
-not_for_you: "This is not for you."
-
-
+# Mistake
 mistake: "I assume that was a mistake."
-err_occ: "An error occured."
 
+# Error
+error: "An error occured."
 
-current_volume: "Current volume is {0}"
-volume_set: "Volume set to {0}"
+# Volume
+volume_1: "Current volume is {0}"
+volume_2: "Volume set to {0}"
 
+# Clear downloads
+cleardownloads: "Removed all files in your downloads folder."
 
-cleaned_downloads: "Removed all files in your downloads folder."
+# Queue
+queue_1: "Listing {0} out of {1}."
+queue_2: "{0}. {1} by {2}"
 
-
-listing: "Listing {0} out of {1}."
-list_item: "{0}. {1} by {2}"
-
-
-dur_limit: "You can't download videos longer than {0} minutes."
+# YTDL
+ytdl_1: "Downloading..."
+ytdl_2: "Downloaded and scheduled to play at position {0}."
+ytdl_3: "You can't download live vidoes."
+ytdl_4: "You can't download videos longer than {0} minutes."

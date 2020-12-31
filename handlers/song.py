@@ -9,7 +9,7 @@ async def song(client, message):
     if player.STATE in (State.Playing, State.Paused):
         get = player.q_list[0]
         await message.reply_text(
-            _("song").format(
+            _("song_1").format(
                 "<a href=\"{}\">{}</a>".format(
                     get["url"],
                     get["title"]
@@ -24,7 +24,7 @@ async def song(client, message):
         )
     else:
         await message.reply_text(
-            _("no_song_playing")
+            _("song_2")
         )
 
 __handlers__ = [
