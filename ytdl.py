@@ -53,7 +53,7 @@ def worker():
                     args[0] = "downloads/" + file_name
                     args[3] = info["title"]
                     args[4] = "https://youtu.be/" + info["id"]
-                    args[8] = format_dur(int(info["duration"]))
+                    args[8] = format_dur(info["duration"])
                     item["play_func"][0](
                         *args
                     )
