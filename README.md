@@ -53,7 +53,7 @@ From Mr. [@TwitFace, AKA Andrew Lungers](https://t.me/TwitFace).
     python(3) bot.py
 ```
 7. Open Telegram desktop, join a voice chat and set `MySink.monitor` as your microphone, if you can't see `MySink.monitor`:
-    1. Open pulseaudio volume control (pavuvontrol).
+    1. Open pulseaudio volume control (pavucontrol).
     2. The configurations tab.
     3. Turn the configs/profiles you see off.
 9. Once you've done the steps above, you can start using and sending commands to your bot to stream in the voice chat you are currently in with Telegram desktop!
