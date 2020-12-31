@@ -28,7 +28,7 @@ async def pause(client, message):
 
 
 async def resume(client, message):
-    if player.STATE in State.Paused:
+    if player.STATE == State.Paused:
         player.STATE = State.Playing
         player.pause_resume()
         m = await message.reply_text(_("resumed"))

@@ -60,7 +60,9 @@ def worker():
                     quote=True
                 )
 
-            del q_list[0]
+            if q_list:
+                if q_list[0] == item:
+                    del q_list[0]
         if log:
             log.delete()
 
@@ -111,6 +113,7 @@ def currently_playing():
 def abort():
     if process:
         process.terminate()
+        del q_list[0]
         return True
     return False
 

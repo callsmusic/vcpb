@@ -1,10 +1,60 @@
 import subprocess
+from asyncio import sleep
 from pyrogram import filters
 from pyrogram.handlers import CallbackQueryHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import player
+from helpers import State
 from config import SUDO_USERS
 from strings import get_string as _
+
+
+def rm():
+    em = "▶️" if player.STATE == State.Paused else "⏸"
+    reply_markup = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton(
+                    "🔄",
+                    callback_data="refresh"
+                ),
+                InlineKeyboardButton(
+                    em,
+                    callback_data="pause"
+                ),
+                InlineKeyboardButton(
+                    "⏩",
+                    callback_data="skip"
+                )
+            ]
+        ]
+    )
+    return reply_markup
+
+
+def f10():
+    first_10 = player.q_list[:10]
+    res = (_("listing") + "\n\n").format(
+        len(first_10),
+        len(player.q_list)
+    )
+
+    if first_10:
+        for i in range(len(first_10)):
+            item = first_10[i]
+            res += _("list_item").format(
+                i + 1,
+                "<a href=\"{}\">{}</a> ({})".format(
+                    item["url"],
+                    item["title"],
+                    item["dur"]
+                ),
+                "<a href=\"tg://user?id={}\">{}</a>".format(
+                    item["sent_by_id"],
+                    item["sent_by_name"]
+                )
+            ) + "\n"
+    return res
 
 
 async def callback(client, query):
@@ -12,7 +62,8 @@ async def callback(client, query):
         await query.answer()
         return
 
-    current_volume = int(query.message.text.split()[-1].replace("%", ""))
+    if query.data.endswith("volume"):
+        current_volume = int(query.message.text.split()[-1].replace("%", ""))
 
     if query.data == "decrease_volume":
         volume = current_volume - 1
@@ -78,6 +129,36 @@ async def callback(client, query):
         )
         await query.message.delete()
         await query.answer()
+    else:
+        if query.data == "refresh":
+            await query.message.edit_text(
+                f10(),
+                disable_web_page_preview=True,
+                reply_markup=rm()
+            )
+            await query.answer()
+        elif query.data == "skip":
+            player.STATE = State.Skipped
+            player.abort()
+            await query.message.edit_text(
+                f10(),
+                disable_web_page_preview=True,
+                reply_markup=rm()
+            )
+            await query.answer()
+        elif query.data == "pause":
+            if player.STATE == State.Paused:
+                player.STATE = State.Playing
+            elif player.STATE == State.Playing:
+                player.STATE = State.Paused
+            player.pause_resume()
+            await query.message.edit_text(
+                f10(),
+                disable_web_page_preview=True,
+                reply_markup=rm()
+            )
+            await query.answer()
+
 
 __handlers__ = [
     [

@@ -1,7 +1,8 @@
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import player
-from config import SUDO_FILTER
+from config import SUDO_USERS, SUDO_FILTER
 from strings import get_string as _
 
 
@@ -28,7 +29,32 @@ async def queue(client, message):
                 )
             ) + "\n"
 
-    await message.reply_text(res, disable_web_page_preview=True)
+    if message.from_user.id in SUDO_USERS:
+        await message.reply_text(
+            res,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            "🔄",
+                            callback_data="refresh"
+                        ),
+                        InlineKeyboardButton(
+                            "⏸",
+                            callback_data="pause"
+                        ),
+                        InlineKeyboardButton(
+                            "⏩",
+                            callback_data="skip"
+                        )
+                    ]
+                ]
+            ),
+            quote=True
+        )
+    else:
+        await message.reply_text(res, disable_web_page_preview=True)
 
 
 __handlers__ = [
