@@ -2,6 +2,7 @@ from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 import player
 from helpers import State
+from config import BANNED
 from strings import get_string as _
 
 
@@ -33,6 +34,7 @@ __handlers__ = [
         MessageHandler(
             song,
             filters.command("song", "/")
+            & ~ BANNED
         )
     ]
 ]

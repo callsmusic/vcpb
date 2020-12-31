@@ -3,7 +3,7 @@ import os
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 import player
-from config import SUDO_FILTER
+from config import SUDO_FILTER, BANNED
 from strings import get_string as _
 
 

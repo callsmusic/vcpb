@@ -1,7 +1,7 @@
 from asyncio import sleep
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
-from config import SUDO_FILTER
+from config import SUDO_FILTER, BANNED
 from strings import get_string as _
 
 
@@ -26,6 +26,7 @@ __handlers__ = [
              | filters.command("skip", "/")
              | filters.command("stream", "/"))
             & ~ SUDO_FILTER
+            & ~ BANNED
         )
     ]
 ]

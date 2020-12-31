@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import player
-from config import SUDO_USERS, SUDO_FILTER
+from config import SUDO_USERS, SUDO_FILTER, BANNED
 from strings import get_string as _
 
 
@@ -62,6 +62,7 @@ __handlers__ = [
         MessageHandler(
             queue,
             filters.command("queue", "/")
+            & ~ BANNED
         )
     ]
 ]

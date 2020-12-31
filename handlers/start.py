@@ -1,7 +1,8 @@
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
-from strings import get_string as _
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from config import BANNED
+from strings import get_string as _
 
 
 async def start(client, message):
@@ -19,6 +20,7 @@ __handlers__ = [
             start,
             filters.command("start", "/")
             & filters.private
+            & ~ BANNED
         )
     ]
 ]

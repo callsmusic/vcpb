@@ -1,5 +1,6 @@
 # Just copy this file to config.py and change it to your info.
 from pyrogram import filters
+from helpers import get_banned_users
 
 # Get these two from https://my.telegram.org
 API_ID = 1234567
@@ -13,15 +14,6 @@ SUDO_USERS = [
     383407735,
     951435494,
     1392620345
-]
-
-
-# id of the banned users
-
-BANNED_USERS = [
-    1,
-    2,
-    3
 ]
 
 # A group ID to send messages to when a song starts playing
@@ -39,4 +31,4 @@ CREDIT = True
 
 # No need to touch the following.
 SUDO_FILTER = filters.user(SUDO_USERS)
-BANNED_FILTER = filters.user(BANNED_USERS)
+BANNED = filters.user(get_banned_users())

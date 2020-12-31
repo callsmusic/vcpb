@@ -4,6 +4,7 @@ from gtts import gTTS
 import time
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
+from config import BANNED
 from strings import get_string as _
 
 
@@ -47,12 +48,14 @@ __handlers__ = [
         MessageHandler(
             tts,
             filters.command("tts", "/")
+            & ~ BANNED
         )
     ],
     [
         MessageHandler(
             x,
             filters.regex(r"^x .+")
+            & ~ BANNED
         )
     ]
 ]

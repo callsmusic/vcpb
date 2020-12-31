@@ -4,3 +4,4 @@
 config.py
 downloads/*
 __pycache__
+data

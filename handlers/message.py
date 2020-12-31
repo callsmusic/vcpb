@@ -3,7 +3,7 @@ from pyrogram.handlers import MessageHandler
 from helpers import is_youtube
 from ytdl import download
 import player
-from config import LOG_GROUP
+from config import LOG_GROUP, BANNED
 from strings import get_string as _
 
 
@@ -87,6 +87,7 @@ __handlers__ = [
             filters.text
             & filters.private
             & ~ filters.regex(r"^x .+")
+            & ~ BANNED
         ),
         2
     ]

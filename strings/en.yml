@@ -1,3 +1,6 @@
+# Bot
+bot: "Bot is updating and restarting..."
+
 # Start
 start_1: "Hi, send me a YouTube link to play it."
 start_2: "Search"
@@ -6,6 +9,16 @@ start_2: "Search"
 inline_1: "Type a YouTube video title..."
 inline_2: "Duration: {0} Views: {1}"
 inline_3: "Search Timed out! Try again."
+
+# Ban
+ban_1: "Give me a user's ID."
+ban_2: "Done, the bot will no longer respond to this user."
+ban_3: "That didn't work, the user might be already banned or a sudo user."
+ban_4: "Oops, an error occured. See if you gave me a number."
+ban_5: "Unbanned, (s)he can use the bot now."
+ban_6: "That didn't work, the user might be not banned or a sudo user."
+ban_7: "No one is banned."
+ban_8: "Banned users:"
 
 # Message
 message_1: "This (link) is not valid."
