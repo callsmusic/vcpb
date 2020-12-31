@@ -6,9 +6,11 @@ from strings import get_string as _
 
 
 async def song(client, message):
+    m = await message.reply_text("....")
+
     if player.STATE in (State.Playing, State.Paused):
         get = player.q_list[0]
-        await message.reply_text(
+        await m.edit_text(
             _("song_1").format(
                 "<a href=\"{}\">{}</a>".format(
                     get["url"],
@@ -19,11 +21,10 @@ async def song(client, message):
                     get["sent_by_name"]
                 ),
                 get["dur"]
-            ),
-            parse_mode="HTML"
+            )
         )
     else:
-        await message.reply_text(
+        await m.edit_text(
             _("song_2")
         )
 

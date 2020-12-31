@@ -4,7 +4,8 @@ start_2: "Search"
 
 # Inline
 inline_1: "Type a YouTube video title..."
-inline_2: "Search Timed out! Try again."
+inline_2: "Duration: {0} Views: {1}"
+inline_3: "Search Timed out! Try again."
 
 # Message
 message_1: "This (link) is not valid."

@@ -7,6 +7,7 @@ from strings import get_string as _
 
 
 async def queue(client, message):
+    m = await message.reply_text("....")
     first_10 = player.q_list[:10]
     res = (_("queue_1") + "\n\n").format(
         len(first_10),
@@ -30,7 +31,7 @@ async def queue(client, message):
             ) + "\n"
 
     if message.from_user.id in SUDO_USERS:
-        await message.reply_text(
+        await m.edit_text(
             res,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -54,7 +55,7 @@ async def queue(client, message):
             quote=True
         )
     else:
-        await message.reply_text(res, disable_web_page_preview=True)
+        await m.edit_text(res, disable_web_page_preview=True)
 
 
 __handlers__ = [

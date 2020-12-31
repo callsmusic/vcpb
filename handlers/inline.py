@@ -24,7 +24,7 @@ async def search(client, query):
             answers.append(
                 InlineQueryResultArticle(
                     title=v["title"],
-                    description="duration: {}, views: {}".format(
+                    description=_("inline_2").format(
                         v["duration"],
                         v["viewCount"]["short"]
                     ),
@@ -45,7 +45,7 @@ async def search(client, query):
             await query.answer(
                 results=answers,
                 cache_time=0,
-                switch_pm_text=_("inline_2"),
+                switch_pm_text=_("inline_3"),
                 switch_pm_parameter="",
             )
 
