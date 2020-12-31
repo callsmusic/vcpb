@@ -25,5 +25,8 @@ LANG = "en"
 # Max video duration allowed for downloads in minutes
 DUR_LIMIT = 5
 
+# Show a small credit for @su_Bots in messages
+CREDIT = True
+
 # No need to touch the following.
 SUDO_FILTER = filters.user(SUDO_USERS)

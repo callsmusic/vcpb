@@ -131,20 +131,26 @@ async def callback(client, query):
         await query.answer()
     else:
         if query.data == "refresh":
-            await query.message.edit_text(
-                f10(),
-                disable_web_page_preview=True,
-                reply_markup=rm()
-            )
+            ft = f10()
+            mr = rm()
+            if query.message.text != ft and query.message.reply_markup != mr:
+                await query.message.edit_text(
+                    ft,
+                    disable_web_page_preview=True,
+                    reply_markup=rm()
+                )
             await query.answer()
         elif query.data == "skip":
             player.STATE = State.Skipped
             player.abort()
-            await query.message.edit_text(
-                f10(),
-                disable_web_page_preview=True,
-                reply_markup=rm()
-            )
+            ft = f10()
+            mr = rm()
+            if query.message.text != ft and query.message.reply_markup != mr:
+                await query.message.edit_text(
+                    ft,
+                    disable_web_page_preview=True,
+                    reply_markup=rm()
+                )
             await query.answer()
         elif query.data == "pause":
             if player.STATE == State.Paused:
@@ -152,11 +158,14 @@ async def callback(client, query):
             elif player.STATE == State.Playing:
                 player.STATE = State.Paused
             player.pause_resume()
-            await query.message.edit_text(
-                f10(),
-                disable_web_page_preview=True,
-                reply_markup=rm()
-            )
+            ft = f10()
+            mr = rm()
+            if query.message.text != ft and query.message.reply_markup != mr:
+                await query.message.edit_text(
+                    ft,
+                    disable_web_page_preview=True,
+                    reply_markup=rm()
+                )
             await query.answer()
 
 

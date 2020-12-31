@@ -1,7 +1,7 @@
 import yaml
 import os
 from string import Formatter
-from config import LANG
+from config import LANG, CREDIT
 
 
 class String:
@@ -10,11 +10,13 @@ class String:
         self.reload_strings()
 
     def get_string(self, string):
+        credit = "\n\nMade with ❤️ by @su_Bots." if CREDIT else ""
+
         try:
-            return self.languages[LANG][string]
+            return self.languages[LANG][string] + credit
         except KeyError:
             # a keyerror happened, the english file must have it
-            return self.languages["en"][string]
+            return self.languages["en"][string] + credit
 
     def reload_strings(self):
         for filename in os.listdir(r"./strings"):
