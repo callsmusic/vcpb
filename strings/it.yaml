@@ -1,0 +1,65 @@
+send_yt_link: "Ciao, mandami un link di YouTube per ascoltarlo."
+
+
+not_valid: "Questo (link) non è valido."
+not_playlist: "Mandami l'URL di un video, non di una playlist."
+download_scheduled: "Download programmato."
+not_live: "Non puoi scaricare le live."
+downloading: "Scaricando..."
+downloaded_scheduled: "Scaricato e programmato per la posizione {0}."
+playing: "Riproucendo..."
+finished_playing: "Riproduzione terminata."
+
+
+url_arg: "Mandami l'URL di uno stream."
+more_than_one_args: "Mi hai mandato più di un arg."
+cant_stream: "Non posso riprodurre lo stream finché la musica va."
+streaming: "Streaming..."
+
+
+give_text: "Mandami del testo da pronunciare."
+speaking: "Parlando..."
+spoke: "Pronunciato."
+
+
+skipped: "Saltato."
+nothing_playing_skip: "Non c'è niente in riproduzione da poter saltare."
+on_skip: "Questa canzone è stata saltata da un admin"
+
+
+paused: "In pausa."
+cant_pause: "Non si può mettere in pausa perché è già in pausa."
+nothing_playing_pause: "Non c'è niente in riproduzione da poter mettere in pausa."
+
+resumed: "In riproduzione."
+cant_resume: "Non c'è niente in pausa da riprodurre."
+
+
+group_log_stream: "<b>IN RIPRODUZIONE ORA</b>\n
+<pre>{0}</pre>"
+group_log: "<b>IN RIPRODUZIONE</b>\nTITOLO: {0}\nRICHIESTO DA: {1}\nDURATA: {2}"
+
+
+song: "TITOLO: {0}\nRICHIESTO DA: {1}\nDURATA: {2}"
+no_song_playing: "Nessuna canzone sta venendo riprodotta."
+
+
+not_for_you: "Questo non è per te."
+
+
+mistake: "Credo che questo sia un errore."
+err_occ: "C'è stato un errore."
+
+
+current_volume: "Il volume attuale è {0}"
+volume_set: "Volume impostato a {0}"
+
+
+cleaned_downloads: "Rimossi tutti i file dalla cartella dei download."
+
+
+listing: "Elenco {0} di {1}."
+list_item: "{0}. {1} da {2}"
+
+
+dur_limit: "Non puoi scaricare file più lunghi di {0} minuti."

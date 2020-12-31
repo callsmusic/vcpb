@@ -9,19 +9,19 @@ from strings import get_string as _
 
 async def tts(client, message):
     if message.text.replace("/tts", "") == "":
-        await message.reply_text(_("tts_1"))
+        await message.reply_text(_("give_text"))
     else:
         try:
             gTTS(message.text.replace("/tts ", ""),
                  lang="en-US").save("downloads/tts.mp3")
-            m = await message.reply_text(_("tts_2"))
+            m = await message.reply_text(_("speaking"))
             _thread.start_new_thread(
                 subprocess.Popen(["mplayer", "downloads/tts.mp3"]).wait,
                 ()
             )
-            await m.edit(_("tts_3"))
+            await m.edit(_("spoke"))
         except:
-            await message.reply_text(_("error"))
+            await message.reply_text(_("err_occ"))
 
 
 async def x(client, message):

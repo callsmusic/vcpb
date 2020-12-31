@@ -78,7 +78,7 @@ async def callback(client, query):
         ).wait()
 
         await query.message.reply_text(
-            _("volume_1").format(volume),
+            _("current_volume").format(volume),
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -110,7 +110,7 @@ async def callback(client, query):
         ).wait()
 
         await query.message.reply_text(
-            _("volume_1").format(volume),
+            _("current_volume").format(volume),
             reply_markup=InlineKeyboardMarkup(
                 [
                     [

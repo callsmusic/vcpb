@@ -11,11 +11,11 @@ async def pause(client, message):
     if player.STATE in State.Playing:
         player.STATE = State.Paused
         player.pause_resume()
-        m = await message.reply_text(_("pause_1"))
+        m = await message.reply_text(_("paused"))
     elif player.STATE == State.Paused:
-        m = await message.reply_text(_("pause_2"))
+        m = await message.reply_text(_("cant_pause"))
     else:
-        m = await message.reply_text(_("pause_3"))
+        m = await message.reply_text(_("nothing_playing_pause"))
 
     if m and message.chat.type != "private":
         await sleep(5)
@@ -31,9 +31,9 @@ async def resume(client, message):
     if player.STATE == State.Paused:
         player.STATE = State.Playing
         player.pause_resume()
-        m = await message.reply_text(_("pause_4"))
+        m = await message.reply_text(_("resumed"))
     else:
-        m = await message.reply_text(_("pause_5"))
+        m = await message.reply_text(_("cant_resume"))
 
     if m and message.chat.type != "private":
         await sleep(5)

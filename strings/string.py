@@ -20,7 +20,7 @@ class String:
 
     def reload_strings(self):
         for filename in os.listdir(r"./strings"):
-            if filename.endswith(".yml"):
+            if filename.endswith(".yaml"):
                 language_name = filename[:-5]
                 self.languages[language_name] = yaml.safe_load(
                     open(r"./strings/" + filename, encoding="utf8"))

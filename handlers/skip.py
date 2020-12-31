@@ -11,9 +11,9 @@ async def skip(client, message):
     if player.STATE in (State.Playing or State.Streaming or State.Paused):
         player.STATE = State.Skipped
         player.abort()
-        m = await message.reply_text(_("skip_1"))
+        m = await message.reply_text(_("skipped"))
     else:
-        m = await message.reply_text(_("skip_2"))
+        m = await message.reply_text(_("nothing_playing_skip"))
 
     if m and message.chat.type != "private":
         await sleep(5)

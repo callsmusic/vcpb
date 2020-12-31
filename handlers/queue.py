@@ -8,7 +8,7 @@ from strings import get_string as _
 
 async def queue(client, message):
     first_10 = player.q_list[:10]
-    res = (_("queue_1") + "\n\n").format(
+    res = (_("listing") + "\n\n").format(
         len(first_10),
         len(player.q_list)
     )
@@ -16,7 +16,7 @@ async def queue(client, message):
     if first_10:
         for i in range(len(first_10)):
             item = first_10[i]
-            res += _("queue_2").format(
+            res += _("list_item").format(
                 i + 1,
                 "<a href=\"{}\">{}</a> ({})".format(
                     item["url"],
