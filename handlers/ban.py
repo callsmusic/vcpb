@@ -2,7 +2,7 @@ from asyncio import sleep
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 from helpers import ban_user, unban_user, get_banned_users
-from config import SUDO_FILTER
+from config import SUDO_FILTER, SUDO_USERS
 from strings import get_string as _
 
 
@@ -17,7 +17,7 @@ async def ban(client, message):
 
     try:
         user = int(user)
-        res = ban_user(user)
+        res = ban_user(user, SUDO_USERS)
 
         if res:
             m = await message.reply_text(_("ban_2"))

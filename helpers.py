@@ -1,7 +1,6 @@
 import os
 import re
 import pickle
-from config import SUDO_USERS
 
 if "data" not in os.listdir():
     open("data", "ab").close()
@@ -52,7 +51,7 @@ def get_banned_users():
     return r
 
 
-def ban_user(id):
+def ban_user(id, SUDO_USERS):
     banned_users = get_banned_users()
     if id in banned_users or id in SUDO_USERS:
         return False
