@@ -12,7 +12,8 @@ async def queue(client, message):
         len(first_10),
         len(player.q_list)
     )
-
+    
+    m = await message.reply_text('Fetching queue....', disable_web_page_preview=True)
     if first_10:
         for i in range(len(first_10)):
             item = first_10[i]
@@ -30,7 +31,7 @@ async def queue(client, message):
             ) + "\n"
 
     if message.from_user.id in SUDO_USERS:
-        await message.reply_text(
+        await m.edit_text(
             res,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -54,7 +55,7 @@ async def queue(client, message):
             quote=True
         )
     else:
-        await message.reply_text(res, disable_web_page_preview=True)
+        await m.edit_text(res, disable_web_page_preview=True)
 
 
 __handlers__ = [
