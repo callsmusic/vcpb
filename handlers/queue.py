@@ -7,7 +7,7 @@ from strings import get_string as _
 
 
 async def queue(client, message):
-    m = await message.reply_text("....")
+    m = await message.reply_text("....", quote=True)
     first_10 = player.q_list[:10]
     res = (_("queue_1") + "\n\n").format(
         len(first_10),
@@ -51,8 +51,7 @@ async def queue(client, message):
                         )
                     ]
                 ]
-            ),
-            quote=True
+            )
         )
     else:
         await m.edit_text(res, disable_web_page_preview=True)
