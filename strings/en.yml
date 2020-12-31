@@ -1,5 +1,10 @@
 # Start
-start: "Hi, send me a YouTube link to play it."
+start_1: "Hi, send me a YouTube link to play it."
+start_2: "Search"
+
+# Inline
+inline_1: "Type a YouTube video title..."
+inline_2: "Search Timed out! Try again."
 
 # Message
 message_1: "This (link) is not valid."

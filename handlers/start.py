@@ -6,9 +6,10 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 async def start(client, message):
     await message.reply_text(
-        _("send_yt_link", True),
+        _("start_1", True),
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("Search on YouTube", switch_inline_query_current_chat="")]]
+            [[InlineKeyboardButton(
+                _("start_2"), switch_inline_query_current_chat="")]]
         )
     )
 
