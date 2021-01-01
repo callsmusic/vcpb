@@ -48,7 +48,10 @@ def get_banned_users():
     except:
         pass
     f.close()
-    return r
+    if r:
+        return r
+    else:
+        return []
 
 
 def ban_user(id, SUDO_USERS):
