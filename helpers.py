@@ -39,6 +39,7 @@ def format_dur(seconds):
 
 def get_banned_users():
     f = open("data", "rb")
+    r = []
     try:
         up = pickle.load(f)
         if "banned_users" in up:
@@ -48,10 +49,7 @@ def get_banned_users():
     except:
         pass
     f.close()
-    if r:
-        return r
-    else:
-        return []
+    return r
 
 
 def ban_user(id, SUDO_USERS):
