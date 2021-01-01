@@ -9,6 +9,7 @@ if __name__ == "__main__":
     import sys
     from threading import Thread
     from pyrogram import filters
+    import player
     from handlers import all_handlers
     from config import SUDO_FILTER
     from strings import get_string as _
@@ -21,6 +22,8 @@ if __name__ == "__main__":
 
     def stop_and_restart():
         app.stop()
+        del player.q
+        player.abort()
         os.system("git pull")
         os.execl(sys.executable, sys.executable, *sys.argv)
 
