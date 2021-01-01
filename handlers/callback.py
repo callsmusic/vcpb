@@ -42,7 +42,7 @@ def f10():
     if first_10:
         for i in range(len(first_10)):
             item = first_10[i]
-            res += _("list_item").format(
+            res += _("queue_2").format(
                 i + 1,
                 "<a href=\"{}\">{}</a> ({})".format(
                     item["url"],
