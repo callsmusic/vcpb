@@ -68,7 +68,8 @@ def worker():
 
         STATE = State.NothingSpecial
         process = None
-        q.task_done()
+        if q:
+            q.task_done()
 
 
 threading.Thread(target=worker, daemon=True).start()
