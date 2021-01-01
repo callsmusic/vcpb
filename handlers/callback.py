@@ -34,7 +34,7 @@ def rm():
 
 def f10():
     first_10 = player.q_list[:10]
-    res = (_("listing") + "\n\n").format(
+    res = (_("queue_1") + "\n\n").format(
         len(first_10),
         len(player.q_list)
     )
