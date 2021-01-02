@@ -8,7 +8,7 @@ from strings import get_string as _
 
 
 async def skip(client, message):
-    if player.STATE in (State.Playing or State.Streaming or State.Paused):
+    if player.STATE in (State.Playing, State.Streaming, State.Paused):
         player.STATE = State.Skipped
         player.abort()
         m = await message.reply_text(_("skip_1"))
