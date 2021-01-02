@@ -23,18 +23,18 @@ tts_3: "Konuştum."
 
 
 skip_1: "Geçildi."
-skip_2: "Hiçbir şey oynatmadığınız için geçemiyorum."
-skip_3: "This song was skipped by an admin."
+skip_2: "Hiçbir şey oynatılmadığı için geçemiyorum."
+skip_3: "Bu video yönetici tarafından geçildi."
 
 
-pause_1: "Paused."
-pause_2: "Can't pause because already paused."
+pause_1: "Durduruldu."
+pause_2: "Zaten durdurulmuş bir şeyi tekrar durduramam."
 pause_3: "Durdurmam için bir şeylerin oynaması gerek, değil mi?"
 
 
 group_2: "<b>OYNATILIYOR</b>\n
 <pre>{0}</pre>"
-group_1: "<b>NOW PLAYING</b>\n
+group_1: "<b>OYNATILIYOR</b>\n
 TITLE: {0}\n
 REQUESTED BY: {1}\n
 DURATION: {2}"
@@ -50,17 +50,17 @@ n4u: "Bu sana göre değil."
 
 
 mistake: "Sanırım bir hata oldu?"
-error: "Bir hata gerçekleşti."
+error: "Bir hata oluştu."
 
 
 volume_1: "Şu anki ses seviyesi: {0}"
 volume_2: "Ses seviyesi {0} seviyesine ayarlandı."
 
 
-cleardownloads: "Downloads klasöründeki temizlendi."
+cleardownloads: "Indirilenler klasörü temizlendi."
 
-queue_1: "Listing {0} out of {1}."
-queue_2: "{0}. {1} by {2}"
+queue_1: "{1} içinden {0} oynatılıyor."
+queue_2: "{0}. {1} \nKullanıcı oynatıyor : {2}"
 
 
-ytdl_4: "You can't download videos longer than {0} minutes."
+ytdl_4: "{0} dakikadan uzun videoları yükleyemezsin."
