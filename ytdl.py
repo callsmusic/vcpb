@@ -49,13 +49,14 @@ def worker():
                 file_name = info["id"] + "." + info["ext"]
 
                 args = item["play_func"][1]
+                args[0] = "downloads/" + file_name
                 args[3] = info["title"]
                 args[4] = "https://youtu.be/" + info["id"]
                 args[8] = format_dur(info["duration"])
 
-                if file_name in os.listdir("downloads"):
-                    args[0] = "downloads/" + file_name
-                else:
+                if len(player.q) == 0:
+                    args[0] = info["url"]
+                elif file_name not in os.listdir("downloads"):
                     ydl.download(
                         [
                             item["video"]
@@ -70,7 +71,6 @@ def worker():
                         "downloads/" + file_name
                     )
 
-                args[0] = "downloads/" + file_name
                 item["play_func"][0](
                     *args
                 )
