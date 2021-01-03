@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ "$EUID" -eq 0 ]
   then echo "Don't run anything as root!"
   exit
