@@ -1,0 +1,108 @@
+# Help
+help_ban: "larang pengguna"
+help_unban: "batalkan larangan pengguna"
+help_bans: "lihat pengguna yang dilarang"
+help_cleardownloads: "hapus semua unduhan"
+help_help: "lihat daftar ini"
+help_pause: "jeda lagu yang diputar"
+help_resume: "lanjutkan lagu yang dijeda"
+help_play: "sama seperti melanjutkan"
+help_queue: "periksa lagu dalam antrian"
+help_skip: "lewati lagu yang sedang diputar"
+help_song: "periksa lagu yang diputar"
+help_start: "mulai bot"
+help_stream: "streaming radio"
+help_tts: "katakan sesuatu"
+help_volume: "periksa volume saat ini"
+help_1: "Perintah pengguna:"
+help_2: "Perintah admin:"
+
+# Bot
+bot: "Bot sedang memperbarui dan memulai ulang..."
+
+# Start
+start_1: "Hai, kirimi saya tautan YouTube untuk memutarnya."
+start_2: "Cari"
+
+# Inline
+inline_1: "Ketikkan judul video YouTube..."
+inline_2: "Durasi: {0} Penayangan: {1}"
+inline_3: "Waktu Cari habis! Coba lagi."
+
+# Ban
+ban_1: "Beri saya ID pengguna."
+ban_2: "Selesai, bot tidak akan merespons pengguna ini lagi."
+ban_3: "Itu tidak berhasil, pengguna mungkin sudah diblokir atau pengguna sudo."
+ban_4: "Ups, terjadi kesalahan. Lihat apakah anda memberi saya nomor."
+ban_5: "Larangan dibatalkan, dia dapat menggunakan bot sekarang."
+ban_6: "Itu tidak berhasil, pengguna mungkin tidak dilarang atau pengguna sudo."
+ban_7: "Tidak ada yang dilarang."
+ban_8: "Pengguna yang dilarang:"
+
+# Message
+message_1: "(tautan) ini tidak valid."
+message_2: "Kirimi saya URL video, bukan playlist."
+message_3: "Mengunduh terjadwal."
+
+# Player
+player_1: "Memutar..."
+player_2: "Selesai diputar."
+
+
+# Stream
+stream_1: "Beri saya URL streaming."
+stream_2: "Anda memberikan lebih dari argumen."
+stream_3: "Tidak dapat melakukan streaming saat musik sedang diputar."
+stream_4: "Streaming..."
+
+# TTS
+tts_1: "Beri saya teks untuk diucapkan."
+tts_2: "Berbicara..."
+tts_3: "Berbicara."
+
+# Skip
+skip_1: "Dilewati."
+skip_2: "Tidak ada yang diputar untuk dilewati."
+skip_3: "Lagu ini dilewati oleh admin."
+
+# Pause
+pause_1: "Dijeda."
+pause_2: "Tidak dapat menjeda karena sudah dijeda."
+pause_3: "Tidak ada yang diputar untuk dijeda."
+pause_4: "Dilanjutkan."
+pause_5: "Tidak ada yang dijeda untuk melanjutkan."
+
+# Group
+group_1: "<b>SEDANG DIMAINKAN</b>\nJUDUL: {0}\nDIMINTA OLEH: {1}\nDURASI: {2}"
+group_2: "<b>NOW STREAMING</b>\n<pre>{0}</pre>"
+
+# Song
+song_1: "JUDUL: {0}\nDIMINTA OLEH: {1}\nDURASI: {2}"
+song_2: "Tidak ada lagu yang sedang diputar."
+
+
+# Not for you
+n4u: "Ini bukan untuk anda."
+
+# Mistake
+mistake: "Saya berasumsi bahwa itu adalah kesalahan."
+
+# Error
+error: "Terjadi kesalahan."
+
+# Volume
+volume_1: "Volume saat ini adalah {0}"
+volume_2: "Volume disetel ke {0}"
+
+# Clear downloads
+cleardownloads: "Menghapus semua file di folder unduhan anda."
+
+# Queue
+queue_1: "Daftar {0} dari {1}."
+queue_2: "{0}. {1} oleh {2}"
+
+# YTDL
+ytdl_1: "Mengunduh..."
+ytdl_2: "Diunduh dan dijadwalkan untuk bermain di posisi {0}."
+ytdl_3: "Anda tidak dapat mengunduh video langsung."
+ytdl_4: "Anda tidak dapat mengunduh video lebih dari {0} menit."
