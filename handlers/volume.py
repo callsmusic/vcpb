@@ -9,7 +9,7 @@ from strings import get_string as _
 
 
 async def volume(client, message):
-    if len(message.text.split()) == 2:
+    if len(message.text.split()) == 2 and message.from_user.id in SUDO_USERS:
         try:
             volume = int(message.text.split()[1])
             if volume in range(1, 101):
