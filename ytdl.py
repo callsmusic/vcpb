@@ -22,10 +22,6 @@ def worker():
         try:
             item = q.get()
 
-            item["on_start"][0](
-                *item["on_start"][1]
-            )
-
             file_name = ""
 
             info = ydl.extract_info(
@@ -57,6 +53,9 @@ def worker():
                 if len(player.q_list) == 0:
                     args[0] = info["url"]
                 elif file_name not in os.listdir("downloads"):
+                    item["on_start"][0](
+                        *item["on_start"][1]
+                    )
                     ydl.download(
                         [
                             item["video"]
@@ -75,7 +74,7 @@ def worker():
                     *args
                 )
 
-                if player.q.qsize() != 0:
+                if args[0] == "downloads/" + file_name:
                     item["on_end"][0](
                         *item["on_end"][1]
                     )
