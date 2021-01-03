@@ -44,11 +44,11 @@ def f10():
             item = first_10[i]
             res += _("queue_2").format(
                 i + 1,
-                "<a href=\"{}\">{}</a> ({})".format(
+                "<a href=\"{}\">{}</a>".format(
                     item["url"],
-                    item["title"],
-                    item["dur"]
+                    item["title"]
                 ),
+                item["dur"],
                 "<a href=\"tg://user?id={}\">{}</a>".format(
                     item["sent_by_id"],
                     item["sent_by_name"]
