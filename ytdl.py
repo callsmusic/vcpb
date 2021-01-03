@@ -48,15 +48,16 @@ def worker():
             else:
                 file_name = info["id"] + "." + info["ext"]
 
+                args = item["play_func"][1]
+                args[3] = info["title"]
+                args[4] = "https://youtu.be/" + info["id"]
+                args[8] = format_dur(info["duration"])
+                item["play_func"][0](
+                    *args
+                )
+
                 if file_name in os.listdir("downloads"):
-                    args = item["play_func"][1]
                     args[0] = "downloads/" + file_name
-                    args[3] = info["title"]
-                    args[4] = "https://youtu.be/" + info["id"]
-                    args[8] = format_dur(info["duration"])
-                    item["play_func"][0](
-                        *args
-                    )
                 else:
                     ydl.download(
                         [
@@ -71,13 +72,11 @@ def worker():
                         ][0],
                         "downloads/" + file_name
                     )
-                    args = item["play_func"][1]
                     args[0] = "downloads/" + file_name
-                    args[3] = info["title"]
-                    args[4] = "https://youtu.be/" + info["id"]
-                    item["play_func"][0](
-                        *args
-                    )
+
+                item["play_func"][0](
+                    *args
+                )
 
                 if player.q.qsize() != 0:
                     item["on_end"][0](
