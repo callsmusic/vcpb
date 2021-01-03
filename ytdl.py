@@ -54,7 +54,7 @@ def worker():
                 args[4] = "https://youtu.be/" + info["id"]
                 args[8] = format_dur(info["duration"])
 
-                if len(player.q) == 0:
+                if len(player.q_list) == 0:
                     args[0] = info["url"]
                 elif file_name not in os.listdir("downloads"):
                     ydl.download(
