@@ -50,9 +50,7 @@ def worker():
                 args[4] = "https://youtu.be/" + info["id"]
                 args[8] = format_dur(info["duration"])
 
-                if len(player.q_list) == 0:
-                    args[0] = info["url"]
-                elif file_name not in os.listdir("downloads"):
+                if file_name not in os.listdir("downloads"):
                     item["on_start"][0](
                         *item["on_start"][1]
                     )

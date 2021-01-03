@@ -1,6 +1,7 @@
 import os
 import re
 import pickle
+from strings import get_string as _
 
 if "data" not in os.listdir():
     open("data", "ab").close()
@@ -28,17 +29,17 @@ def format_dur(seconds: int) -> str:
     v_m = 0
     remainder = seconds
     r_ange_s = {
-        "days": (24 * 60 * 60),
-        "hours": (60 * 60),
-        "minutes": 60,
-        "seconds": 1
+        _("days"): (24 * 60 * 60),
+        _("hours"): (60 * 60),
+        _("minutes"): 60,
+        _("seconds"): 1
     }
     for age in r_ange_s:
         divisor = r_ange_s[age]
         v_m, remainder = divmod(remainder, divisor)
         v_m = int(v_m)
         if v_m != 0:
-            result += f" {v_m} {age} "
+            result += f"{v_m} {age}"
     return result
 
 

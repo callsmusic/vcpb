@@ -17,6 +17,12 @@ help_volume: "check the current volume"
 help_1: "User commands:"
 help_2: "Admin commands:"
 
+# Duration
+days: "ڕۆژ"
+hours: "کاتژمێر"
+minutes: "خولەک"
+seconds: "چرکە"
+
 # Bot
 bot: "Bot is updating and restarting..."
 
