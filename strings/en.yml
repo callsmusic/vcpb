@@ -105,7 +105,7 @@ cleardownloads: "Removed all files in your downloads folder."
 
 # Queue
 queue_1: "Listing {0} out of {1}."
-queue_2: "{0}. {1} by {2}"
+queue_2: "{0}. title: {1}, duration: {2}, requested by: {3}"
 
 # YTDL
 ytdl_1: "Downloading..."

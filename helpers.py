@@ -38,8 +38,8 @@ def format_dur(seconds: int, s: str, m: str, h: str, d: str) -> str:
         v_m, remainder = divmod(remainder, divisor)
         v_m = int(v_m)
         if v_m != 0:
-            result += f"{v_m} {age}"
-    return result
+            result += f" {v_m} {age} "
+    return result.strip().rstrip()
 
 
 def get_banned_users():

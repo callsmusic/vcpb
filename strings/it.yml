@@ -59,7 +59,6 @@ cleardownloads: "Rimossi tutti i file dalla cartella dei download."
 
 
 queue_1: "Elenco {0} di {1}."
-queue_2: "{0}. {1} da {2}"
 
 
 ytdl_4: "Non puoi scaricare file più lunghi di {0} minuti."
