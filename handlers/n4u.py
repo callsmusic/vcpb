@@ -30,7 +30,7 @@ __handlers__ = [
              | filters.command("ban", "/")
              | filters.command("unban", "/")
              | filters.command("cleardownloads", "/")
-             | filters.command("play", "/"))
+             | filters.command("play", "/")
              | filters.command("r", "/"))
             & ~ SUDO_FILTER
             & ~ BANNED
