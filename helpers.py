@@ -1,7 +1,6 @@
 import os
 import re
 import pickle
-from strings import get_string as _
 
 if "data" not in os.listdir():
     open("data", "ab").close()
@@ -22,17 +21,17 @@ def is_youtube(url):
     return match
 
 
-def format_dur(seconds: int) -> str:
+def format_dur(seconds: int, s: str, m: str, h: str, d: str) -> str:
     """Inputs time in seconds, to get beautified time,
     as string"""
     result = ""
     v_m = 0
     remainder = seconds
     r_ange_s = {
-        _("days"): (24 * 60 * 60),
-        _("hours"): (60 * 60),
-        _("minutes"): 60,
-        _("seconds"): 1
+        d: (24 * 60 * 60),
+        h: (60 * 60),
+        m: 60,
+        s: 1
     }
     for age in r_ange_s:
         divisor = r_ange_s[age]
