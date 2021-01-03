@@ -18,10 +18,10 @@ help_1: "User commands:"
 help_2: "Admin commands:"
 
 # Duration
-days: "ڕۆژ"
-hours: "کاتژمێر"
-minutes: "خولەک"
-seconds: "چرکە"
+days: "day(s)"
+hours: "hour(s)"
+minutes: "minute(s)"
+seconds: "second(s)"
 
 # Bot
 bot: "Bot is updating and restarting..."
