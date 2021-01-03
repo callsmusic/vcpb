@@ -19,7 +19,8 @@ async def message(client, message):
         await message.reply_text(_("message_2"))
         return
 
-    m = await message.reply_text(_("message_3"), quote=True)
+    if player.q_list != 0:
+        m = await message.reply_text(_("message_3"), quote=True)
 
     download(
         (
