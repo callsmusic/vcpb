@@ -55,6 +55,9 @@ def worker():
 
                 if file_name in os.listdir("downloads"):
                     args[0] = "downloads/" + file_name
+                    item["play_func"][0](
+                        *args
+                    )
                 else:
                     ydl.download(
                         [
@@ -70,10 +73,9 @@ def worker():
                         "downloads/" + file_name
                     )
                     args[0] = "downloads/" + file_name
-
-                item["play_func"][0](
-                    *args
-                )
+                    item["play_func"][0](
+                        *args
+                    )
 
                 if player.q.qsize() != 0:
                     item["on_end"][0](
