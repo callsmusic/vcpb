@@ -21,17 +21,17 @@ def is_youtube(url):
     return match
 
 
-def format_dur(seconds: int, s: str, m: str, h: str, d: str) -> str:
+def format_dur(seconds: int) -> str:
     """Inputs time in seconds, to get beautified time,
     as string"""
     result = ""
     v_m = 0
     remainder = seconds
     r_ange_s = {
-        d: (24 * 60 * 60),
-        h: (60 * 60),
-        m: 60,
-        s: 1
+        "d": (24 * 60 * 60),
+        "h": (60 * 60),
+        "m": 60,
+        "s": 1
     }
     for age in r_ange_s:
         divisor = r_ange_s[age]
@@ -39,7 +39,7 @@ def format_dur(seconds: int, s: str, m: str, h: str, d: str) -> str:
         v_m = int(v_m)
         if v_m != 0:
             result += f" {v_m} {age} "
-    return result.strip().rstrip()
+    return " ".join(result.split())
 
 
 def get_banned_users():
