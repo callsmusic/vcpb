@@ -98,11 +98,7 @@ def download(on_start, on_end, play_func, on_is_live_err, video, on_err, on_dur_
             "on_is_live_err": on_is_live_err,
             "video": video,
             "on_err": on_err,
-            "on_dur_limit": on_dur_limit,
-            "s": s,
-            "m": m,
-            "h": h,
-            "d": d
+            "on_dur_limit": on_dur_limit
         }
     )
     return q.qsize()
