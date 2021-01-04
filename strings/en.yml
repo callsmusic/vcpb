@@ -17,12 +17,6 @@ help_volume: "check the current volume"
 help_1: "User commands:"
 help_2: "Admin commands:"
 
-# Duration
-days: "d"
-hours: "h"
-minutes: "m"
-seconds: "s"
-
 # Bot
 bot: "Bot is updating and restarting..."
 
