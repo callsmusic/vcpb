@@ -76,11 +76,7 @@ async def message(client, message):
         [
             m.edit,
             [_("ytdl_4"), ]
-        ],
-        _("seconds"),
-        _("minutes"),
-        _("hours"),
-        _("days")
+        ]
     )
 
 
