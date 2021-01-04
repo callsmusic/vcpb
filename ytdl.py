@@ -89,7 +89,7 @@ def worker():
 threading.Thread(target=worker, daemon=True).start()
 
 
-def download(on_start, on_end, play_func, on_is_live_err, video, on_err, on_dur_limit, s, m, h, d):
+def download(on_start, on_end, play_func, on_is_live_err, video, on_err, on_dur_limit):
     q.put(
         {
             "on_start": on_start,
