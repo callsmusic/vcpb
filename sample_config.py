@@ -26,6 +26,9 @@ LANG = "en"
 # Max video duration allowed for downloads in minutes
 DUR_LIMIT = 5
 
+# Remove downloaded files after playing
+REMOVE_AFTER_PLAYING = False
+
 # Show a small credit for @su_Bots in the start message
 CREDIT = True
 
