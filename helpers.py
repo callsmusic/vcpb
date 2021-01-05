@@ -38,7 +38,7 @@ def format_dur(seconds: int) -> str:
         v_m, remainder = divmod(remainder, divisor)
         v_m = int(v_m)
         if v_m != 0:
-            result += f" {v_m} {age} "
+            result += f" {v_m}{age} "
     return " ".join(result.split())
 
 
