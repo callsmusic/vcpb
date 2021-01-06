@@ -104,7 +104,7 @@ def wrap(func):
         elif USERS_MUST_JOIN:
             if not chat:
                 chat = client.get_chat(GROUP)
-            if chat.get_member(message.from_user.id).status in ("left", "kicked"):
+            if await chat.get_member(message.from_user.id).status in ("left", "kicked"):
                 return
         return func(client, message)
     return wrapper
