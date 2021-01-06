@@ -72,7 +72,7 @@ def worker():
         if log:
             log.delete()
 
-        if STATE != STATE.NoNotifications:
+        if STATE != State.NoNotifications:
             STATE = State.NothingSpecial
         process = None
 
