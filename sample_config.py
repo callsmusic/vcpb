@@ -29,9 +29,6 @@ DUR_LIMIT = 5
 # Remove downloaded files after playing
 REMOVE_AFTER_PLAYING = False
 
-# Show a small credit for @su_Bots in the start message
-CREDIT = True
-
 # No need to touch the following.
 SUDO_FILTER = filters.user(SUDO_USERS)
 BANNED = filters.user(get_banned_users())
