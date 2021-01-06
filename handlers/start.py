@@ -6,7 +6,7 @@ from strings import get_string as _
 
 
 @wrap
-async def start(client, message):
+def start(client, message):
     message.reply_text(
         _("start_1"),
         reply_markup=InlineKeyboardMarkup(
@@ -14,6 +14,7 @@ async def start(client, message):
                 _("start_2"), switch_inline_query_current_chat="")]]
         )
     )
+
 
 __handlers__ = [
     [

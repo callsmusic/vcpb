@@ -5,7 +5,7 @@ from strings import get_string as _
 
 
 @wrap
-async def mistake(client, message):
+def mistake(client, message):
     message.reply_text(_("mistake"))
 
 

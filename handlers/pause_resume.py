@@ -7,7 +7,7 @@ from config import SUDO_FILTER
 from strings import get_string as _
 
 
-async def pause(client, message):
+def pause(client, message):
     if player.STATE in State.Playing:
         player.STATE = State.Paused
         player.pause_resume()
@@ -27,7 +27,7 @@ async def pause(client, message):
             pass
 
 
-async def resume(client, message):
+def resume(client, message):
     if player.STATE == State.Paused:
         player.STATE = State.Playing
         player.pause_resume()
@@ -43,6 +43,7 @@ async def resume(client, message):
             message.delete()
         except:
             pass
+
 
 __handlers__ = [
     [

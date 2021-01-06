@@ -7,7 +7,7 @@ from strings import get_string as _
 
 
 @wrap
-async def n4u(client, message):
+def n4u(client, message):
     m = message.reply_text(_("n4u"))
 
     if m and message.chat.type != "private":

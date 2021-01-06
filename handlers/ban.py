@@ -36,7 +36,7 @@ def ban(client, message):
             pass
 
 
-async def unban(client, message):
+def unban(client, message):
     user = message.text.split()
 
     if len(user) != 2:
@@ -66,7 +66,7 @@ async def unban(client, message):
             pass
 
 
-async def bans(client, message):
+def bans(client, message):
     banned_users = get_banned_users()
     res = ""
 
@@ -87,6 +87,7 @@ async def bans(client, message):
             message.delete()
         except:
             pass
+
 
 __handlers__ = [
     [

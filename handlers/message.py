@@ -9,7 +9,7 @@ from strings import get_string as _
 
 
 @wrap
-async def message(client, message):
+def message(client, message):
     if message.text.startswith("/"):
         return
 

@@ -57,7 +57,7 @@ def f10():
     return res
 
 
-async def callback(client, query):
+def callback(client, query):
     if query.from_user.id not in SUDO_USERS:
         query.answer()
         return

@@ -8,7 +8,7 @@ from strings import get_string as _
 
 
 @wrap
-async def queue(client, message):
+def queue(client, message):
     m = message.reply_text("....", quote=True)
     first_10 = player.q_list[:10]
     res = (_("queue_1") + "\n\n").format(

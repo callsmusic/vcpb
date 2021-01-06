@@ -10,7 +10,7 @@ from strings import get_string as _
 
 
 @wrap
-async def volume(client, message):
+def volume(client, message):
     if len(message.text.split()) == 2 and message.from_user.id in SUDO_USERS:
         try:
             volume = int(message.text.split()[1])
@@ -57,6 +57,7 @@ async def volume(client, message):
         message.reply_text(
             _("volume_1").format(current_volume),
         )
+
 
 __handlers__ = [
     [

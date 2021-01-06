@@ -7,7 +7,7 @@ from strings import get_string as _
 
 
 @wrap
-async def song(client, message):
+def song(client, message):
     m = message.reply_text("....")
 
     if player.STATE in (State.Playing, State.Paused):
@@ -29,6 +29,7 @@ async def song(client, message):
         m.edit_text(
             _("song_2")
         )
+
 
 __handlers__ = [
     [

@@ -7,7 +7,7 @@ from config import SUDO_FILTER, LOG_GROUP
 from strings import get_string as _
 
 
-async def stream(client, message):
+def stream(client, message):
     if player.STATE in (State.Playing, State.Paused):
         m = message.reply_text(
             _("stream_3")
@@ -49,6 +49,7 @@ async def stream(client, message):
             message.delete()
         except:
             pass
+
 
 __handlers__ = [
     [

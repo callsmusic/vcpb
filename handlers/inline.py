@@ -7,7 +7,7 @@ from strings import get_string as _
 
 
 @wrap
-async def search(client, query):
+def search(client, query):
     answers = []
     string = query.query.lower().strip().rstrip()
 
@@ -50,6 +50,7 @@ async def search(client, query):
                 switch_pm_text=_("inline_3"),
                 switch_pm_parameter="",
             )
+
 
 __handlers__ = [
     [

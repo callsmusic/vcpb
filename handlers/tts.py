@@ -9,7 +9,7 @@ from strings import get_string as _
 
 
 @wrap
-async def tts(client, message):
+def tts(client, message):
     if message.text.replace("/tts", "") == "":
         message.reply_text(_("tts_1"))
     else:
@@ -26,7 +26,7 @@ async def tts(client, message):
             message.reply_text(_("error"))
 
 
-async def x(client, message):
+def x(client, message):
     try:
         try:
             message.delete()

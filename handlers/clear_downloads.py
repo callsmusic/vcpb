@@ -7,7 +7,7 @@ from config import SUDO_FILTER
 from strings import get_string as _
 
 
-async def clear_downloads(client, message):
+def clear_downloads(client, message):
     player.abort()
     try:
         for file in os.listdir("downloads"):
@@ -27,6 +27,7 @@ async def clear_downloads(client, message):
             message.delete()
         except:
             pass
+
 
 __handlers__ = [
     [

@@ -29,9 +29,10 @@ def admin():
 
 
 @wrap
-async def help(client, message):
+def help(client, message):
     message.reply_text("**" + _("help_1") + "**" + "\n" + user() + "\n\n" + "**" + _(
         "help_2") + "**" + "\n" + admin() if message.from_user.id in SUDO_USERS else user())
+
 
 __handlers__ = [
     [
