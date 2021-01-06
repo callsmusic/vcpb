@@ -93,7 +93,7 @@ def unban_user(id):
 chat = None
 
 
-def wrap(func):
+async def wrap(func):
     global chat
 
     def wrapper(client, message):
