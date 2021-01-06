@@ -15,16 +15,16 @@ def ban(client, message):
 
     user = user[1]
 
-    try:
-        user = int(user)
-        res = ban_user(user, SUDO_USERS)
+    # try:
+    user = int(user)
+    res = ban_user(user, SUDO_USERS)
 
-        if res:
-            m = message.reply_text(_("ban_2"))
-        else:
-            m = message.reply_text(_("ban_3"))
-    except:
-        m = message.reply_text(_("ban_4"))
+    if res:
+        m = message.reply_text(_("ban_2"))
+    else:
+        m = message.reply_text(_("ban_3"))
+    # except:
+    #    m = message.reply_text(_("ban_4"))
 
     if m and message.chat.type != "private":
         sleep(5)
