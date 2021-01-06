@@ -29,13 +29,13 @@ def worker():
                              item["stream_url"]], stdin=PIPE)
             process.wait()
         else:
-            if STATE != State.NothingSpecial:
+            if STATE != State.NoNotifications:
                 item["on_start"][0](
                     *item["on_start"][1],
                     quote=True
                 )
 
-            if "log" in item and STATE != State.NothingSpecial:
+            if "log" in item and STATE != State.NoNotifications:
                 if item["log"]:
                     args = item["log"][1]
                     args[1] = args[1].format(
@@ -125,7 +125,7 @@ def abort(send_message=True):
 
     if process:
         if not send_message:
-            STATE = State.NothingSpecial
+            STATE = State.NoNotifications
         process.terminate()
         del q_list[0]
         return True

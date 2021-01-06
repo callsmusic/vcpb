@@ -14,6 +14,7 @@ class State():
     Paused = "PAUSED"
     Skipped = "SKIPPED"
     Streaming = "STREAMING"
+    NoNotifications = "DONT_NOTIFY"
 
 
 def is_youtube(url):
