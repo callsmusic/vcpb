@@ -61,7 +61,7 @@ def queue(client, message):
 
 def rmitem(client, message):
     try:
-        del player.q_list[int(message.text.split()[1])]
+        del player.q_list[int(message.text.split()[1]) + 1]
         message.reply_text(_("queue_3"))
     except:
         pass
