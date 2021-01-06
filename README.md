@@ -207,7 +207,7 @@ These are apt package manager instructions but you can install the required pack
 
 1. Migrate to proper Database like SQLite for storing media queue and user requests.
 2. Keep track of previous and completed media requests.
-3. Add the [features requested by users] (https://t.me/su_Bots/34).
+3. Add the [features requested by users](https://t.me/su_Bots/34).
 
 ## Authors & Acknowledgment
 
