@@ -97,6 +97,8 @@ def wrap(func):
     global chat
 
     def wrapper(client, message):
+        global chat
+
         if message.from_user.id in get_banned_users():
             return
         elif USERS_MUST_JOIN:
