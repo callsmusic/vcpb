@@ -2,10 +2,12 @@ from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import player
-from config import SUDO_USERS, SUDO_FILTER, BANNED
+from helpers import wrap
+from config import SUDO_USERS, SUDO_FILTER
 from strings import get_string as _
 
 
+@wrap
 async def queue(client, message):
     m = await message.reply_text("....", quote=True)
     first_10 = player.q_list[:10]

@@ -4,10 +4,12 @@ from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import player
-from config import SUDO_USERS, BANNED
+from helpers import wrap
+from config import SUDO_USERS
 from strings import get_string as _
 
 
+@wrap
 async def volume(client, message):
     if len(message.text.split()) == 2 and message.from_user.id in SUDO_USERS:
         try:
@@ -61,7 +63,6 @@ __handlers__ = [
         MessageHandler(
             volume,
             filters.command("volume", "/")
-            & ~ BANNED
         )
     ]
 ]

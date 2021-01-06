@@ -87,3 +87,11 @@ def unban_user(id):
     )
     f.close()
     return True
+
+
+def wrap(func):
+    def wrapper(client, message):
+        if message.from_user.id in get_banned_users():
+            return
+        return func(client, message)
+    return wrapper

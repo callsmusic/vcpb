@@ -1,6 +1,7 @@
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 from handlers import all_help
+from helpers import wrap
 from config import SUDO_USERS
 from strings import get_string as _
 
@@ -27,6 +28,7 @@ def admin():
     return res
 
 
+@wrap
 async def help(client, message):
     await message.reply_text("**" + _("help_1") + "**" + "\n" + user() + "\n\n" + "**" + _("help_2") + "**" + "\n" + admin() if message.from_user.id in SUDO_USERS else user())
 

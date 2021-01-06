@@ -2,10 +2,11 @@ from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 import player
 from helpers import State
-from config import BANNED
+from helpers import wrap
 from strings import get_string as _
 
 
+@wrap
 async def song(client, message):
     m = await message.reply_text("....")
 
@@ -34,7 +35,6 @@ __handlers__ = [
         MessageHandler(
             song,
             filters.command("song", "/")
-            & ~ BANNED
         )
     ]
 ]

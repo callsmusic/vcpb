@@ -1,10 +1,12 @@
 from asyncio import sleep
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
-from config import SUDO_FILTER, BANNED
+from helpers import wrap
+from config import SUDO_FILTER
 from strings import get_string as _
 
 
+@wrap
 async def n4u(client, message):
     m = await message.reply_text(_("n4u"))
 
@@ -33,7 +35,6 @@ __handlers__ = [
              | filters.command("play", "/")
              | filters.command("r", "/"))
             & ~ SUDO_FILTER
-            & ~ BANNED
         )
     ]
 ]

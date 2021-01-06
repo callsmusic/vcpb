@@ -2,10 +2,11 @@ from pyrogram.handlers import InlineQueryHandler
 from youtubesearchpython import VideosSearch
 from pyrogram.types import InlineQueryResultArticle, InputTextMessageContent
 from pyrogram import errors
-from config import BANNED
+from helpers import wrap
 from strings import get_string as _
 
 
+@wrap
 async def search(client, query):
     answers = []
     string = query.query.lower().strip().rstrip()
@@ -53,8 +54,7 @@ async def search(client, query):
 __handlers__ = [
     [
         InlineQueryHandler(
-            search,
-            ~ BANNED
+            search
         )
     ]
 ]
