@@ -28,7 +28,7 @@ def worker():
             process = Popen(["mplayer",
                              item["stream_url"]], stdin=PIPE)
             process.wait()
-        else:
+        elif q_list[0] == item:
             if STATE != State.NoNotifications:
                 item["on_start"][0](
                     *item["on_start"][1],
