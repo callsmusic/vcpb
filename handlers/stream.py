@@ -8,6 +8,8 @@ from strings import get_string as _
 
 
 def stream(client, message):
+    m = None
+
     if player.STATE in (State.Playing, State.Paused):
         m = message.reply_text(
             _("stream_3")
