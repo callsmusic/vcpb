@@ -10,11 +10,14 @@ from strings import get_string as _
 def clear_downloads(client, message):
     player.abort()
     try:
+        player.q_list = []
+
         for file in os.listdir("downloads"):
             try:
                 os.remove("downloads/" + file)
             except:
                 pass
+
         m = message.reply_text(_("cleardownloads"))
     except:
         m = message.reply_text(_("error"))
