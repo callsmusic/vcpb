@@ -34,8 +34,10 @@ def x(client, message):
             pass
         text = message.text.split(" ")
         del text[0]
+        lang = text[0]
+        del text[0]
         text = " ".join(text)
-        gTTS(text, lang="en-US").save("downloads/tts.mp3")
+        gTTS(text, lang=lang).save("downloads/tts.mp3")
         _thread.start_new_thread(
             subprocess.Popen(["mplayer", "downloads/tts.mp3"]).wait,
             ()
