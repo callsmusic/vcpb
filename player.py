@@ -72,8 +72,10 @@ def worker():
         if log:
             log.delete()
 
-        STATE = State.NothingSpecial
+        if STATE != STATE.NoNotifications:
+            STATE = State.NothingSpecial
         process = None
+
         if q:
             if REMOVE_AFTER_PLAYING:
                 if q_list[0]["file"] != item["file"] and q_list[1]["file"] != item["file"]:
