@@ -64,7 +64,6 @@ __handlers__ = [
         MessageHandler(
             queue,
             filters.command("queue", "/")
-            & ~ BANNED
         )
     ]
 ]
