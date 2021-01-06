@@ -7,7 +7,7 @@ import threading
 import queue
 import youtube_dl
 import player
-from config import DUR_LIMIT
+from config import DUR_LIMIT, SUDO_USERS
 from helpers import format_dur
 
 ydl_opts = {
@@ -29,7 +29,7 @@ def worker():
                 download=False
             )
 
-            if int(info["duration"] / 60) > DUR_LIMIT:
+            if int(info["duration"] / 60) > DUR_LIMIT and item["play_func"][5] not in SUDO_USERS:
                 args = item["on_dur_limit"][1]
                 args[0] = args[0].format(DUR_LIMIT)
                 item["on_dur_limit"][0](
