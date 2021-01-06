@@ -8,7 +8,7 @@ if __name__ == "__main__":
     import os
     import sys
     from threading import Thread
-    from pyrogram import filters
+    from pyrogram import idle, filters
     from pyrogram.handlers import MessageHandler
     import player
     from handlers import all_handlers
@@ -41,4 +41,5 @@ if __name__ == "__main__":
         ), restart
     )
 
-    app.run()
+    app.start()
+    idle()
