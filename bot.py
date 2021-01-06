@@ -28,18 +28,12 @@ if __name__ == "__main__":
         os.system("git pull")
         os.execl(sys.executable, sys.executable, *sys.argv)
 
+    @app.on_message(filters.command("r", "/") & SUDO_FILTER)
     def restart(client, message):
         message.reply_text(_("bot"))
         Thread(
             target=stop_and_restart
         ).start()
-
-    app.add_handler(
-        MessageHandler(
-            filters.command("r")
-            & SUDO_FILTER
-        ), restart
-    )
 
     app.start()
     idle()
