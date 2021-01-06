@@ -1,7 +1,7 @@
 # Pyrogram bot to automate streaming music in voice chats
 
 ## Help
-If you face an error, want to discuss this project or get support for it, join [@su_Chats](https://t.me/su_Chats) on Telegram.
+If you face an error, want to discuss this project or get support for it, join [the discussion group](https://t.me/VoiceChatPyroBot) on Telegram.
 
 ## Requirements
 * A computer (Debian-based Linux VPS recommmended).
@@ -18,7 +18,7 @@ If you face an error, want to discuss this project or get support for it, join [
 
 #### Cloning
 ```
-    git clone https://github.com/suprojects/VoiceChatPyroBot.git tgvcbot && cd tgvcbot
+    git clone https://github.com/rojserbest/VoiceChatPyroBot.git tgvcbot && cd tgvcbot
 ```
 
 #### Configuring
@@ -35,7 +35,7 @@ Copy `sample_config.py` to `config.py` and make it use your credentials:
 
 `LOG_GROUP` int: (optional) a group chat id to send "now playing" messages to in a non-spammy way
     
-`LANG` str: your bot language, choose an available language code in [strings/](https://github.com/suprojects/VoiceChatPyroBot/tree/main/strings)
+`LANG` str: your bot language, choose an available language code in [strings/](https://github.com/rojserbest/VoiceChatPyroBot/tree/main/strings)
     
 `DUR_LIMIT` int: max video duration in minutes for downloads
 
