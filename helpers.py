@@ -1,5 +1,6 @@
 import os
 import re
+from pyrogram.errors import exceptions
 import pickle
 from config import GROUP, USERS_MUST_JOIN
 
@@ -104,7 +105,10 @@ def wrap(func):
         elif USERS_MUST_JOIN:
             if not chat:
                 chat = client.get_chat(GROUP)
-            if chat.get_member(message.from_user.id).status in ("left", "kicked"):
+            try:
+                if chat.get_member(message.from_user.id).status in ("left", "kicked"):
+                    return
+            except exceptions.bad_request_400.UserNotParticipant:
                 return
         return func(client, message)
     return wrapper
