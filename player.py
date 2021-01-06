@@ -29,11 +29,12 @@ def worker():
                              item["stream_url"]], stdin=PIPE)
             process.wait()
         else:
+            if STATE != State.NothingSpecial:
+                item["on_start"][0](
+                    *item["on_start"][1],
+                    quote=True
+                )
             STATE = State.Playing
-            item["on_start"][0](
-                *item["on_start"][1],
-                quote=True
-            )
 
             if "log" in item:
                 if item["log"]:
