@@ -93,10 +93,10 @@ def unban_user(id):
 chat = None
 
 
-async def wrap(func):
+def wrap(func):
     global chat
 
-    async def wrapper(client, message):
+    def wrapper(client, message):
         global chat
 
         if message.from_user.id in get_banned_users():
@@ -104,7 +104,7 @@ async def wrap(func):
         elif USERS_MUST_JOIN:
             if not chat:
                 chat = client.get_chat(GROUP)
-            if await chat.get_member(message.from_user.id).status in ("left", "kicked"):
+            if chat.get_member(message.from_user.id).status in ("left", "kicked"):
                 return
-        return await func(client, message)
+        return func(client, message)
     return wrapper

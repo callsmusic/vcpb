@@ -1,4 +1,4 @@
-from asyncio import sleep
+from time import sleep
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 import player
@@ -11,18 +11,18 @@ async def pause(client, message):
     if player.STATE in State.Playing:
         player.STATE = State.Paused
         player.pause_resume()
-        m = await message.reply_text(_("pause_1"))
+        m = message.reply_text(_("pause_1"))
     elif player.STATE == State.Paused:
-        m = await message.reply_text(_("pause_2"))
+        m = message.reply_text(_("pause_2"))
     else:
-        m = await message.reply_text(_("pause_3"))
+        m = message.reply_text(_("pause_3"))
 
     if m and message.chat.type != "private":
-        await sleep(5)
-        await m.delete()
+        sleep(5)
+        m.delete()
 
         try:
-            await message.delete()
+            message.delete()
         except:
             pass
 
@@ -31,16 +31,16 @@ async def resume(client, message):
     if player.STATE == State.Paused:
         player.STATE = State.Playing
         player.pause_resume()
-        m = await message.reply_text(_("pause_4"))
+        m = message.reply_text(_("pause_4"))
     else:
-        m = await message.reply_text(_("pause_5"))
+        m = message.reply_text(_("pause_5"))
 
     if m and message.chat.type != "private":
-        await sleep(5)
-        await m.delete()
+        sleep(5)
+        m.delete()
 
         try:
-            await message.delete()
+            message.delete()
         except:
             pass
 

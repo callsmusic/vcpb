@@ -24,7 +24,7 @@ async def volume(client, message):
                         volume
                     ]
                 ).wait()
-                await message.reply_text(
+                message.reply_text(
                     _("volume_2").format(volume)
                 )
                 return
@@ -35,7 +35,7 @@ async def volume(client, message):
         ["pactl", "list", "sinks"]).decode()).group(0).split()).split("/")[1]
 
     if message.from_user.id in SUDO_USERS:
-        await message.reply_text(
+        message.reply_text(
             _("volume_1").format(current_volume),
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -54,7 +54,7 @@ async def volume(client, message):
             quote=True
         )
     else:
-        await message.reply_text(
+        message.reply_text(
             _("volume_1").format(current_volume),
         )
 

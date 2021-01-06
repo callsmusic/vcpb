@@ -1,4 +1,4 @@
-from asyncio import sleep
+from time import sleep
 from pyrogram import filters
 from pyrogram.handlers import MessageHandler
 from helpers import wrap
@@ -8,14 +8,14 @@ from strings import get_string as _
 
 @wrap
 async def n4u(client, message):
-    m = await message.reply_text(_("n4u"))
+    m = message.reply_text(_("n4u"))
 
     if m and message.chat.type != "private":
-        await sleep(5)
-        await m.delete()
+        sleep(5)
+        m.delete()
 
         try:
-            await message.delete()
+            message.delete()
         except:
             pass
 

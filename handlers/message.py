@@ -14,14 +14,14 @@ async def message(client, message):
         return
 
     if not is_youtube(message.text):
-        await message.reply_text(_("message_1"))
+        message.reply_text(_("message_1"))
         return
 
     if "list=" in message.text:
-        await message.reply_text(_("message_2"))
+        message.reply_text(_("message_2"))
         return
 
-    m = await message.reply_text(_("message_3"), quote=True)
+    m = message.reply_text(_("message_3"), quote=True)
 
     download(
         (

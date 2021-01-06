@@ -7,7 +7,7 @@ from strings import get_string as _
 
 @wrap
 async def start(client, message):
-    await message.reply_text(
+    message.reply_text(
         _("start_1"),
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton(

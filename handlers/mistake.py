@@ -6,7 +6,7 @@ from strings import get_string as _
 
 @wrap
 async def mistake(client, message):
-    await message.reply_text(_("mistake"))
+    message.reply_text(_("mistake"))
 
 
 __handlers__ = [

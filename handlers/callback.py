@@ -1,5 +1,5 @@
 import subprocess
-from asyncio import sleep
+from time import sleep
 from pyrogram import filters
 from pyrogram.handlers import CallbackQueryHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -59,7 +59,7 @@ def f10():
 
 async def callback(client, query):
     if query.from_user.id not in SUDO_USERS:
-        await query.answer()
+        query.answer()
         return
 
     if query.data.endswith("volume"):
@@ -77,7 +77,7 @@ async def callback(client, query):
             ["pactl", "set-sink-volume", "MySink", volume]
         ).wait()
 
-        await query.message.reply_text(
+        query.message.reply_text(
             _("volume_1").format(volume),
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -95,8 +95,8 @@ async def callback(client, query):
             ),
             quote=False
         )
-        await query.message.delete()
-        await query.answer()
+        query.message.delete()
+        query.answer()
     elif query.data == "increase_volume":
         volume = current_volume + 1
 
@@ -109,7 +109,7 @@ async def callback(client, query):
             ["pactl", "set-sink-volume", "MySink", volume]
         ).wait()
 
-        await query.message.reply_text(
+        query.message.reply_text(
             _("volume_1").format(volume),
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -127,31 +127,31 @@ async def callback(client, query):
             ),
             quote=False
         )
-        await query.message.delete()
-        await query.answer()
+        query.message.delete()
+        query.answer()
     else:
         if query.data == "refresh":
             ft = f10()
             mr = rm()
             if query.message.text != ft and query.message.reply_markup != mr:
-                await query.message.edit_text(
+                query.message.edit_text(
                     ft,
                     disable_web_page_preview=True,
                     reply_markup=rm()
                 )
-            await query.answer()
+            query.answer()
         elif query.data == "skip":
             player.STATE = State.Skipped
             player.abort()
             ft = f10()
             mr = rm()
             if query.message.text != ft and query.message.reply_markup != mr:
-                await query.message.edit_text(
+                query.message.edit_text(
                     ft,
                     disable_web_page_preview=True,
                     reply_markup=rm()
                 )
-            await query.answer()
+            query.answer()
         elif query.data == "pause":
             if player.STATE == State.Paused:
                 player.STATE = State.Playing
@@ -161,12 +161,12 @@ async def callback(client, query):
             ft = f10()
             mr = rm()
             if query.message.text != ft and query.message.reply_markup != mr:
-                await query.message.edit_text(
+                query.message.edit_text(
                     ft,
                     disable_web_page_preview=True,
                     reply_markup=rm()
                 )
-            await query.answer()
+            query.answer()
 
 
 __handlers__ = [
