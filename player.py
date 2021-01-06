@@ -74,7 +74,7 @@ def worker():
         process = None
         if q:
             if REMOVE_AFTER_PLAYING:
-                os.remove(item["file"])
+                os.remove("downloads/" + item["file"])
             q.task_done()
 
 
