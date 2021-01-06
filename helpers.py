@@ -96,7 +96,7 @@ chat = None
 async def wrap(func):
     global chat
 
-    def wrapper(client, message):
+    def async wrapper(client, message):
         global chat
 
         if message.from_user.id in get_banned_users():
