@@ -8,10 +8,11 @@ from strings import get_string as _
 
 
 def clear_downloads(client, message):
-    player.abort()
-    try:
-        player.q_list = []
+    for i in range(len(player.q_list)):
+        player.abort()
+        sleep(0.5)
 
+    try:
         for file in os.listdir("downloads"):
             try:
                 os.remove("downloads/" + file)
