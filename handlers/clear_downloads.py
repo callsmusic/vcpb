@@ -9,7 +9,7 @@ from strings import get_string as _
 
 def clear_downloads(client, message):
     for i in range(len(player.q_list)):
-        player.abort()
+        player.abort(False)
         sleep(0.5)
 
     try:

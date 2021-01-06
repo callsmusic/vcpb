@@ -118,8 +118,12 @@ def currently_playing():
     return q_list[0] if q_list else []
 
 
-def abort():
+def abort(send_message=True):
+    global STATE
+
     if process:
+        if not send_message:
+            STATE = State.NothingSpecial
         process.terminate()
         del q_list[0]
         return True
