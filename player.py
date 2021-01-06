@@ -128,8 +128,12 @@ def abort(send_message=True):
     if process:
         if not send_message:
             STATE = State.NoNotifications
+
         process.terminate()
-        del q_list[0]
+
+        if q_list:
+            del q_list[0]
+
         return True
     return False
 
