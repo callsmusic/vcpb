@@ -66,6 +66,10 @@ def worker():
                     quote=True
                 )
 
+            if REMOVE_AFTER_PLAYING:
+                if q_list[0]["file"] != item["file"] and q_list[1]["file"] != item["file"]:
+                    os.remove("downloads/" + item["file"])
+
             if q_list:
                 if q_list[0] == item:
                     del q_list[0]
@@ -77,9 +81,7 @@ def worker():
         process = None
 
         if q:
-            if REMOVE_AFTER_PLAYING:
-                if q_list[0]["file"] != item["file"] and q_list[1]["file"] != item["file"]:
-                    os.remove("downloads/" + item["file"])
+
             q.task_done()
 
 
