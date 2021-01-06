@@ -34,9 +34,8 @@ def worker():
                     *item["on_start"][1],
                     quote=True
                 )
-            STATE = State.Playing
 
-            if "log" in item:
+            if "log" in item and STATE != State.NothingSpecial:
                 if item["log"]:
                     args = item["log"][1]
                     args[1] = args[1].format(
@@ -49,6 +48,8 @@ def worker():
                     log = item["log"][0](
                         *args
                     )
+
+            STATE = State.Playing
 
             process = Popen(
                 ["mplayer", item["file"]], stdin=PIPE)
