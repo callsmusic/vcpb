@@ -1,6 +1,7 @@
 import os
 import re
 import pickle
+from config import GROUP, USERS_MUST_JOIN
 
 if "data" not in os.listdir():
     open("data", "ab").close()
@@ -89,9 +90,17 @@ def unban_user(id):
     return True
 
 
+chat = None
+
+
 def wrap(func):
     def wrapper(client, message):
         if message.from_user.id in get_banned_users():
             return
+        elif USERS_MUST_JOIN:
+            if not chat:
+                chat = client.get_chat(GROUP)
+            if chat.get_member(message.from_user.id).status in ("left", "kicked"):
+                return
         return func(client, message)
     return wrapper
