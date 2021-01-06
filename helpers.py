@@ -94,6 +94,8 @@ chat = None
 
 
 def wrap(func):
+    global chat
+
     def wrapper(client, message):
         if message.from_user.id in get_banned_users():
             return
