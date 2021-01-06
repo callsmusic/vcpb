@@ -68,7 +68,7 @@ def worker():
 
             if REMOVE_AFTER_PLAYING:
                 if q_list[0]["file"] != item["file"] and q_list[1]["file"] != item["file"]:
-                    os.remove("downloads/" + item["file"])
+                    os.remove(item["file"])
 
             if q_list:
                 if q_list[0] == item:
