@@ -59,11 +59,26 @@ def queue(client, message):
         m.edit_text(res, disable_web_page_preview=True)
 
 
+def rmitem(client, message):
+    try:
+        del player.q_list[int(message.text.split()[1])]
+        message.reply_text(_("queue_3"))
+    except:
+        pass
+
+
 __handlers__ = [
     [
         MessageHandler(
             queue,
             filters.command("queue", "/")
+        )
+    ],
+    [
+        MessageHandler(
+            rmitem,
+            filters.command("rmitem", "/")
+            & SUDO_FILTER
         )
     ]
 ]

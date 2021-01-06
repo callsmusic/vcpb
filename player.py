@@ -28,6 +28,9 @@ def worker():
             process = Popen(["mplayer",
                              item["stream_url"]], stdin=PIPE)
             process.wait()
+        elif q_list[0] != item:
+            q.task_done()
+            continue
         else:
             STATE = State.Playing
             item["on_start"][0](
