@@ -78,8 +78,11 @@ def ban_user(id: int, SUDO_USERS: list) -> bool:
     f.close()
 
     for i in range(len(player.q_list)):
-        if player.q_list[i]["sent_by_id"] == id:
-            del player.q_list[i]
+        try:
+            if player.q_list[i]["sent_by_id"] == id:
+                del player.q_list[i]
+        except:
+            pass
 
     return True
 
