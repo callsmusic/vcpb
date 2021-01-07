@@ -40,5 +40,5 @@ __handlers__ = [
     ]
 ]
 __help__ = {
-    "song": [_("help_song"), False]
+    "/song": [_("help_song"), False]
 }

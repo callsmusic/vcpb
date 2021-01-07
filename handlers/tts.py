@@ -61,5 +61,5 @@ __handlers__ = [
     ]
 ]
 __help__ = {
-    "tts": [_("help_tts"), False]
+    "/tts": [_("help_tts"), False]
 }

@@ -68,5 +68,5 @@ __handlers__ = [
     ]
 ]
 __help__ = {
-    "volume": [_("help_volume"), False]
+    "/volume": [_("help_volume"), False]
 }

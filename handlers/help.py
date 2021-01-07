@@ -44,5 +44,5 @@ __handlers__ = [
     ]
 ]
 __help__ = {
-    "help": [_("help_help"), False]
+    "/help": [_("help_help"), False]
 }
