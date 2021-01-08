@@ -2,7 +2,6 @@ import os
 import re
 from pyrogram.errors import exceptions
 import pickle
-import player
 from config import GROUP, USERS_MUST_JOIN
 
 if "data" not in os.listdir():
