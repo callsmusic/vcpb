@@ -64,10 +64,11 @@ def worker():
                     quote=True
                 )
 
+        process = None
+        STATE = State.NothingSpecial
+
         if log:
             log.delete()
-
-        process = None
 
         if q:
             q.task_done()
