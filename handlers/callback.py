@@ -1,5 +1,4 @@
 import subprocess
-from time import sleep
 from pyrogram import filters
 from pyrogram.handlers import CallbackQueryHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
