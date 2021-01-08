@@ -8,16 +8,7 @@ from strings import get_string as _
 
 @wrap
 def n4u(client, message):
-    m = message.reply_text(_("n4u"))
-
-    if m and message.chat.type != "private":
-        sleep(5)
-        m.delete()
-
-        try:
-            message.delete()
-        except:
-            pass
+    message.reply_text(_("n4u"))
 
 
 __handlers__ = [

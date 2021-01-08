@@ -3,58 +3,8 @@ from time import sleep
 from pyrogram import filters
 from pyrogram.handlers import CallbackQueryHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-import player
-from helpers import State
 from config import SUDO_USERS
 from strings import get_string as _
-
-
-def rm():
-    em = "▶️" if player.STATE == State.Paused else "⏸"
-    reply_markup = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton(
-                    "🔄",
-                    callback_data="refresh"
-                ),
-                InlineKeyboardButton(
-                    em,
-                    callback_data="pause"
-                ),
-                InlineKeyboardButton(
-                    "⏩",
-                    callback_data="skip"
-                )
-            ]
-        ]
-    )
-    return reply_markup
-
-
-def f10():
-    first_10 = player.q_list[:10]
-    res = (_("queue_1") + "\n\n").format(
-        len(first_10),
-        len(player.q_list)
-    )
-
-    if first_10:
-        for i in range(len(first_10)):
-            item = first_10[i]
-            res += _("queue_2").format(
-                i + 1,
-                "<a href=\"{}\">{}</a>".format(
-                    item["url"],
-                    item["title"]
-                ),
-                item["dur"],
-                "<a href=\"tg://user?id={}\">{}</a>".format(
-                    item["sent_by_id"],
-                    item["sent_by_name"]
-                )
-            ) + "\n"
-    return res
 
 
 def callback(client, query):
@@ -129,44 +79,6 @@ def callback(client, query):
         )
         query.message.delete()
         query.answer()
-    else:
-        if query.data == "refresh":
-            ft = f10()
-            mr = rm()
-            if query.message.text != ft and query.message.reply_markup != mr:
-                query.message.edit_text(
-                    ft,
-                    disable_web_page_preview=True,
-                    reply_markup=rm()
-                )
-            query.answer()
-        elif query.data == "skip":
-            player.STATE = State.Skipped
-            player.abort()
-            ft = f10()
-            mr = rm()
-            if query.message.text != ft and query.message.reply_markup != mr:
-                query.message.edit_text(
-                    ft,
-                    disable_web_page_preview=True,
-                    reply_markup=rm()
-                )
-            query.answer()
-        elif query.data == "pause":
-            if player.STATE == State.Paused:
-                player.STATE = State.Playing
-            elif player.STATE == State.Playing:
-                player.STATE = State.Paused
-            player.pause_resume()
-            ft = f10()
-            mr = rm()
-            if query.message.text != ft and query.message.reply_markup != mr:
-                query.message.edit_text(
-                    ft,
-                    disable_web_page_preview=True,
-                    reply_markup=rm()
-                )
-            query.answer()
 
 
 __handlers__ = [

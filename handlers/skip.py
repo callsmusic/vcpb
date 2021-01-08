@@ -11,18 +11,9 @@ def skip(client, message):
     if player.STATE in (State.Playing, State.Streaming, State.Paused):
         player.STATE = State.Skipped
         player.abort()
-        m = message.reply_text(_("skip_1"))
+        message.reply_text(_("skip_1"))
     else:
-        m = message.reply_text(_("skip_2"))
-
-    if m and message.chat.type != "private":
-        sleep(5)
-        m.delete()
-
-        try:
-            message.delete()
-        except:
-            pass
+        message.reply_text(_("skip_2"))
 
 
 __handlers__ = [

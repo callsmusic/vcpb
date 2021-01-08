@@ -8,10 +8,6 @@ from strings import get_string as _
 
 
 def clear_downloads(client, message):
-    for i in range(len(player.q_list)):
-        player.abort(False)
-        sleep(0.5)
-
     try:
         for file in os.listdir("downloads"):
             try:
@@ -19,18 +15,9 @@ def clear_downloads(client, message):
             except:
                 pass
 
-        m = message.reply_text(_("cleardownloads"))
+        message.reply_text(_("cleardownloads"))
     except:
-        m = message.reply_text(_("error"))
-
-    if m and message.chat.type != "private":
-        sleep(5)
-        m.delete()
-
-        try:
-            message.delete()
-        except:
-            pass
+        message.reply_text(_("error"))
 
 
 __handlers__ = [

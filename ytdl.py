@@ -49,7 +49,8 @@ def worker():
                 args[3] = info["title"]
                 args[4] = "https://youtu.be/" + info["id"]
                 args[8] = format_dur(
-                    info["duration"])
+                    info["duration"]
+                )
 
                 if file_name not in os.listdir("downloads"):
                     item["on_start"][0](

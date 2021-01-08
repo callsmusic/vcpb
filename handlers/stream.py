@@ -8,21 +8,21 @@ from strings import get_string as _
 
 
 def stream(client, message):
-    m = None
+    None
 
     if player.STATE in (State.Playing, State.Paused):
-        m = message.reply_text(
+        message.reply_text(
             _("stream_3")
         )
     else:
         args = message.text.split()
 
         if len(args) == 1:
-            m = message.reply_text(
+            message.reply_text(
                 _("stream_1")
             )
         elif len(args) != 2:
-            m = message.reply_text(
+            message.reply_text(
                 _("stream_2")
             )
         else:
@@ -42,15 +42,6 @@ def stream(client, message):
             message.reply_text(
                 _("stream_4")
             )
-
-    if m and message.chat.type != "private":
-        sleep(5)
-        m.delete()
-
-        try:
-            message.delete()
-        except:
-            pass
 
 
 __handlers__ = [

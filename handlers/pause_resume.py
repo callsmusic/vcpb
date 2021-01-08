@@ -11,38 +11,20 @@ def pause(client, message):
     if player.STATE in State.Playing:
         player.STATE = State.Paused
         player.pause_resume()
-        m = message.reply_text(_("pause_1"))
+        message.reply_text(_("pause_1"))
     elif player.STATE == State.Paused:
-        m = message.reply_text(_("pause_2"))
+        message.reply_text(_("pause_2"))
     else:
-        m = message.reply_text(_("pause_3"))
-
-    if m and message.chat.type != "private":
-        sleep(5)
-        m.delete()
-
-        try:
-            message.delete()
-        except:
-            pass
+        message.reply_text(_("pause_3"))
 
 
 def resume(client, message):
     if player.STATE == State.Paused:
         player.STATE = State.Playing
         player.pause_resume()
-        m = message.reply_text(_("pause_4"))
+        message.reply_text(_("pause_4"))
     else:
-        m = message.reply_text(_("pause_5"))
-
-    if m and message.chat.type != "private":
-        sleep(5)
-        m.delete()
-
-        try:
-            message.delete()
-        except:
-            pass
+        message.reply_text(_("pause_5"))
 
 
 __handlers__ = [

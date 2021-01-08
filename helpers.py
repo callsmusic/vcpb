@@ -2,7 +2,6 @@ import os
 import re
 from pyrogram.errors import exceptions
 import pickle
-import player
 from config import GROUP, USERS_MUST_JOIN
 
 if "data" not in os.listdir():
@@ -15,7 +14,6 @@ class State():
     Paused = "PAUSED"
     Skipped = "SKIPPED"
     Streaming = "STREAMING"
-    NoNotifications = "DONT_NOTIFY"
 
 
 def is_youtube(url):
@@ -46,63 +44,6 @@ def format_dur(seconds: int) -> str:
     return " ".join(result.split())
 
 
-def get_banned_users() -> list:
-    f = open("data", "rb")
-    r = []
-    try:
-        up = pickle.load(f)
-        if "banned_users" in up:
-            r = up["banned_users"]
-        else:
-            r = []
-    except:
-        pass
-    f.close()
-    return r
-
-
-def ban_user(id: int, SUDO_USERS: list) -> bool:
-    banned_users = get_banned_users()
-
-    if id in banned_users or id in SUDO_USERS:
-        return False
-
-    banned_users.append(id)
-    f = open("data", "wb")
-    pickle.dump(
-        {
-            "banned_users": banned_users
-        },
-        f
-    )
-    f.close()
-
-    for i in range(len(player.q_list)):
-        try:
-            if player.q_list[i]["sent_by_id"] == id:
-                del player.q_list[i]
-        except:
-            pass
-
-    return True
-
-
-def unban_user(id: int) -> bool:
-    banned_users = get_banned_users()
-    if id not in banned_users:
-        return False
-    banned_users.remove(id)
-    f = open("data", "wb")
-    pickle.dump(
-        {
-            "banned_users": banned_users
-        },
-        f
-    )
-    f.close()
-    return True
-
-
 chat = None
 
 
@@ -112,9 +53,7 @@ def wrap(func):
     def wrapper(client, message):
         global chat
 
-        if message.from_user.id in get_banned_users():
-            return
-        elif USERS_MUST_JOIN:
+        if USERS_MUST_JOIN:
             if not chat:
                 chat = client.get_chat(GROUP)
             try:

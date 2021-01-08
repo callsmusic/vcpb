@@ -30,9 +30,6 @@ LANG = "en"
 # Max video duration allowed for user downloads in minutes
 DUR_LIMIT = 5
 
-# Remove downloaded files after playing
-REMOVE_AFTER_PLAYING = False
-
 # No need to touch the following.
 LOG_GROUP = GROUP if LOG else None
 SUDO_FILTER = filters.user(SUDO_USERS)
