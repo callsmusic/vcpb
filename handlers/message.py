@@ -21,7 +21,7 @@ def message(client, message):
         message.reply_text(_("message_2"))
         return
 
-    message.reply_text(_("message_3"), quote=True)
+    m = message.reply_text(_("message_3"), quote=True)
 
     download(
         (
