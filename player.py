@@ -6,14 +6,13 @@ from helpers import State
 from config import REMOVE_AFTER_PLAYING
 
 q = queue.Queue()
-q_list = []
 
 process = None
 STATE = State.NothingSpecial
 
 
 def worker():
-    global process, q_list, STATE
+    global process, STATE
     while True:
         item = q.get()
         log = None
@@ -28,7 +27,7 @@ def worker():
             process = Popen(["mplayer",
                              item["stream_url"]], stdin=PIPE)
             process.wait()
-        elif q_list[0] == item:
+        else:
             item["on_start"][0](
                 *item["on_start"][1],
                 quote=True
