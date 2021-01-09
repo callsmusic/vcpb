@@ -3,7 +3,6 @@ import threading
 import queue
 from subprocess import Popen, PIPE
 from helpers import State
-from config import REMOVE_AFTER_PLAYING
 
 q = queue.Queue()
 
