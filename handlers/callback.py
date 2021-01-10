@@ -6,7 +6,7 @@ from config import SUDO_USERS
 from strings import get_string as _
 
 
-@Client.on_callback_query
+@Client.on_callback_query()
 def callback(client, query):
     if query.from_user.id not in SUDO_USERS:
         query.answer()
