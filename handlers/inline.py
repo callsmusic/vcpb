@@ -1,7 +1,7 @@
 from pyrogram.handlers import InlineQueryHandler
 from youtubesearchpython import VideosSearch
 from pyrogram.types import InlineQueryResultArticle, InputTextMessageContent
-from pyrogram import errors
+from pyrogram import Client, errors
 from helpers import wrap
 from strings import get_string as _
 

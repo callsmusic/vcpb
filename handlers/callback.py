@@ -79,12 +79,3 @@ def callback(client, query):
         )
         query.message.delete()
         query.answer()
-
-
-__handlers__ = [
-    [
-        CallbackQueryHandler(
-            callback
-        )
-    ]
-]
