@@ -1,5 +1,5 @@
 import subprocess
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.handlers import CallbackQueryHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import SUDO_USERS

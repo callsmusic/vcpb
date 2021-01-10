@@ -1,5 +1,5 @@
 
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler
 from helpers import wrap
 from config import SUDO_FILTER

@@ -1,5 +1,5 @@
 
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler
 import player
 from helpers import State
