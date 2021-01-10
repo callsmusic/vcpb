@@ -5,6 +5,9 @@ from helpers import wrap
 from strings import get_string as _
 
 
+@Client.on_message(
+    filters.command("start", "/") & filters.private
+)
 @wrap
 def start(client, message):
     message.reply_text(
@@ -16,15 +19,6 @@ def start(client, message):
     )
 
 
-__handlers__ = [
-    [
-        MessageHandler(
-            start,
-            filters.command("start", "/")
-            & filters.private
-        )
-    ]
-]
 __help__ = {
     "start": [_("help_start"), False]
 }

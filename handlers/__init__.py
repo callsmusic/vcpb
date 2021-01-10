@@ -15,12 +15,11 @@ a = [
     and not f.endswith("__init__.py")
 ]
 
-all_handlers = []
 all_help = []
 
 for i in a:
     handler = importlib.import_module("handlers." + i)
-    all_handlers += handler.__handlers__
+
     try:
         all_help.append(handler.__help__)
     except:

@@ -28,6 +28,9 @@ def admin():
     return res
 
 
+@Client.on_message(
+    filters.command("help", "/") & filters.private
+)
 @wrap
 def help(client, message):
     message.reply_text("**" + _("help_1") + "**" + "\n" + user() + "\n\n" + "**" + _(

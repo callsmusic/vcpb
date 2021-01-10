@@ -6,6 +6,7 @@ from helpers import wrap
 from strings import get_string as _
 
 
+@Client.on_inline_query
 @wrap
 def search(client, query):
     answers = []

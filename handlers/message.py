@@ -8,6 +8,10 @@ from config import LOG_GROUP
 from strings import get_string as _
 
 
+@app.on_message(
+    filters.text & filters.private & ~ filters.regex(r"^x .+"),
+    group=2
+)
 @wrap
 def message(client, message):
     if message.text.startswith("/"):
@@ -80,16 +84,3 @@ def message(client, message):
             [_("ytdl_4"), ]
         ]
     )
-
-
-__handlers__ = [
-    [
-        MessageHandler(
-            message,
-            filters.text
-            & filters.private
-            & ~ filters.regex(r"^x .+")
-        ),
-        2
-    ]
-]
