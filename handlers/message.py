@@ -8,7 +8,7 @@ from config import LOG_GROUP
 from strings import get_string as _
 
 
-@app.on_message(
+@Client.on_message(
     filters.text & filters.private & ~ filters.regex(r"^x .+"),
     group=2
 )
