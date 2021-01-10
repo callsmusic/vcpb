@@ -1,4 +1,4 @@
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler
 from helpers import is_youtube
 from ytdl import download
@@ -8,6 +8,10 @@ from config import LOG_GROUP
 from strings import get_string as _
 
 
+@Client.on_message(
+    filters.text & filters.private & ~ filters.regex(r"^x .+"),
+    group=2
+)
 @wrap
 def message(client, message):
     if message.text.startswith("/"):
@@ -80,16 +84,3 @@ def message(client, message):
             [_("ytdl_4"), ]
         ]
     )
-
-
-__handlers__ = [
-    [
-        MessageHandler(
-            message,
-            filters.text
-            & filters.private
-            & ~ filters.regex(r"^x .+")
-        ),
-        2
-    ]
-]

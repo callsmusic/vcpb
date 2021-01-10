@@ -1,4 +1,4 @@
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler
 from handlers import all_help
 from helpers import wrap
@@ -28,6 +28,9 @@ def admin():
     return res
 
 
+@Client.on_message(
+    filters.command("help", "/") & filters.private
+)
 @wrap
 def help(client, message):
     message.reply_text("**" + _("help_1") + "**" + "\n" + user() + "\n\n" + "**" + _(

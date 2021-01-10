@@ -1,6 +1,6 @@
 import subprocess
 import re
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import player
@@ -9,6 +9,9 @@ from config import SUDO_USERS
 from strings import get_string as _
 
 
+@Client.on_message(
+    filters.command("volume", "/")
+)
 @wrap
 def volume(client, message):
     if len(message.text.split()) == 2 and message.from_user.id in SUDO_USERS:
@@ -59,14 +62,6 @@ def volume(client, message):
         )
 
 
-__handlers__ = [
-    [
-        MessageHandler(
-            volume,
-            filters.command("volume", "/")
-        )
-    ]
-]
 __help__ = {
     "volume": [_("help_volume"), False]
 }

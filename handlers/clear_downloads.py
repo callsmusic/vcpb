@@ -1,12 +1,15 @@
 
 import os
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler
 import player
 from config import SUDO_FILTER
 from strings import get_string as _
 
 
+@Client.on_message(
+    filters.command("cleardownloads", "/") & SUDO_FILTER
+)
 def clear_downloads(client, message):
     try:
         for file in os.listdir("downloads"):

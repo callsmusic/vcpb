@@ -1,5 +1,5 @@
 
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler
 import player
 from helpers import State
@@ -7,6 +7,9 @@ from config import SUDO_FILTER, LOG_GROUP
 from strings import get_string as _
 
 
+@Client.on_message(
+    filters.command("stream", "/") & SUDO_FILTER
+)
 def stream(client, message):
     None
 
@@ -44,15 +47,6 @@ def stream(client, message):
             )
 
 
-__handlers__ = [
-    [
-        MessageHandler(
-            stream,
-            filters.command("stream", "/")
-            & SUDO_FILTER
-        )
-    ]
-]
 __help__ = {
     "stream": [_("help_stream"), True]
 }

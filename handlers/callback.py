@@ -1,11 +1,12 @@
 import subprocess
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.handlers import CallbackQueryHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import SUDO_USERS
 from strings import get_string as _
 
 
+@Client.on_callback_query()
 def callback(client, query):
     if query.from_user.id not in SUDO_USERS:
         query.answer()
@@ -78,12 +79,3 @@ def callback(client, query):
         )
         query.message.delete()
         query.answer()
-
-
-__handlers__ = [
-    [
-        CallbackQueryHandler(
-            callback
-        )
-    ]
-]
