@@ -179,11 +179,11 @@ These are apt package manager instructions but you can install the required pack
 
 * `start`  - start the bot
 
-* ~~`song`   - check the playing song
+* ~~song   - check the playing song
 
 * `volume` - check the current volume
 
-* ~~`queue`  - check songs in the queue
+* ~~queue  - check songs in the queue
 
 * `pause`  - pause the playing song (Sudo Users)
 
@@ -191,11 +191,11 @@ These are apt package manager instructions but you can install the required pack
 
 * `play` - same as resume (Sudo Users)
 
-* ~~`ban` - ban a user (Sudo Users)
+* ~~ban - ban a user (Sudo Users)
 
-* ~~~`unban` - unban a user (Sudo Users)
+* ~~~unban - unban a user (Sudo Users)
 
-* ~~`bans` - see banned users (Sudo Users)
+* ~~bans - see banned users (Sudo Users)
 
 * `skip` - skip the playing song (Sudo Users) 
 
