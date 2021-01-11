@@ -3,6 +3,8 @@ import os
 from string import Formatter
 from config import LANG
 
+RTL_LANGES = ["ckb", "he"]
+PREFIX = "" if LANG not in RTL_LANGS else "\u200f"
 
 class String:
     def __init__(self):
@@ -11,7 +13,7 @@ class String:
 
     def get_string(self, string):
         try:
-            return self.languages[LANG][string]
+            return "{}{}".format(PREFIX, self.languages[LANG][string])
         except KeyError:
             # a keyerror happened, the english file must have it
             return self.languages["en"][string]
