@@ -3,7 +3,7 @@ import os
 from string import Formatter
 from config import LANG
 
-RTL_LANGES = ["ckb", "he"]
+RTL_LANGS = ["ckb", "he"]
 PREFIX = "" if LANG not in RTL_LANGS else "\u200f"
 
 class String:
