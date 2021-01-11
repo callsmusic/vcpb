@@ -13,8 +13,11 @@ def mistake(client, message):
     if player.is_currently_playing():
         message.reply_text(
             _("song_1").format(
-                player.currently_playing["title"],
-                "<a href=\"{}\">{}</a>".format(
+                "<a href=\"\">{}</a>".format(
+                    player.currently_playing["url"],
+                    player.currently_playing["title"]
+                ),
+                "<a href=\"tg://user?id{}\">{}</a>".format(
                     player.currently_playing["sent_by_id"],
                     player.currently_playing["sent_by_name"]
                 ),
