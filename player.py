@@ -5,15 +5,17 @@ from subprocess import Popen, PIPE
 from helpers import State
 
 q = queue.Queue()
+currently_playing = {}
 
 process = None
 STATE = State.NothingSpecial
 
 
 def worker():
-    global process, STATE
+    global process, STATE, currently_playing
     while True:
         item = q.get()
+        currently_playing = item
         log = None
 
         if "stream_url" in item:
@@ -104,7 +106,7 @@ def stream(stream_url, log):
     return q.qsize()
 
 
-def currently_playing():
+def is_currently_playing():
     return STATE == State.Playing
 
 
