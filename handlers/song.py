@@ -13,7 +13,7 @@ def mistake(client, message):
     if player.is_currently_playing():
         message.reply_text(
             _("song_1").format(
-                "<a href=\"\">{}</a>".format(
+                "<a href=\"{}\">{}</a>".format(
                     player.currently_playing["url"],
                     player.currently_playing["title"]
                 ),
