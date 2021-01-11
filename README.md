@@ -1,7 +1,14 @@
 # Pyrogram bot to automate streaming music in voice chats
 
+## Read this before scrolling down
+* You can't run this on Android using Termux.
+* You can't run this on iOS using iSH.
+* You can't run this on Windows server (aka RDP).
+* You can't run this on Shadow.
+* You can't run this on Heroku.
+
 ## Help
-If you face an error, want to discuss this project or get support for it, join [the discussion group](https://t.me/VoiceChatPyroBot) on Telegram.
+If you face an error, want to discuss this project or get support for it, join [it's group](https://t.me/VoiceChatPyroBot) on Telegram.
 
 ## Requirements
 * A computer (Debian-based Linux VPS recommmended).
