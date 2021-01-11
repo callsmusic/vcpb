@@ -2,7 +2,7 @@
 from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler
 import player
-from helpers import State
+from helpers import wrap, State
 from config import SUDO_FILTER
 from strings import get_string as _
 
@@ -10,6 +10,7 @@ from strings import get_string as _
 @Client.on_message(
     filters.command("pause", "/") & SUDO_FILTER
 )
+@wrap
 def pause(client, message):
     if player.STATE in State.Playing:
         player.STATE = State.Paused
@@ -27,6 +28,7 @@ def pause(client, message):
         | filters.command("play", "/")
     ) & SUDO_FILTER
 )
+@wrap
 def resume(client, message):
     if player.STATE == State.Paused:
         player.STATE = State.Playing
@@ -36,17 +38,10 @@ def resume(client, message):
         message.reply_text(_("pause_5"))
 
 
-__help__ = {
-    "pause": [_("help_pause"), True],
-    "resume": [_("help_resume"), True],
-    "play": [_("help_play"), True],
-    "skip": [_("help_skip"), True]
-}
-
-
 @Client.on_message(
     filters.command("skip", "/") & SUDO_FILTER
 )
+@wrap
 def skip(client, message):
     if player.STATE in (State.Playing, State.Streaming, State.Paused):
         player.STATE = State.Skipped
@@ -54,3 +49,11 @@ def skip(client, message):
         message.reply_text(_("skip_1"))
     else:
         message.reply_text(_("skip_2"))
+
+
+__help__ = {
+    "pause": [_("help_pause"), True],
+    "resume": [_("help_resume"), True],
+    "play": [_("help_play"), True],
+    "skip": [_("help_skip"), True]
+}
