@@ -78,7 +78,7 @@ def worker():
 threading.Thread(target=worker, daemon=True).start()
 
 
-def play(file, on_start, on_end, title, url, sent_by_id, sent_by_name, log, dur, on_skip):
+def play(file, on_start, on_end, title, url, sent_by_id, sent_by_name, log, dur, on_skip) -> int:
     q.put(
         {
             "file": file,
@@ -96,7 +96,7 @@ def play(file, on_start, on_end, title, url, sent_by_id, sent_by_name, log, dur,
     return q.qsize()
 
 
-def stream(stream_url, log):
+def stream(stream_url, log) -> int:
     q.put(
         {
             "stream_url": stream_url,
@@ -106,11 +106,11 @@ def stream(stream_url, log):
     return q.qsize()
 
 
-def is_currently_playing():
+def is_currently_playing() -> bool:
     return STATE in (State.Playing, State.Paused)
 
 
-def abort():
+def abort() -> bool:
     if process:
         process.terminate()
         return True
