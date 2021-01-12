@@ -12,7 +12,7 @@ def user():
     for help in all_help:
         for h in help:
             if not help[h][1]:
-                res += h + ": " + help[h][0] + "\n"
+                res += "/" + h + ": " + help[h][0] + "\n"
 
     return res
 
@@ -23,7 +23,7 @@ def admin():
     for help in all_help:
         for h in help:
             if help[h][1]:
-                res += h + ": " + help[h][0] + "\n"
+                res += "/" + h + ": " + help[h][0] + "\n"
 
     return res
 
@@ -33,7 +33,7 @@ def admin():
 )
 @wrap
 def help(client, message):
-    message.reply_text("**" + _("help_1") + "**" + "\n" + user() + "\n\n" + "**" + _(
+    message.reply_text("**" + _("help_1") + "**" + "\n" + user() + "\n" + "**" + _(
         "help_2") + "**" + "\n" + admin() if message.from_user.id in SUDO_USERS else user())
 
 
