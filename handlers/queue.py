@@ -36,11 +36,11 @@ def queue(client, message):
                 item["url"],
                 item["title"],
             ),
+            item["dur"],
             '<a href="tg://user?id={}">{}</a>'.format(
                 item["sent_by_id"],
                 item["sent_by_name"],
             ),
-            item["dur"],
         ) + "\n"
         count += 1
 
