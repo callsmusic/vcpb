@@ -25,6 +25,10 @@ def clear_queue(client, message):
 @wrap
 def queue(client, message):
     qsize = player.q.qsize()
+
+    if qsize == 0:
+        return
+
     queue_ = player.q.queue
     human_queue = _("queue_1").format(qsize) + "\n"
     count = 1
