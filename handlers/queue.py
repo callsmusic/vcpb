@@ -1,4 +1,3 @@
-
 from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler
 import player
@@ -15,7 +14,7 @@ def clear_queue(client, message):
     try:
         with player.q.mutex:
             player.q.queue.clear()
-        message.reply_text(_("queue_1"))
+        message.reply_text(_("queue_4"))
     except:
         message.reply_text(_("error"))
 
