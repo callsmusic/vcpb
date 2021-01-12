@@ -50,5 +50,5 @@ def queue(client, message):
 
 __help__ = {
     "clearqueue": [_("help_clearqueue"), True],
-    "clearqueue": [_("help_queue"), False]
+    "queue": [_("help_queue"), False]
 }
