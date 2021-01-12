@@ -32,13 +32,13 @@ def queue(client, message):
     for item in queue_:
         human_queue += _("queue_2").format(
             count,
-            '<a href="tg://user?id={}">{}</a>'.format(
-                item["sent_by_id"],
-                item["sent_by_name"],
-            ),
             '<a href="{}">{}</a>'.format(
                 item["url"],
                 item["title"],
+            ),
+            '<a href="tg://user?id={}">{}</a>'.format(
+                item["sent_by_id"],
+                item["sent_by_name"],
             ),
             item["dur"],
         ) + "\n"
