@@ -107,7 +107,7 @@ def stream(stream_url, log):
 
 
 def is_currently_playing():
-    return STATE == State.Playing
+    return STATE in (State.Playing, State.Paused)
 
 
 def abort():
