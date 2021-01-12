@@ -44,8 +44,8 @@ def queue(client, message):
         ) + "\n"
         count += 1
 
-    m = message.reply_text("....", disable_web_page_preview=True)
-    m.edit_text(human_queue)
+    m = message.reply_text("....")
+    m.edit_text(human_queue, disable_web_page_preview=True)
 
 
 __help__ = {
