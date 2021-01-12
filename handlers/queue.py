@@ -41,10 +41,10 @@ def queue(client, message):
                 item["sent_by_name"],
             ),
             item["dur"],
-        )
+        ) + "\n"
         count += 1
 
-    m = message.reply_text("....")
+    m = message.reply_text("....", disable_web_page_preview=True)
     m.edit_text(human_queue)
 
 
