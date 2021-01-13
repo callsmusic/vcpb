@@ -30,6 +30,9 @@ LANG = "en"
 # Max video duration allowed for user downloads in minutes
 DUR_LIMIT = 5
 
+# Set to true if song files should be deleted after playing
+DELETE_AFTER_PLAYING = True
+
 # No need to touch the following.
 LOG_GROUP = GROUP if LOG else None
 SUDO_FILTER = filters.user(SUDO_USERS)
