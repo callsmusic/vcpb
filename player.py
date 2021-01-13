@@ -2,6 +2,7 @@ import os
 import threading
 import queue
 from subprocess import Popen, PIPE
+from config import REMOVE_AFTER_PLAYING
 from helpers import State
 
 q = queue.Queue()
@@ -72,6 +73,8 @@ def worker():
             log.delete()
 
         if q:
+            if REMOVE_AFTER_PLAYING:
+                os.remove(item["file"])
             q.task_done()
 
 
