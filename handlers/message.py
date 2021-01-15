@@ -59,8 +59,8 @@ def message(client, message):
                         None,
                         _("group_1").format(
                             "<a href=\"{}\">{}</a>",
-                            "<a href=\"tg://user?id={}\">{}</a>",
-                            "{}"
+                            "{}",
+                            "<a href=\"tg://user?id={}\">{}</a>"
                         )
                     ]
                 ] if LOG_GROUP else None,
