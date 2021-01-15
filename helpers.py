@@ -69,15 +69,16 @@ def generate_image(
     thumbnail: str, title: str, duration: str, requestor: str
 ) -> str:
     title, duration, requestor = (title if len(title) <= 35 else (title[:35] + "...")), (duration if len(duration) <= 35 else (duration[:35] + "...")), (requestor if len(requestor) <= 35 else (requestor[:35] + "..."))
+    out = thumbnail.split("/")[0] + "/out" + thumbnail.split("/")[1]
     text_ = "\n".join([title, duration, requestor])
     background = Image.open("assets/png/background.png")
-    thumbnail = Image.open("thumb.jpg").resize(background.size)
+    thumbnail = Image.open(thumbnail).resize(background.size)
     text = Image.open("assets/png/text.png")
     thumbnail.paste(background, (0, 0), background)
     thumbnail.paste(text, (0, 0), text)
     font = ImageFont.truetype("assets/ttf/font.ttf", 50)
     image_editable = ImageDraw.Draw(thumbnail)
     image_editable.text((120, 120), text_, (237, 230, 211), font=font)
-    thumbnail.save("out.png", quality=95)
-    return "out.png"
+    thumbnail.save(out, quality=95)
+    return out
 

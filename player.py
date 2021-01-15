@@ -37,7 +37,7 @@ def worker():
             if "log" in item:
                 if item["log"]:
                     args = item["log"][1]
-                    args[1] = args[1].format(
+                    args[2] = args[2].format(
                         item["url"],
                         item["title"],
                         item["sent_by_id"],
