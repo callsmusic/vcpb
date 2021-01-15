@@ -49,7 +49,11 @@ def queue(client, message):
         count += 1
 
     m = message.reply_text("....")
-    m.edit_text(human_queue, disable_web_page_preview=True)
+    
+    try:
+        m.edit_text(human_queue, disable_web_page_preview=True)
+    except:
+        m.edit_text(_("error"))
 
 
 __help__ = {
