@@ -68,9 +68,8 @@ def wrap(func):
 def generate_image(
     thumbnail: str, title: str, duration: str, requestor: str
 ) -> str:
-    title, duration, requestor = (title if len(title) <= 35 else (title[:35] + "...")), (duration if len(duration) <= 35 else (duration[:35] + "...")), (requestor if len(requestor) <= 35 else (requestor[:35] + "..."))
+    title, duration, requestor = (title if len(title) <= 25 else (title[:25] + "...")), (duration if len(duration) <= 25 else (duration[:25] + "...")), (requestor if len(requestor) <= 25 else (requestor[:25] + "..."))
     out = thumbnail.split("/")[0] + "/out" + thumbnail.split("/")[1]
-    text_ = "\n".join([title, duration, requestor])
     background = Image.open("assets/png/background.png")
     thumbnail = Image.open(thumbnail).resize(background.size)
     text = Image.open("assets/png/text.png")
@@ -78,7 +77,8 @@ def generate_image(
     thumbnail.paste(text, (0, 0), text)
     font = ImageFont.truetype("assets/ttf/font.ttf", 50)
     image_editable = ImageDraw.Draw(thumbnail)
-    image_editable.text((120, 120), text_, (237, 230, 211), font=font)
+    image_editable.text((1000, 382), title, (255, 255, 255), font=font)
+    image_editable.text((1000, 538), duration, (255, 255, 255), font=font)
+    image_editable.text((1000, 695), requestor, (255, 255, 255), font=font)
     thumbnail.save(out, quality=95)
     return out
-
