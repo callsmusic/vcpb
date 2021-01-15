@@ -29,7 +29,7 @@ def worker():
             download=False
         )
 
-        if int(info["duration"] / 60) > DUR_LIMIT and item["play_func"][5] not in SUDO_USERS:
+        if int(info["duration"] / 60) > DUR_LIMIT and item["play_func"][1][5] not in SUDO_USERS:
             args = item["on_dur_limit"][1]
             args[0] = args[0].format(DUR_LIMIT)
             item["on_dur_limit"][0](
