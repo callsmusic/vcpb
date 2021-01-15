@@ -74,11 +74,11 @@ pause_4: "Resumed."
 pause_5: "There is nothing paused to resume."
 
 # Group
-group_1: "<b>NOW PLAYING</b>\nTITLE: {0}\nREQUESTED BY: {1}\nDURATION: {2}"
-group_2: "<b>NOW STREAMING</b>\n<pre>{0}</pre>"
+group_1: "<b>🏷 Title:</b> {0}\n<b>⏱ Duration:</b> {1}\n👤 Requested by: {2}"
+group_2: "<b>NOW STREAMING</b>\n<b>🌐 URL:</b> <code>{0}</code>"
 
 # Song
-song_1: "TITLE: {0}\nREQUESTED BY: {1}\nDURATION: {2}"
+song_1: "<b>🏷 Title:</b> {0}\n<b>⏱ Duration:</b> {1}\n👤 Requested by: {2}"
 song_2: "No song is currently playing."
 
 
