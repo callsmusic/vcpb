@@ -4,3 +4,4 @@ youtube_dl
 gTTS
 pyaml
 youtube-search-python
+pillow
