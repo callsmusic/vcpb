@@ -80,5 +80,5 @@ def generate_image(
     image_editable.text((973, 382), title, (255, 255, 255), font=font)
     image_editable.text((973, 538), duration, (255, 255, 255), font=font)
     image_editable.text((973, 695), requestor, (255, 255, 255), font=font)
-    thumbnail.save(out, quality=95)
+    thumbnail.save(out)
     return out
