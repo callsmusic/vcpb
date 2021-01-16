@@ -1,6 +1,7 @@
 import os
 import re
 from pyrogram.errors import exceptions
+from PIL import Image, ImageDraw, ImageFont
 import pickle
 from config import GROUP, USERS_MUST_JOIN
 
@@ -63,3 +64,21 @@ def wrap(func):
                 return
         return func(client, message)
     return wrapper
+
+def generate_image(
+    thumbnail: str, title: str, duration: str, requestor: str
+) -> str:
+    title, duration, requestor = (title if len(title) <= 25 else (title[:25] + "...")), (duration if len(duration) <= 25 else (duration[:25] + "...")), (requestor if len(requestor) <= 25 else (requestor[:25] + "..."))
+    out = thumbnail.split("/")[0] + "/out" + thumbnail.split("/")[1]
+    background = Image.open("assets/png/background.png")
+    thumbnail = Image.open(thumbnail).resize(background.size)
+    text = Image.open("assets/png/text.png")
+    thumbnail.paste(background, (0, 0), background)
+    thumbnail.paste(text, (0, 0), text)
+    font = ImageFont.truetype("assets/ttf/font.ttf", 70)
+    image_editable = ImageDraw.Draw(thumbnail)
+    image_editable.text((973, 382), title, (255, 255, 255), font=font)
+    image_editable.text((973, 538), duration, (255, 255, 255), font=font)
+    image_editable.text((973, 695), requestor, (255, 255, 255), font=font)
+    thumbnail.save(out)
+    return out

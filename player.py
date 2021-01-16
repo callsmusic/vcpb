@@ -37,12 +37,12 @@ def worker():
             if "log" in item:
                 if item["log"]:
                     args = item["log"][1]
-                    args[1] = args[1].format(
+                    args[2] = args[2].format(
                         item["url"],
                         item["title"],
+                        item["dur"],
                         item["sent_by_id"],
-                        item["sent_by_name"],
-                        item["dur"]
+                        item["sent_by_name"]
                     )
                     log = item["log"][0](
                         *args

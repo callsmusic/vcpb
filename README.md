@@ -1,23 +1,26 @@
 # Pyrogram bot to automate streaming music in voice chats
 
 ## Read this before scrolling down
+* #WeWantPyTGCalls #WeWantJSTGCalls #WeWantTGCallsJS
 * You can't run this on Android using Termux.
 * You can't run this on iOS using iSH.
 * You can't run this on Windows server (aka RDP).
-* You can't run this on Shadow.
+* You can't run this on Windows subsystem for Linux (aka WSL).
+* You can't run this on [Shadow](https://shadow.tech).
 * You can't run this on Heroku.
+* You can't run this on Google cloud shell.
 
 ## Help
 If you face an error, want to discuss this project or get support for it, join [it's group](https://t.me/VoiceChatPyroBot) on Telegram.
 
 ## Requirements
-* A computer (Debian-based Linux VPS recommmended).
-* An alt Telegram account.
-* Bot token from [@BotFather](https://t.me/BotFather).
-* API ID & hash from [my.telegram.org](https://my.telegram.org).
-* Python3 & pip3.
+* A computer (Debian-based Linux VPS recommmended)
+* An alt Telegram account
+* Bot token from [@BotFather](https://t.me/BotFather)
+* API ID & hash from [my.telegram.org](https://my.telegram.org)
+* Python3 & pip3
 * Mplayer
-* A software to forward audio to tdesktop
+* A software to forward audio to tdesktop (Linux: pulseaudio, Windows: voicemeeter)
 
 ## Deploying
 
@@ -25,7 +28,7 @@ If you face an error, want to discuss this project or get support for it, join [
 
 #### Cloning
 ```
-    git clone https://github.com/rojserbest/VoiceChatPyroBot.git tgvcbot && cd tgvcbot
+    git clone https://github.com/rojserbest/VoiceChatPyroBot.git vcbot && cd vcbot
 ```
 
 #### Configuring
@@ -40,10 +43,14 @@ Copy `sample_config.py` to `config.py` and make it use your credentials:
 
 `SUDO_USERS` list(int): a list of user ids which can pause, skip and change volume
 
-`LOG_GROUP` int: (optional) a group chat id to send "now playing" messages to in a non-spammy way
+`GROUP` int: the id of the group where your bot plays (not required if both `USERS_MUST_JOIN` and `LOG` are false)
+
+`USERS_MUST_JOIN` bool: if true, only users which are in the group can use the bot
+
+`LOG` bool: if true, now playing messages will be sent to the group
     
 `LANG` str: your bot language, choose an available language code in [strings/](https://github.com/rojserbest/VoiceChatPyroBot/tree/main/strings)
-    
+
 `DUR_LIMIT` int: max video duration in minutes for downloads
 
 #### PIP requirements
@@ -53,7 +60,7 @@ Copy `sample_config.py` to `config.py` and make it use your credentials:
 
 ### Running
 
-⚠️ Warning for Linux users: don't run any command as root (except those which require it), else you'll face bulky pulseaudio problems. You can create a user with `adduser`.
+⚠️ Warning for Linux users: don't run any command as root (except those which require it), else you'll face bulky problems. You can create a user with `adduser music` and add it to sudoers using `sudo usermod -aG sudo music`.
 
 ℹ️ The volume command isn't working on Windows.
 
@@ -81,28 +88,43 @@ These are apt package manager instructions but you can install the required pack
     echo "~/Telegram/Telegram" >~/.xsession
 ```
 
-5. Go back to directory of the clone and load a pulseaudio null sink, by running:
+5. Enable pulseaudio service (you can skip this step if you don't have systemctl):
+```
+    systemctl --user enable pulseaudio
+```
+
+6. Restart the machine:
+```
+    sudo reboot
+```
+
+7. Start pulseaudio (you can skip this step if you did step 5):
+```
+    pulseaudio --start
+```
+
+8. Go back to directory of the clone and load a pulseaudio null sink, by running:
 ```
     bash pa.sh
 ```
 
-6. Make a screen for the bot and attach to it:
+9. Make a screen for the bot and attach to it:
 ```
     screen -S vcbot
 ```
 
-7. Run the bot:
+10. Run the bot:
 ```
    python(3) bot.py
 ```
 
-8. Detattach from the screen by pressing CTRL+A then CTRL+D.
+11. Detattach from the screen by pressing CTRL+A then CTRL+D.
 
-9. Open a remote desktop client and login to your user.
+12. Open a remote desktop client and login to your user.
 
-10. You should see the Telegram GUI, just login, join a voice chat and set `MySink.monitor` as your microphone.
+13. You should see the Telegram GUI, just login, join a voice chat and set `MySink.monitor` as your microphone.
 
-11. Done, you can now start sending commands to your bot and it'll stream in the voice chat.
+14. Done, you can now start sending commands to your bot and it'll stream in the voice chat.
 
 #### On Linux desktop
 
@@ -173,42 +195,33 @@ These are apt package manager instructions but you can install the required pack
 1. Open [YouTube](https://youtube.com) in your browser, and search for a song.
 2. Copy the complete video URL to clipboard and send it to your bot in private.
 
-
 #### Method 2
 
 1. Enable inline for you bot in  [@BotFather](https://t.me/BotFather).
 2. In your bot's private, type @usernameOfYourBot followed by your YouTube search query, and click a result.
 
-
 ## Bot Commands
-#### Inorder to command the bot send the below mentioned command with  **/**  prefix
-
+#### Inorder to command the bot send one of the mentioned commands below with  a **/**  prefix
 
 * `start`  - start the bot
 
-* ~song   - check the playing song~
+* `song`   - check the playing song
 
 * `volume` - check the current volume
 
-* ~queue  - check songs in the queue~
+* `queue`  - check songs in the queue
 
-* `pause`  - pause the playing song (Sudo Users)
+* `pause`  - pause the playing song (sudo users only)
 
-* `resume` - resume the paused song (Sudo Users)
+* `resume` - resume the paused song (sudo users only)
 
-* `play` - same as resume (Sudo Users)
+* `play` - same as resume (sudo users only)
 
-* ~ban - ban a user (Sudo Users)~
+* `skip` - skip the playing song (sudo users only) 
 
-* ~unban - unban a user (Sudo Users)~
+* `stream` - stream a radio (sudo users only)
 
-* ~bans - see banned users (Sudo Users)~
-
-* `skip` - skip the playing song (Sudo Users) 
-
-* `stream` - stream a radio (Sudo Users)
-
-* `cleardownloads` - delete all downloads (Sudo Users)
+* `cleardownloads` - delete all downloads (sudo users only)
 
 ## TODOS
 
