@@ -8,6 +8,7 @@
 * You can't run this on Windows subsystem for Linux (aka WSL).
 * You can't run this on [Shadow](https://shadow.tech).
 * You can't run this on Heroku.
+* You can't run this on Google cloud shell.
 
 ## Help
 If you face an error, want to discuss this project or get support for it, join [it's group](https://t.me/VoiceChatPyroBot) on Telegram.
