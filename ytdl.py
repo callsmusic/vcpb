@@ -84,9 +84,9 @@ def worker():
                     )
 
                 q.task_done()
-            except:
-                item["on_err"][0](*item["on_err"][1])
-                q.task_done()
+        except:
+            item["on_err"][0](*item["on_err"][1])
+            q.task_done()
 
 
 threading.Thread(target=worker, daemon=True).start()
