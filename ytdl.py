@@ -20,69 +20,73 @@ q = queue.Queue()
 
 def worker():
     while True:
-        item = q.get()
+        try:
+            item = q.get()
 
-        file_name = ""
+            file_name = ""
 
-        info = ydl.extract_info(
-            item["video"],
-            download=False
-        )
-
-        if int(info["duration"] / 60) > DUR_LIMIT and item["play_func"][1][5] not in SUDO_USERS:
-            args = item["on_dur_limit"][1]
-            args[0] = args[0].format(DUR_LIMIT)
-            item["on_dur_limit"][0](
-                *args
-            )
-            q.task_done()
-        elif info["is_live"]:
-            item["on_is_live_err"][0](
-                *item["on_is_live_err"][1]
-            )
-            q.task_done()
-        else:
-            file_name = info["id"] + "." + info["ext"]
-
-            args = item["play_func"][1]
-            args[0] = "downloads/" + file_name
-            args[3] = info["title"]
-            args[4] = "https://youtu.be/" + info["id"]
-            args[8] = format_dur(
-                info["duration"]
+            info = ydl.extract_info(
+                item["video"],
+                download=False
             )
 
-            if file_name not in os.listdir("downloads"):
-                item["on_start"][0](
-                    *item["on_start"][1]
+            if int(info["duration"] / 60) > DUR_LIMIT and item["play_func"][1][5] not in SUDO_USERS:
+                args = item["on_dur_limit"][1]
+                args[0] = args[0].format(DUR_LIMIT)
+                item["on_dur_limit"][0](
+                    *args
                 )
-                open("downloads/" + info["id"] + ".png", "wb+").write(requests.get(info["thumbnails"][-1]["url"]).content)
-                ydl.download(
-                    [
-                        item["video"]
-                    ]
+                q.task_done()
+            elif info["is_live"]:
+                item["on_is_live_err"][0](
+                    *item["on_is_live_err"][1]
                 )
-                os.rename(
-                    [
-                        i
-                        for i in os.listdir()
-                        if i.endswith(info["ext"])
-                    ][0],
-                    "downloads/" + file_name
-                )
-            
-            args[7][1][1] = generate_image("downloads/" + info["id"] + ".png", info["title"], args[8], args[6])
-            
-            item["play_func"][0](
-                *args
-            )
+                q.task_done()
+            else:
+                file_name = info["id"] + "." + info["ext"]
 
-            if args[0] == "downloads/" + file_name:
-                item["on_end"][0](
-                    *item["on_end"][1]
+                args = item["play_func"][1]
+                args[0] = "downloads/" + file_name
+                args[3] = info["title"]
+                args[4] = "https://youtu.be/" + info["id"]
+                args[8] = format_dur(
+                    info["duration"]
                 )
 
-            q.task_done()
+                if file_name not in os.listdir("downloads"):
+                    item["on_start"][0](
+                        *item["on_start"][1]
+                    )
+                    open("downloads/" + info["id"] + ".png", "wb+").write(requests.get(info["thumbnails"][-1]["url"]).content)
+                    ydl.download(
+                        [
+                            item["video"]
+                        ]
+                    )
+                    os.rename(
+                        [
+                            i
+                            for i in os.listdir()
+                            if i.endswith(info["ext"])
+                        ][0],
+                        "downloads/" + file_name
+                    )
+
+                args[7][1][1] = generate_image("downloads/" + info["id"] + ".png", info["title"], args[8], args[6])
+
+                item["play_func"][0](
+                    *args
+                )
+
+                if args[0] == "downloads/" + file_name:
+                    item["on_end"][0](
+                        *item["on_end"][1]
+                    )
+
+                q.task_done()
+            except:
+                item["on_err"][0](*item["on_err"][1])
+                q.task_done()
 
 
 threading.Thread(target=worker, daemon=True).start()
