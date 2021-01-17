@@ -42,7 +42,7 @@ def worker():
                     args[2] = args[2].format(
                         item["url"],
                         item["title"],
-                        item["dur"],
+                        item["duration"],
                         item["sent_by_id"],
                         item["sent_by_name"]
                     )
@@ -82,7 +82,7 @@ def worker():
 threading.Thread(target=worker, daemon=True).start()
 
 
-def play(file, on_start, on_end, title, url, sent_by_id, sent_by_name, log, dur, on_skip) -> int:
+def play(file, on_start, on_end, title, url, sent_by_id, sent_by_name, log, duration, on_skip) -> int:
     q.put(
         {
             "file": file,
@@ -93,7 +93,7 @@ def play(file, on_start, on_end, title, url, sent_by_id, sent_by_name, log, dur,
             "sent_by_id": sent_by_id,
             "sent_by_name": sent_by_name,
             "log": log,
-            "dur": dur,
+            "duration": duration,
             "on_skip": on_skip
         }
     )

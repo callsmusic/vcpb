@@ -9,7 +9,7 @@ import requests
 import youtube_dl
 import player
 from config import DUR_LIMIT, SUDO_USERS
-from helpers import format_dur, generate_image
+from helpers import format_duration, generate_image
 
 ydl_opts = {
     "format": "bestaudio/best"
@@ -30,12 +30,12 @@ def worker():
                 download=False
             )
 
-            if int(info["duration"] / 60) > DUR_LIMIT and item["play_func"][1][5] not in SUDO_USERS:
-                if "on_dur_limit" in item:
-                    if item["on_dur_limit"]:
-                        args = item["on_dur_limit"][1]
+            if int(info["duration"] / 60) > DUR_LIMIT and item["play_function"][1][5] not in SUDO_USERS:
+                if "on_duration_limit" in item:
+                    if item["on_duration_limit"]:
+                        args = item["on_duration_limit"][1]
                         args[0] = args[0].format(DUR_LIMIT)
-                        item["on_dur_limit"][0](*args)
+                        item["on_duration_limit"][0](*args)
                 q.task_done()
             elif info["is_live"]:
                 if "on_is_live_err" in item:
@@ -45,11 +45,11 @@ def worker():
             else:
                 file_name = info["id"] + "." + info["ext"]
 
-                args = item["play_func"][1]
+                args = item["play_function"][1]
                 args[0] = "downloads/" + file_name
                 args[3] = info["title"]
                 args[4] = "https://youtu.be/" + info["id"]
-                args[8] = format_dur(info["duration"])
+                args[8] = format_duration(info["duration"])
 
                 if file_name not in os.listdir("downloads"):
                     if "on_start" in item:
@@ -72,34 +72,34 @@ def worker():
 
                 args[7][1][1] = generate_image("downloads/" + info["id"] + ".png", info["title"], args[8], args[6])
 
-                item["play_func"][0](*args)
+                item["play_function"][0](*args)
 
                 if args[0] == "downloads/" + file_name:
-                    if "on_err" in item:
-                        if item["on_err"]:
+                    if "on_end" in item:
+                        if item["on_end"]:
                             item["on_end"][0](*item["on_end"][1])
 
                 q.task_done()
         except:
-            if "on_err" in item:
-                if item["on_err"]:
-                    item["on_err"][0](*item["on_err"][1])
+            if "on_error" in item:
+                if item["on_error"]:
+                    item["on_error"][0](*item["on_error"][1])
             q.task_done()
 
 
 threading.Thread(target=worker, daemon=True).start()
 
 
-def download(on_start, on_end, play_func, on_is_live_err, video, on_err, on_dur_limit):
+def download(on_start, on_end, play_function, on_is_live_err, video, on_error, on_duration_limit):
     q.put(
         {
             "on_start": on_start,
             "on_end": on_end,
-            "play_func": play_func,
+            "play_function": play_function,
             "on_is_live_err": on_is_live_err,
             "video": video,
-            "on_err": on_err,
-            "on_dur_limit": on_dur_limit
+            "on_error": on_error,
+            "on_duration_limit": on_duration_limit
         }
     )
     return q.qsize()
