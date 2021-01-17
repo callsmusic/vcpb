@@ -3,6 +3,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.handlers import MessageHandler
 from helpers import is_youtube
 from ytdl import download
+import requests
 import player
 import db
 from helpers import wrap
@@ -159,3 +160,27 @@ def clear_playlist(client, message):
         message.reply_text(_("playlist_10"))
     else:
         message.reply_text(_("playlist_1"))
+
+
+@Client.on_message(filters.command("playlist", "/") & SUDO_FILTER)
+def clear_playlist(client, message):
+    all_ = db.get_playlist()
+
+    if not all_:
+        message.reply_text(_("playlist_1"))
+        return
+
+    _all = ""
+
+    for i in range(len(all_)):
+        _all += str(i + 1) + ". " + all_[i]["title"] + ": " + all_[i]["url"] + "\n"
+
+    if len(_all) < 4096:
+        message.reply_text(_all, parse_mode=None, disable_web_page_preview=True)
+    else:
+        message.reply_text(
+            "https:/nekobin.com/"
+            + requests.post(
+                "https://nekobin.com/api/documents", data={"content": _all}
+            ).json()["result"]["key"]
+        )
