@@ -47,3 +47,13 @@ def get_playlist():
         return all_
     else:
         return False
+
+
+def remove_all():
+    all_ = get_playlist()
+
+    if not all_:
+        return False
+
+    playlist.delete_many(all_)
+    return True
