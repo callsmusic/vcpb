@@ -75,6 +75,16 @@ def playlist(client, query):
             cp["sent_by_name"],
             cp["duration"],
         ):
+            query.message.edit_reply_markup(
+                InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(_("playlist_6"), "rm_from_playlist"),
+                            InlineKeyboardButton(_("play_4"), "close"),
+                        ],
+                    ]
+                )
+            )
             query.answer(_("playlist_4"))
         else:
             query.answer(_("playlist_5"))
