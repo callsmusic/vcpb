@@ -63,7 +63,7 @@ def message(client, message):
                             "{}",
                             "<a href=\"tg://user?id={}\">{}</a>"
                         ),
-                        "",
+                        "HTML",
                         None,
                         None,
                         True,
