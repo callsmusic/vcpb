@@ -68,12 +68,8 @@ def playlist(client, query):
 
     if query.data.startswith("add_to"):
         if db.add_to_playlist(
-            cp["file"],
             cp["title"],
             cp["url"],
-            cp["sent_by_id"],
-            cp["sent_by_name"],
-            cp["duration"],
         ):
             query.message.edit_reply_markup(
                 InlineKeyboardMarkup(

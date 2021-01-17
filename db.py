@@ -7,7 +7,7 @@ db = client["vcpb"]
 playlist = db["playlist"]
 
 
-def add_to_playlist(file, title, url, sent_by_id, sent_by_name, duration):
+def add_to_playlist(title, url):
     all_ = playlist.find()
 
     for item in all_:
@@ -16,12 +16,8 @@ def add_to_playlist(file, title, url, sent_by_id, sent_by_name, duration):
 
     playlist.insert_one(
         {
-            "file": file,
             "title": title,
             "url": url,
-            "sent_by_id": sent_by_id,
-            "sent_by_name": sent_by_name,
-            "duration": duration,
         }
     )
 
