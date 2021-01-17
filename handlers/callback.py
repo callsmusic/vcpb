@@ -6,14 +6,13 @@ from config import SUDO_USERS
 from strings import get_string as _
 
 
-@Client.on_callback_query()
+@Client.on_callback_query(filters.regex(".+volume"))
 def callback(client, query):
     if query.from_user.id not in SUDO_USERS:
         query.answer()
         return
 
-    if query.data.endswith("volume"):
-        current_volume = int(query.message.text.split()[-1].replace("%", ""))
+    current_volume = int(query.message.text.split()[-1].replace("%", ""))
 
     if query.data == "decrease_volume":
         volume = current_volume - 1
@@ -79,3 +78,8 @@ def callback(client, query):
         )
         query.message.delete()
         query.answer()
+
+@Client.on_callback_query(filters.regex("close"))
+def close(client, query):
+    query.message.delete()
+    query.answer()

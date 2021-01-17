@@ -1,4 +1,5 @@
 from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.handlers import MessageHandler
 from helpers import is_youtube
 from ytdl import download
@@ -61,6 +62,19 @@ def message(client, message):
                             "<a href=\"{}\">{}</a>",
                             "{}",
                             "<a href=\"tg://user?id={}\">{}</a>"
+                        ),
+                        "",
+                        None,
+                        None,
+                        True,
+                        None,
+                        None,
+                        InlineKeyboardMarkup(
+                            [
+                                [
+                                    InlineKeyboardButton(_("message_4"), "close")
+                                ]
+                            ]
                         )
                     ]
                 ] if LOG_GROUP else None,

@@ -44,6 +44,7 @@ ban_8: "Banned users:"
 message_1: "This (link) is not valid."
 message_2: "Send me a video URL, not a playlist."
 message_3: "Download scheduled."
+message_4: "🗑 Close"
 
 # Player
 player_1: "Playing..."
