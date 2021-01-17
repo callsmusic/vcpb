@@ -52,7 +52,9 @@ def worker():
                     if item["on_end"]:
                         item["on_end"][0](*item["on_end"][1], quote=True)
             elif STATE == State.Skipped:
-                item["on_skip"][0](*item["on_skip"][1], quote=True)
+                if "on_skip" in item:
+                    if item["on_skip"]:
+                        item["on_skip"][0](*item["on_skip"][1], quote=True)
 
         process = None
         STATE = State.NothingSpecial
