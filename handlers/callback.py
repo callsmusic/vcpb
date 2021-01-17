@@ -85,7 +85,7 @@ def playlist(client, query):
                     [
                         [
                             InlineKeyboardButton(_("playlist_3"), "add_to_playlist"),
-                            InlineKeyboardButton(_("message_4"), "close"),
+                            InlineKeyboardButton(_("play_4"), "close"),
                         ],
                     ]
                 )

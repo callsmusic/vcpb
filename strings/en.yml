@@ -40,11 +40,11 @@ ban_6: "That didn't work, the user might be not banned or a sudo user."
 ban_7: "No one is banned."
 ban_8: "Banned users:"
 
-# Message
-message_1: "This (link) is not valid."
-message_2: "Send me a video URL, not a playlist."
-message_3: "Download scheduled."
-message_4: "🗑 Close"
+# Play
+play_1: "This (link) is not valid."
+play_2: "Send me a video URL, not a playlist."
+play_3: "Download scheduled."
+play_4: "🗑 Close"
 
 # Player
 player_1: "Playing..."

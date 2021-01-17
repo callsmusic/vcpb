@@ -1,9 +1,9 @@
 start_1: "Ciao, mandami un link di YouTube per ascoltarlo."
 
 
-message_1: "Questo (link) non è valido."
-message_2: "Mandami l'URL di un video, non di una playlist."
-message_3: "Download programmato."
+play_1: "Questo (link) non è valido."
+play_2: "Mandami l'URL di un video, non di una playlist."
+play_3: "Download programmato."
 ytdl_3: "Non puoi scaricare le live."
 ytdl_1: "Scaricando..."
 ytdl_2: "Scaricato e programmato per la posizione {0}."
