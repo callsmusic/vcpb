@@ -43,6 +43,8 @@ Copy `sample_config.py` to `config.py` and make it use your credentials:
 
 `SUDO_USERS` list(int): a list of user ids which can pause, skip and change volume
 
+`MONGO_DB_URI` str: your MongoDB URI (you can get one for free in their [official website](https://mongodb.com/), sign up, create a cluster and a database named "vcpb")
+
 `GROUP` int: the id of the group where your bot plays (not required if both `USERS_MUST_JOIN` and `LOG` are false)
 
 `USERS_MUST_JOIN` bool: if true, only users which are in the group can use the bot
@@ -222,6 +224,12 @@ These are apt package manager instructions but you can install the required pack
 * `stream` - stream a radio (sudo users only)
 
 * `cleardownloads` - delete all downloads (sudo users only)
+
+* `playlist` - see the items in the playlist (sudo users only)
+
+* `clear_playlist` - clear the items in the playlist (sudo users only)
+
+* `play_playlist` - play the items in the playlist (sudo users only)
 
 ## TODOS
 
