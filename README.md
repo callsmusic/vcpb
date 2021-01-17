@@ -43,7 +43,7 @@ Copy `sample_config.py` to `config.py` and make it use your credentials:
 
 `SUDO_USERS` list(int): a list of user ids which can pause, skip and change volume
 
-`MONGO_DB_URI` str: your MongoDB URL (you can get one for free in their [official website](https://mongodb.com/), sign up, create a cluster and a database named "vcpb")
+`MONGO_DB_URI` str: your MongoDB URI (you can get one for free in their [official website](https://mongodb.com/), sign up, create a cluster and a database named "vcpb")
 
 `GROUP` int: the id of the group where your bot plays (not required if both `USERS_MUST_JOIN` and `LOG` are false)
 
