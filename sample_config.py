@@ -8,6 +8,9 @@ API_HASH = "ab1c23def45fg67890h123i45678j9kl"
 # Get this from @Botfather
 TOKEN = "1234567890:ABCdEFgHij1KlMNop_QrStuVWxyzuA-EmXI"
 
+# Your mongodb uri
+MONGO_DB_URI = ""
+
 # The IDs of the users which can stream, skip, pause and change volume
 SUDO_USERS = [
     383407735,

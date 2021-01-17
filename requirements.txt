@@ -5,3 +5,5 @@ gTTS
 pyaml
 youtube-search-python
 pillow
+pymongo
+dnspython

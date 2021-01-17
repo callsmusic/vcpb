@@ -5,23 +5,20 @@ from helpers import wrap
 from strings import get_string as _
 
 
-@Client.on_message(
-    filters.command("song", "/")
-)
+@Client.on_message(filters.command("song", "/"))
 @wrap
 def mistake(client, message):
     if player.is_currently_playing():
         message.reply_text(
             _("song_1").format(
-                "<a href=\"{}\">{}</a>".format(
-                    player.currently_playing["url"],
-                    player.currently_playing["title"]
+                '<a href="{}">{}</a>'.format(
+                    player.currently_playing["url"], player.currently_playing["title"]
                 ),
-                player.currently_playing["dur"],
-                "<a href=\"tg://user?id{}\">{}</a>".format(
+                player.currently_playing["duration"],
+                '<a href="tg://user?id{}">{}</a>'.format(
                     player.currently_playing["sent_by_id"],
-                    player.currently_playing["sent_by_name"]
-                )
+                    player.currently_playing["sent_by_name"],
+                ),
             )
         )
     else:

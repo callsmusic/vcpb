@@ -50,6 +50,12 @@ message_4: "🗑 Close"
 player_1: "Playing..."
 player_2: "Finished playing."
 
+# Playlist
+playlist_1: "There are no items in the playlist."
+playlist_2: "Starting to play the playlist..."
+playlist_3: "➕ Add to playlist"
+playlist_4: "Added to playlist."
+playlist_5: "This item is already in playlist."
 
 # Stream
 stream_1: "Give me a stream URL."
