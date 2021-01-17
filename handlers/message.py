@@ -56,7 +56,14 @@ def message(client, message):
                         None,
                         None,
                         InlineKeyboardMarkup(
-                            [[InlineKeyboardButton(_("message_4"), "close")]]
+                            [
+                                [
+                                    InlineKeyboardButton(
+                                        _("playlist_3"), "add_to_playlist"
+                                    ),
+                                    InlineKeyboardButton(_("message_4"), "close"),
+                                ],
+                            ]
                         ),
                     ],
                 ]
