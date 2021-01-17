@@ -40,16 +40,27 @@ ban_6: "That didn't work, the user might be not banned or a sudo user."
 ban_7: "No one is banned."
 ban_8: "Banned users:"
 
-# Message
-message_1: "This (link) is not valid."
-message_2: "Send me a video URL, not a playlist."
-message_3: "Download scheduled."
-message_4: "🗑 Close"
+# Play
+play_1: "This (link) is not valid."
+play_2: "Send me a video URL, not a playlist."
+play_3: "Download scheduled."
+play_4: "🗑 Close"
 
 # Player
 player_1: "Playing..."
 player_2: "Finished playing."
 
+# Playlist
+playlist_1: "There are no items in the playlist."
+playlist_2: "Starting to play the playlist..."
+playlist_3: "➕ Add to playlist"
+playlist_4: "Added to playlist."
+playlist_5: "This item is already in playlist."
+playlist_6: "➖ Remove from playlist"
+playlist_7: "Removed from playlist."
+playlist_8: "This item isn't in the playlist."
+playlist_9: "Nothing should be playing before playing the playlist."
+playlist_10: "Playlist cleared."
 
 # Stream
 stream_1: "Give me a stream URL."

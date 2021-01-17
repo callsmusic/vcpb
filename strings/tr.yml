@@ -1,9 +1,9 @@
 start_1: "Merhaba, bana oynatmam için YouTube linki gönder!"
 
 
-message_1: "Bu link geçersiz."
-message_2: "Bana sadece video gönder!"
-message_3: "İndirme işlemi sıraya alındı."
+play_1: "Bu link geçersiz."
+play_2: "Bana sadece video gönder!"
+play_3: "İndirme işlemi sıraya alındı."
 ytdl_3: "Canlı videoları indiremezsiniz!"
 ytdl_1: "İndiriliyor..."
 ytdl_2: "Video indirildi ve {0}. sıraya alındı."

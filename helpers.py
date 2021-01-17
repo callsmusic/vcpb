@@ -24,7 +24,7 @@ def is_youtube(url):
     return match
 
 
-def format_dur(seconds: int) -> str:
+def format_duration(seconds: int) -> str:
     """Inputs time in seconds, to get beautified time,
     as string"""
     result = ""

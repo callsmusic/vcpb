@@ -22,17 +22,13 @@ def worker():
             STATE = State.Streaming
             if "log" in item:
                 if item["log"]:
-                    log = item["log"][0](
-                        *item["log"][1]
-                    )
-            process = Popen(["mplayer",
-                             item["stream_url"]], stdin=PIPE)
+                    log = item["log"][0](*item["log"][1])
+            process = Popen(["mplayer", item["stream_url"]], stdin=PIPE)
             process.wait()
         else:
-            item["on_start"][0](
-                *item["on_start"][1],
-                quote=True
-            )
+            if "on_start" in item:
+                if item["on_start"]:
+                    item["on_start"][0](*item["on_start"][1], quote=True)
 
             if "log" in item:
                 if item["log"]:
@@ -40,30 +36,25 @@ def worker():
                     args[2] = args[2].format(
                         item["url"],
                         item["title"],
-                        item["dur"],
+                        item["duration"],
                         item["sent_by_id"],
-                        item["sent_by_name"]
+                        item["sent_by_name"],
                     )
-                    log = item["log"][0](
-                        *args
-                    )
+                    log = item["log"][0](*args)
 
             STATE = State.Playing
 
-            process = Popen(
-                ["mplayer", item["file"]], stdin=PIPE)
+            process = Popen(["mplayer", item["file"]], stdin=PIPE)
             process.wait()
 
             if STATE == State.Playing:
-                item["on_end"][0](
-                    *item["on_end"][1],
-                    quote=True
-                )
+                if "on_end" in item:
+                    if item["on_end"]:
+                        item["on_end"][0](*item["on_end"][1], quote=True)
             elif STATE == State.Skipped:
-                item["on_skip"][0](
-                    *item["on_skip"][1],
-                    quote=True
-                )
+                if "on_skip" in item:
+                    if item["on_skip"]:
+                        item["on_skip"][0](*item["on_skip"][1], quote=True)
 
         process = None
         STATE = State.NothingSpecial
@@ -78,7 +69,9 @@ def worker():
 threading.Thread(target=worker, daemon=True).start()
 
 
-def play(file, on_start, on_end, title, url, sent_by_id, sent_by_name, log, dur, on_skip) -> int:
+def play(
+    file, on_start, on_end, title, url, sent_by_id, sent_by_name, log, duration, on_skip
+) -> int:
     q.put(
         {
             "file": file,
@@ -89,20 +82,15 @@ def play(file, on_start, on_end, title, url, sent_by_id, sent_by_name, log, dur,
             "sent_by_id": sent_by_id,
             "sent_by_name": sent_by_name,
             "log": log,
-            "dur": dur,
-            "on_skip": on_skip
+            "duration": duration,
+            "on_skip": on_skip,
         }
     )
     return q.qsize()
 
 
 def stream(stream_url, log) -> int:
-    q.put(
-        {
-            "stream_url": stream_url,
-            "log": log
-        }
-    )
+    q.put({"stream_url": stream_url, "log": log})
     return q.qsize()
 
 

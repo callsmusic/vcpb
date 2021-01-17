@@ -6,9 +6,7 @@ from config import SUDO_FILTER
 from strings import get_string as _
 
 
-@Client.on_message(
-    filters.command("clearqueue", "/") & SUDO_FILTER
-)
+@Client.on_message(filters.command("clearqueue", "/") & SUDO_FILTER)
 @wrap
 def clear_queue(client, message):
     try:
@@ -19,9 +17,7 @@ def clear_queue(client, message):
         message.reply_text(_("error"))
 
 
-@Client.on_message(
-    filters.command("queue", "/")
-)
+@Client.on_message(filters.command("queue", "/"))
 @wrap
 def queue(client, message):
     qsize = player.q.qsize()
@@ -34,22 +30,25 @@ def queue(client, message):
     count = 1
 
     for item in queue_:
-        human_queue += _("queue_2").format(
-            count,
-            '<a href="{}">{}</a>'.format(
-                item["url"],
-                item["title"],
-            ),
-            item["dur"],
-            '<a href="tg://user?id={}">{}</a>'.format(
-                item["sent_by_id"],
-                item["sent_by_name"],
-            ),
-        ) + "\n"
+        human_queue += (
+            _("queue_2").format(
+                count,
+                '<a href="{}">{}</a>'.format(
+                    item["url"],
+                    item["title"],
+                ),
+                item["duration"],
+                '<a href="tg://user?id={}">{}</a>'.format(
+                    item["sent_by_id"],
+                    item["sent_by_name"],
+                ),
+            )
+            + "\n"
+        )
         count += 1
 
     m = message.reply_text("....")
-    
+
     try:
         m.edit_text(human_queue, disable_web_page_preview=True)
     except:
@@ -58,5 +57,5 @@ def queue(client, message):
 
 __help__ = {
     "clearqueue": [_("help_clearqueue"), True],
-    "queue": [_("help_queue"), False]
+    "queue": [_("help_queue"), False],
 }
