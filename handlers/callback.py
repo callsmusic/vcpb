@@ -84,8 +84,8 @@ def playlist(client, query):
             query.answer(_("playlist_5"))
     elif query.data.startswith("rm_from"):
         if db.remove_from_playlist(cp["url"]):
-            query.message.edit(
-                reply_markup=InlineKeyboardMarkup(
+            query.message.edit_reply_markup(
+                InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(_("playlist_3"), "add_to_playlist"),
