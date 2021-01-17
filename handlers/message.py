@@ -130,7 +130,7 @@ def play_playlist(client, message):
                                     [
                                         [
                                             InlineKeyboardButton(
-                                                _("playlist_5"), "rm_from_playlist"
+                                                _("playlist_6"), "rm_from_playlist"
                                             ),
                                             InlineKeyboardButton(
                                                 _("message_4"), "close"

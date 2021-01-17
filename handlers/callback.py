@@ -94,9 +94,9 @@ def playlist(client, query):
                     ]
                 )
             )
-            query.answer("Removed from playlist")
+            query.answer(_("playlist_7"))
         else:
-            query.answer("This item isn't in the playlist")
+            query.answer(_("playlist_8"))
 
 
 @Client.on_callback_query(filters.regex("close"))
