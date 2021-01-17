@@ -56,6 +56,7 @@ playlist_2: "Starting to play the playlist..."
 playlist_3: "➕ Add to playlist"
 playlist_4: "Added to playlist."
 playlist_5: "This item is already in playlist."
+playlist_5: "➖ Remove from playlist"
 
 # Stream
 stream_1: "Give me a stream URL."

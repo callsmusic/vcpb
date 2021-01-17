@@ -69,17 +69,34 @@ def callback(client, query):
 @Client.on_callback_query(filters.regex(".+playlist"))
 def playlist(client, query):
     cp = player.currently_playing
-    if db.add_to_playlist(
-        cp["file"],
-        cp["title"],
-        cp["url"],
-        cp["sent_by_id"],
-        cp["sent_by_name"],
-        cp["duration"],
-    ):
-        query.answer(_("playlist_4"))
-    else:
-        query.answer(_("playlist_5"))
+
+    if query.data.startswith("add_to"):
+        if db.add_to_playlist(
+            cp["file"],
+            cp["title"],
+            cp["url"],
+            cp["sent_by_id"],
+            cp["sent_by_name"],
+            cp["duration"],
+        ):
+            query.answer(_("playlist_4"))
+        else:
+            query.answer(_("playlist_5"))
+    elif query.data.startswith("rm_from"):
+        if db.remove_from_playlist(cp["url"]):
+            query.message.edit(
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(_("playlist_3"), "add_to_playlist"),
+                            InlineKeyboardButton(_("message_4"), "close"),
+                        ],
+                    ]
+                )
+            )
+            query.answer("Removed from playlist")
+        else:
+            query.answer("This item isn't in the playlist")
 
 
 @Client.on_callback_query(filters.regex("close"))
