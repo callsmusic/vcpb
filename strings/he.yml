@@ -39,6 +39,7 @@ ban_8: "רשימת המשתמשים החסומים:"
 message_1: "הקישור לא חוקי."
 message_2: "פלייליסטים לא נתמכים."
 message_3: "ההורדה מתוזמנת."
+message_4: "🗑 סגור"
 # Player
 player_1: "מנגן..."
 player_2: "ניגון השיר הסתיים."
