@@ -7,3 +7,4 @@ youtube-search-python
 pillow
 pymongo
 dnspython
+requests
