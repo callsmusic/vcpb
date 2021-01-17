@@ -163,7 +163,7 @@ def clear_playlist(client, message):
 
 
 @Client.on_message(filters.command("playlist", "/") & SUDO_FILTER)
-def clear_playlist(client, message):
+def playlist(client, message):
     all_ = db.get_playlist()
 
     if not all_:
@@ -179,7 +179,7 @@ def clear_playlist(client, message):
         message.reply_text(_all, parse_mode=None, disable_web_page_preview=True)
     else:
         message.reply_text(
-            "https:/nekobin.com/"
+            "https://nekobin.com/"
             + requests.post(
                 "https://nekobin.com/api/documents", data={"content": _all}
             ).json()["result"]["key"]
