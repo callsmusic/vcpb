@@ -29,10 +29,12 @@ def worker():
                              item["stream_url"]], stdin=PIPE)
             process.wait()
         else:
-            item["on_start"][0](
-                *item["on_start"][1],
-                quote=True
-            )
+            if "on_start" in item:
+                if item["on_start"]:
+                    item["on_start"][0](
+                        *item["on_start"][1],
+                        quote=True
+                    )
 
             if "log" in item:
                 if item["log"]:
@@ -55,10 +57,12 @@ def worker():
             process.wait()
 
             if STATE == State.Playing:
-                item["on_end"][0](
-                    *item["on_end"][1],
-                    quote=True
-                )
+                if "on_end" in item:
+                    if item["on_end"]:
+                        item["on_end"][0](
+                            *item["on_end"][1],
+                            quote=True
+                        )
             elif STATE == State.Skipped:
                 item["on_skip"][0](
                     *item["on_skip"][1],

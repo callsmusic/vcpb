@@ -31,16 +31,16 @@ def worker():
             )
 
             if int(info["duration"] / 60) > DUR_LIMIT and item["play_func"][1][5] not in SUDO_USERS:
-                args = item["on_dur_limit"][1]
-                args[0] = args[0].format(DUR_LIMIT)
-                item["on_dur_limit"][0](
-                    *args
-                )
+                if "on_dur_limit" in item:
+                    if item["on_dur_limit"]:
+                        args = item["on_dur_limit"][1]
+                        args[0] = args[0].format(DUR_LIMIT)
+                        item["on_dur_limit"][0](*args)
                 q.task_done()
             elif info["is_live"]:
-                item["on_is_live_err"][0](
-                    *item["on_is_live_err"][1]
-                )
+                if "on_is_live_err" in item:
+                    if item["on_is_live_err"]:
+                        item["on_is_live_err"][0](*item["on_is_live_err"][1])
                 q.task_done()
             else:
                 file_name = info["id"] + "." + info["ext"]
@@ -49,15 +49,13 @@ def worker():
                 args[0] = "downloads/" + file_name
                 args[3] = info["title"]
                 args[4] = "https://youtu.be/" + info["id"]
-                args[8] = format_dur(
-                    info["duration"]
-                )
+                args[8] = format_dur(info["duration"])
 
                 if file_name not in os.listdir("downloads"):
-                    item["on_start"][0](
-                        *item["on_start"][1]
-                    )
-                    open("downloads/" + info["id"] + ".png", "wb+").write(requests.get(info["thumbnails"][-1]["url"]).content)
+                    if "on_start" in item:
+                        if item["on_start"]:
+                            item["on_start"][0](*item["on_start"][1])
+                            open("downloads/" + info["id"] + ".png", "wb+").write(requests.get(info["thumbnails"][-1]["url"]).content)
                     ydl.download(
                         [
                             item["video"]
@@ -74,18 +72,18 @@ def worker():
 
                 args[7][1][1] = generate_image("downloads/" + info["id"] + ".png", info["title"], args[8], args[6])
 
-                item["play_func"][0](
-                    *args
-                )
+                item["play_func"][0](*args)
 
                 if args[0] == "downloads/" + file_name:
-                    item["on_end"][0](
-                        *item["on_end"][1]
-                    )
+                    if "on_err" in item:
+                        if item["on_err"]:
+                            item["on_end"][0](*item["on_end"][1])
 
                 q.task_done()
         except:
-            item["on_err"][0](*item["on_err"][1])
+            if "on_err" in item:
+                if item["on_err"]:
+                    item["on_err"][0](*item["on_err"][1])
             q.task_done()
 
 
