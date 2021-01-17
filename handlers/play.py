@@ -153,7 +153,7 @@ def play_playlist(client, message):
             )
 
 
-@Client.on_message(filters.command("clear_playlist") & SUDO_FILTER)
+@Client.on_message(filters.command("clear_playlist", "/") & SUDO_FILTER)
 def clear_playlist(client, message):
     if db.remove_all():
         message.reply_text(_("playlist_10"))
