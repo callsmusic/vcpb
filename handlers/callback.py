@@ -4,16 +4,12 @@ from pyrogram.handlers import CallbackQueryHandler
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import db
 import player
-from config import SUDO_USERS
+from config import SUDO_FILTER
 from strings import get_string as _
 
 
-@Client.on_callback_query(filters.regex(".+volume"))
+@Client.on_callback_query(filters.regex(".+volume") & SUDO_FILTER)
 def callback(client, query):
-    if query.from_user.id not in SUDO_USERS:
-        query.answer()
-        return
-
     current_volume = int(query.message.text.split()[-1].replace("%", ""))
 
     if query.data == "decrease_volume":
@@ -66,7 +62,7 @@ def callback(client, query):
         query.answer()
 
 
-@Client.on_callback_query(filters.regex(".+playlist"))
+@Client.on_callback_query(filters.regex(".+playlist") & SUDO_FILTER)
 def playlist(client, query):
     cp = player.currently_playing
 
@@ -99,7 +95,7 @@ def playlist(client, query):
             query.answer(_("playlist_8"))
 
 
-@Client.on_callback_query(filters.regex("close"))
+@Client.on_callback_query(filters.regex("close") & SUDO_FILTER)
 def close(client, query):
     query.message.delete()
     query.answer()
