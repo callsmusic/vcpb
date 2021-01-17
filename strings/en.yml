@@ -59,6 +59,7 @@ playlist_5: "This item is already in playlist."
 playlist_6: "➖ Remove from playlist"
 playlist_7: "Removed from playlist"
 playlist_8: "This item isn't in the playlist"
+playlist_9: "Nothing should be playing before playing the playlist"
 
 # Stream
 stream_1: "Give me a stream URL."

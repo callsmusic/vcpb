@@ -92,6 +92,8 @@ def play_playlist(client, message):
 
     if not playlist:
         message.reply_text(_("playlist_1"))
+    elif player.is_currently_playing():
+        message.reply_text(_("playlist_9"))
     else:
         message.reply_text(_("playlist_2"))
 
