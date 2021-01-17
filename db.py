@@ -56,6 +56,6 @@ def remove_all():
         return False
 
     for item in all_:
-        playlist.delete(item["url"])
+        playlist.delete_one(item["url"])
 
     return True
