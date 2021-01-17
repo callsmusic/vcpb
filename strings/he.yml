@@ -36,9 +36,10 @@ ban_6: "המשתמש חייב להיות לא sudo וגם לא להיות חסו
 ban_7: "אף אחד לא נחסם."
 ban_8: "רשימת המשתמשים החסומים:"
 # Message
-play_1: "הקישור לא חוקי."
-play_2: "פלייליסטים לא נתמכים."
-play_3: "ההורדה מתוזמנת."
+message_1: "הקישור לא חוקי."
+message_2: "פלייליסטים לא נתמכים."
+message_3: "ההורדה מתוזמנת."
+message_4: "🗑 סגור"
 # Player
 player_1: "מנגן..."
 player_2: "ניגון השיר הסתיים."
