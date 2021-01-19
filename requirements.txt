@@ -1,0 +1,10 @@
+pyrogram
+tgcrypto
+youtube_dl
+gTTS
+pyaml
+youtube-search-python
+pillow
+pymongo
+dnspython
+requests

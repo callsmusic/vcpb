@@ -1,0 +1,63 @@
+start_1: "Ciao, mandami un link di YouTube per ascoltarlo."
+
+
+play_1: "Questo (link) non è valido."
+play_2: "Mandami l'URL di un video, non di una playlist."
+play_3: "Download programmato."
+ytdl_3: "Non puoi scaricare le live."
+ytdl_1: "Scaricando..."
+ytdl_2: "Scaricato e programmato per la posizione {0}."
+player_1: "Riproucendo..."
+player_2: "Riproduzione terminata."
+
+
+stream_1: "Mandami l'URL di uno stream."
+stream_2: "Mi hai mandato più di un arg."
+stream_3: "Non posso riprodurre lo stream finché la musica va."
+stream_4: "Streaming..."
+
+
+tts_1: "Mandami del testo da pronunciare."
+tts_2: "Parlando..."
+tts_3: "Pronunciato."
+
+
+skip_1: "Saltato."
+skip_2: "Non c'è niente in riproduzione da poter saltare."
+skip_3: "Questa canzone è stata saltata da un admin"
+
+
+pause_1: "In pausa."
+pause_2: "Non si può mettere in pausa perché è già in pausa."
+pause_3: "Non c'è niente in riproduzione da poter mettere in pausa."
+
+pause_4: "In riproduzione."
+pause_5: "Non c'è niente in pausa da riprodurre."
+
+
+group_2: "<b>IN RIPRODUZIONE ORA</b>\n
+<pre>{0}</pre>"
+group_1: "<b>IN RIPRODUZIONE</b>\nTITOLO: {0}\nRICHIESTO DA: {1}\nDURATA: {2}"
+
+
+song_1: "TITOLO: {0}\nRICHIESTO DA: {1}\nDURATA: {2}"
+song_2: "Nessuna canzone sta venendo riprodotta."
+
+
+n4u: "Questo non è per te."
+
+
+mistake: "Credo che questo sia un errore."
+error: "C'è stato un errore."
+
+
+volume_1: "Il volume attuale è {0}"
+volume_2: "Volume impostato a {0}"
+
+
+cleardownloads: "Rimossi tutti i file dalla cartella dei download."
+
+
+
+
+ytdl_4: "Non puoi scaricare file più lunghi di {0} minuti."
