@@ -63,7 +63,7 @@ def worker():
                     )
 
                 args[7][1][1] = generate_image(
-                    "downloads/" + info["id"] + ".png", info["title"], args[8], args[6]
+                    "downloads/" + info["id"] + ".png", info["title"], args[6]
                 )
 
                 item["play_function"][0](*args)
