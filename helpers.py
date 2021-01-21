@@ -68,17 +68,16 @@ def wrap(func):
 def generate_image(
     thumbnail: str, title: str, duration: str, requestor: str
 ) -> str:
-    title, duration, requestor = (title if len(title) <= 20 else (title[:20] + "...")), (duration if len(duration) <= 20 else (duration[:20] + "...")), (requestor if len(requestor) <= 20 else (requestor[:20] + "..."))
+    title, duration, requestor = (title if len(title) <= 15 else (title[:15] + "...")), (duration if len(duration) <= 15 else (duration[:15] + "...")), (requestor if len(requestor) <= 15 else (requestor[:15] + "..."))
     out = thumbnail.split("/")[0] + "/out" + thumbnail.split("/")[1]
     background = Image.open("assets/png/background.png")
     thumbnail = Image.open(thumbnail).resize(background.size)
     text = Image.open("assets/png/text.png")
     thumbnail.paste(background, (0, 0), background)
     thumbnail.paste(text, (0, 0), text)
-    font = ImageFont.truetype("assets/ttf/font.ttf", 80)
+    font = ImageFont.truetype("assets/ttf/font.ttf", 100)
     image_editable = ImageDraw.Draw(thumbnail)
-    image_editable.text((673, 327), title, (255, 255, 255), font=font)
-    image_editable.text((673, 461), duration, (255, 255, 255), font=font)
-    image_editable.text((673, 595), requestor, (255, 255, 255), font=font)
+    image_editable.text((66, 303), title, (255, 255, 255), font=font)
+    image_editable.text((231, 425), requestor, (255, 255, 255), font=font)
     thumbnail.save(out)
     return out
