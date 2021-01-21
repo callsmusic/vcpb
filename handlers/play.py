@@ -85,7 +85,7 @@ def message(client, message):
     )
 
 
-@Client.on_message(filters.command("play_playlist", "/") & SUDO_FILTER)
+@Client.on_message(filters.command("play_playlist", "/") & SUDO_FILTER & bool(LOG_GROUP != None))
 @wrap
 def play_playlist(client, message):
     playlist = db.get_playlist()
@@ -152,7 +152,7 @@ def play_playlist(client, message):
             )
 
 
-@Client.on_message(filters.command("clear_playlist", "/") & SUDO_FILTER)
+@Client.on_message(filters.command("clear_playlist", "/") & SUDO_FILTER & bool(LOG_GROUP != None))
 def clear_playlist(client, message):
     if db.remove_all():
         message.reply_text(_("playlist_10"))
@@ -160,7 +160,7 @@ def clear_playlist(client, message):
         message.reply_text(_("playlist_1"))
 
 
-@Client.on_message(filters.command("playlist", "/") & SUDO_FILTER)
+@Client.on_message(filters.command("playlist", "/") & SUDO_FILTER & bool(LOG_GROUP != None))
 def playlist(client, message):
     all_ = db.get_playlist()
 
