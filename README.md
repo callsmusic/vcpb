@@ -33,7 +33,7 @@ If you face an error, want to discuss this project or get support for it, join [
 
 #### Configuring
 
-Copy `sample_config.py` to `config.py` and make it use your credentials:
+Copy `config/sample_config.py` to `config/config.py` and make it use your credentials (you can also give those as an arg when running bot.py):
 
 `API_ID` int: your api id from [my.telegram.org](https://my.telegram.org)
 

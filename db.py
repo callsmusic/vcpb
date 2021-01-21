@@ -2,9 +2,12 @@ import pymongo
 from config import MONGO_DB_URI
 
 
-client = pymongo.MongoClient(MONGO_DB_URI)
-db = client["vcpb"]
-playlist = db["playlist"]
+try:
+    client = pymongo.MongoClient(MONGO_DB_URI)
+    db = client["vcpb"]
+    playlist = db["playlist"]
+except:
+    pass
 
 
 def add_to_playlist(title, url):
