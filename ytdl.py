@@ -53,18 +53,20 @@ def worker():
                     if "on_start" in item:
                         if item["on_start"]:
                             item["on_start"][0](*item["on_start"][1])
-                    open("downloads/" + info["id"] + ".png", "wb+").write(
-                        requests.get(info["thumbnails"][-1]["url"]).content
-                    )
+                    if args[7]:
+                        open("downloads/" + info["id"] + ".png", "wb+").write(
+                            requests.get(info["thumbnails"][-1]["url"]).content
+                        )
                     ydl.download([item["video"]])
                     os.rename(
                         [i for i in os.listdir() if i.endswith(info["ext"])][0],
                         "downloads/" + file_name,
                     )
-
-                args[7][1][1] = generate_image(
-                    "downloads/" + info["id"] + ".png", info["title"], args[6]
-                )
+                    
+                if args[7]:
+                    args[7][1][1] = generate_image(
+                        "downloads/" + info["id"] + ".png", info["title"], args[6]
+                    )
 
                 item["play_function"][0](*args)
 
