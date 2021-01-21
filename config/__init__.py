@@ -57,6 +57,7 @@ except ImportError:
     parser.add_argument(
         "--dur-limit",
         help="Video download duration limit (in minutes)",
+        type=int,
         required=True,
     )
     args = parser.parse_args()
