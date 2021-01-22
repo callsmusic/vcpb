@@ -11,30 +11,23 @@ except:
 
 
 def add_to_playlist(title, url):
-    all_ = playlist.find()
-
-    for item in all_:
-        if item["url"] == url:
-            return False
-
+    all_ = playlist.find_one({'url': url})
+    if all_:
+        return False
     playlist.insert_one(
         {
             "title": title,
             "url": url,
         }
     )
-
     return True
 
 
 def remove_from_playlist(url):
-    all_ = playlist.find()
-
-    for item in all_:
-        if item["url"] == url:
-            playlist.delete_one({"url": url})
-            return True
-
+    all_ = playlist.find_one({'url': url})
+    if all_:
+        playlist.delete_one({"url": url})
+        return True
     return False
 
 
@@ -50,11 +43,9 @@ def get_playlist():
 
 def remove_all():
     all_ = get_playlist()
-
     if not all_:
         return False
 
     for item in all_:
         playlist.delete_one({"url": item["url"]})
-
     return True
