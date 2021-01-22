@@ -7,7 +7,7 @@ import requests
 import player
 import db
 from helpers import wrap
-from config import SUDO_FILTER, LOG_GROUP
+from config import SUDO_FILTER, LOG_GROUP, LOG_GROUP_FILTER
 from strings import get_string as _
 
 
@@ -85,7 +85,7 @@ def message(client, message):
     )
 
 
-@Client.on_message(filters.command("play_playlist", "/") & SUDO_FILTER & bool(LOG_GROUP != None))
+@Client.on_message(filters.command("play_playlist", "/") & SUDO_FILTER & LOG_GROUP_FILTER)
 @wrap
 def play_playlist(client, message):
     playlist = db.get_playlist()
@@ -152,7 +152,7 @@ def play_playlist(client, message):
             )
 
 
-@Client.on_message(filters.command("clear_playlist", "/") & SUDO_FILTER & bool(LOG_GROUP != None))
+@Client.on_message(filters.command("clear_playlist", "/") & SUDO_FILTER & LOG_GROUP_FILTER)
 def clear_playlist(client, message):
     if db.remove_all():
         message.reply_text(_("playlist_10"))
@@ -160,7 +160,7 @@ def clear_playlist(client, message):
         message.reply_text(_("playlist_1"))
 
 
-@Client.on_message(filters.command("playlist", "/") & SUDO_FILTER & bool(LOG_GROUP != None))
+@Client.on_message(filters.command("playlist", "/") & SUDO_FILTER & LOG_GROUP_FILTER)
 def playlist(client, message):
     all_ = db.get_playlist()
 
