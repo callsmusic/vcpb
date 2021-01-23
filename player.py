@@ -23,7 +23,7 @@ def worker():
             if "log" in item:
                 if item["log"]:
                     log = item["log"][0](*item["log"][1])
-            process = Popen(["mplayer", item["stream_url"]], stdin=PIPE)
+            process = Popen(["mplayer", "-novideo", item["stream_url"]], stdin=PIPE)
             process.wait()
         else:
             if "on_start" in item:
@@ -44,7 +44,7 @@ def worker():
 
             STATE = State.Playing
 
-            process = Popen(["mplayer", item["file"]], stdin=PIPE)
+            process = Popen(["mplayer", "-novideo", item["file"]], stdin=PIPE)
             process.wait()
 
             if STATE == State.Playing:
