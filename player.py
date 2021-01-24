@@ -2,7 +2,7 @@ import os
 import threading
 import queue
 from subprocess import Popen, PIPE
-from helpers import State
+from helpers import run, State
 
 q = queue.Queue()
 currently_playing = {}
@@ -22,25 +22,25 @@ def worker():
             STATE = State.Streaming
             if "log" in item:
                 if item["log"]:
-                    log = item["log"][0](*item["log"][1])
+                    log = run(item["log"])
             process = Popen(["mplayer", "-novideo", item["stream_url"]], stdin=PIPE)
             process.wait()
         else:
             if "on_start" in item:
                 if item["on_start"]:
-                    item["on_start"][0](*item["on_start"][1], quote=True)
+                    run(item["on_start"], quote=True)
 
             if "log" in item:
                 if item["log"]:
-                    args = item["log"][1]
-                    args[2] = args[2].format(
+                    caption = item["log"]["kwargs"]["caption"]
+                    caption = caption.format(
                         item["url"],
                         item["title"],
                         item["duration"],
                         item["sent_by_id"],
                         item["sent_by_name"],
                     )
-                    log = item["log"][0](*args)
+                    log = run(item["log"], caption=caption)
 
             STATE = State.Playing
 
@@ -50,11 +50,11 @@ def worker():
             if STATE == State.Playing:
                 if "on_end" in item:
                     if item["on_end"]:
-                        item["on_end"][0](*item["on_end"][1], quote=True)
+                        run(item["on_end"], quote=True)
             elif STATE == State.Skipped:
                 if "on_skip" in item:
                     if item["on_skip"]:
-                        item["on_skip"][0](*item["on_skip"][1], quote=True)
+                        run(item["on_skip"], quote=True)
 
         process = None
         STATE = State.NothingSpecial
@@ -70,7 +70,16 @@ threading.Thread(target=worker, daemon=True).start()
 
 
 def play(
-    file, on_start, on_end, title, url, sent_by_id, sent_by_name, log, duration, on_skip
+    file,
+    title,
+    duration,
+    url,
+    sent_by_id,
+    sent_by_name,
+    log=None,
+    on_start=None,
+    on_end=None,
+    on_skip=None
 ) -> int:
     q.put(
         {
