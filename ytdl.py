@@ -11,7 +11,12 @@ import player
 from config import DUR_LIMIT, SUDO_USERS
 from helpers import format_duration, generate_image
 
-ydl_opts = {"format": "bestaudio/best"}
+ydl_opts = {
+    "format": "bestaudio/best",
+    "geo-bypass": True,
+    "nocheckcertificate": True,
+    "outtmpl": "downloads/%(id)s.%(ext)s",
+}
 ydl = youtube_dl.YoutubeDL(ydl_opts)
 q = queue.Queue()
 
@@ -38,7 +43,8 @@ def worker():
             elif info["is_live"]:
                 if "on_is_live_error" in item:
                     if item["on_is_live_error"]:
-                        item["on_is_live_error"][0](*item["on_is_live_error"][1])
+                        item["on_is_live_error"][0](
+                            *item["on_is_live_error"][1])
                 q.task_done()
             else:
                 file_name = info["id"] + "." + info["ext"]
@@ -58,14 +64,11 @@ def worker():
                             requests.get(info["thumbnails"][-1]["url"]).content
                         )
                     ydl.download([item["video"]])
-                    os.rename(
-                        [i for i in os.listdir() if i.endswith(info["ext"])][0],
-                        "downloads/" + file_name,
-                    )
-                    
+
                 if args[7]:
                     args[7][1][1] = generate_image(
-                        "downloads/" + info["id"] + ".png", info["title"], args[6]
+                        "downloads/" + info["id"] +
+                        ".png", info["title"], args[6]
                     )
 
                 item["play_function"][0](*args)
