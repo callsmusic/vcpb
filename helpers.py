@@ -77,3 +77,19 @@ def generate_image(
     image_editable.text((216, 425), requester, (255, 255, 255), font=font)
     thumbnail.save(out)
     return out
+
+
+def func(func_, *args, **kwargs) -> dict:
+    return {"func": func_, "args": [*args], "kwargs": dict(**kwargs)}
+
+
+def run(_: dict, **kwargs):
+    return _["func"](
+        *_["args"],
+        **(
+            {
+                **_["kwargs"],
+                **(dict(**kwargs))
+            }
+        )
+    )

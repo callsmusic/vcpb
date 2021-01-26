@@ -7,9 +7,8 @@ import threading
 import queue
 import requests
 import youtube_dl
-import player
 from config import DUR_LIMIT, SUDO_USERS
-from helpers import format_duration, generate_image
+from helpers import run, format_duration, generate_image
 
 ydl_opts = {
     "format": "bestaudio/best",
@@ -23,66 +22,64 @@ q = queue.Queue()
 
 def worker():
     while True:
+        item = q.get()
+
         try:
-            item = q.get()
-
-            file_name = ""
-
             info = ydl.extract_info(item["video"], download=False)
 
             if (
                 int(info["duration"] / 60) > DUR_LIMIT
-                and item["play_function"][1][5] not in SUDO_USERS
+                and item["play_function"]["kwargs"]["sent_by_id"] not in SUDO_USERS
             ):
                 if "on_duration_limit" in item:
                     if item["on_duration_limit"]:
-                        args = item["on_duration_limit"][1]
-                        args[0] = args[0].format(DUR_LIMIT)
-                        item["on_duration_limit"][0](*args)
+                        item["on_duration_limit"]["args"][0] = item["on_duration_limit"]["args"][0].format(DUR_LIMIT)
+                        run(item["on_duration_limit"])
                 q.task_done()
             elif info["is_live"]:
                 if "on_is_live_error" in item:
                     if item["on_is_live_error"]:
-                        item["on_is_live_error"][0](
-                            *item["on_is_live_error"][1])
+                        run(item["on_is_live_error"])
                 q.task_done()
             else:
                 file_name = info["id"] + "." + info["ext"]
-
-                args = item["play_function"][1]
-                args[0] = "downloads/" + file_name
-                args[3] = info["title"]
-                args[4] = "https://youtu.be/" + info["id"]
-                args[8] = format_duration(info["duration"])
+                _log = item["play_function"]["kwargs"]["log"]
 
                 if file_name not in os.listdir("downloads"):
                     if "on_start" in item:
                         if item["on_start"]:
-                            item["on_start"][0](*item["on_start"][1])
-                    if args[7]:
+                            run(item["on_start"])
+                    if _log:
                         open("downloads/" + info["id"] + ".png", "wb+").write(
                             requests.get(info["thumbnails"][-1]["url"]).content
                         )
                     ydl.download([item["video"]])
 
-                if args[7]:
-                    args[7][1][1] = generate_image(
-                        "downloads/" + info["id"] +
-                        ".png", info["title"], args[6]
+                if _log:
+                    _log["kwargs"]["photo"] = generate_image(
+                        "downloads/" + info["id"] + ".png",
+                        info["title"],
+                        item["play_function"]["kwargs"]["sent_by_name"]
                     )
 
-                item["play_function"][0](*args)
+                run(
+                    item["play_function"],
+                    file="downloads/" + file_name,
+                    title=info["title"],
+                    duration=format_duration(info["duration"]),
+                    url="https://youtu.be/" + info["id"],
+                    log=_log,
+                )
 
-                if args[0] == "downloads/" + file_name:
-                    if "on_end" in item:
-                        if item["on_end"]:
-                            item["on_end"][0](*item["on_end"][1])
+                if "on_end" in item:
+                    if item["on_end"]:
+                        run(item["on_end"])
 
                 q.task_done()
         except:
             if "on_error" in item:
                 if item["on_error"]:
-                    item["on_error"][0](*item["on_error"][1])
+                    run(item["on_error"])
             q.task_done()
 
 
@@ -90,13 +87,13 @@ threading.Thread(target=worker, daemon=True).start()
 
 
 def download(
-    on_start,
-    on_end,
-    play_function,
-    on_is_live_error,
     video,
-    on_error,
-    on_duration_limit,
+    play_function,
+    on_start=None,
+    on_end=None,
+    on_is_live_error=None,
+    on_error=None,
+    on_duration_limit=None,
 ) -> int:
     q.put(
         {

@@ -1,8 +1,7 @@
 
 from pyrogram import Client, filters
-from pyrogram.handlers import MessageHandler
 import player
-from helpers import State
+from helpers import func, State
 from config import SUDO_FILTER, LOG_GROUP
 from strings import get_string as _
 
@@ -11,8 +10,6 @@ from strings import get_string as _
     filters.command("stream", "/") & SUDO_FILTER
 )
 def stream(client, message):
-    None
-
     if player.STATE in (State.Playing, State.Paused):
         message.reply_text(
             _("stream_3")
@@ -31,15 +28,13 @@ def stream(client, message):
         else:
             player.stream(
                 args[1],
-                [
+                func(
                     client.send_message,
-                    [
-                        LOG_GROUP,
-                        _("group_2").format(
-                            args[1]
-                        )
-                    ]
-                ] if LOG_GROUP else None
+                    LOG_GROUP,
+                    _("group_2").format(
+                        args[1]
+                    )
+                ) if LOG_GROUP else None
             )
 
             message.reply_text(
