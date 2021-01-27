@@ -28,8 +28,7 @@ except ImportError:
     parser.add_argument(
         "--mongodb-uri",
         help="MongoDB URI, if you don't provide the bot will lack some cool features",
-        required=False,
-        default="",
+        required=True,
     )
     parser.add_argument(
         "--sudo-users",
