@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler
 import player
 from helpers import wrap
-from strings import get_string as _
+from strings import _
 
 
 @Client.on_message(filters.command("song", "/"))

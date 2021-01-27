@@ -1,2 +1,4 @@
 from strings.string import strings
-get_string = strings.get_string
+_ = strings.get_string
+
+# Thanks to @Poolitzer.

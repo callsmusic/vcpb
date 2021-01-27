@@ -4,7 +4,7 @@ from pyrogram.handlers import MessageHandler
 import player
 from helpers import wrap, State
 from config import SUDO_FILTER
-from strings import get_string as _
+from strings import _
 
 
 @Client.on_message(

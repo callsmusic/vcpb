@@ -3,7 +3,7 @@ from pyrogram.handlers import MessageHandler
 from handlers import all_help
 from helpers import wrap
 from config import SUDO_USERS
-from strings import get_string as _
+from strings import _
 
 
 def user():

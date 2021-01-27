@@ -1,12 +1,12 @@
 from pyrogram import Client
-from config import API_ID, API_HASH, TOKEN
-
+from config import API_ID, API_HASH, TOKEN, LOG_GROUP
+print(None if LOG_GROUP else ["playlist"])
 app = Client(
     "my_account",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=TOKEN,
-    plugins={"root": "handlers"}
+    plugins={"root": "handlers", "exclude": None if LOG_GROUP else ["playlist"]}
 )
 
 
@@ -18,7 +18,7 @@ if __name__ == "__main__":
     from pyrogram.handlers import MessageHandler
     import player
     from config import SUDO_FILTER
-    from strings import get_string as _
+    from strings import _
 
     def stop_and_restart():
         app.stop()

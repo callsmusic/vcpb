@@ -6,7 +6,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import player
 from helpers import wrap
 from config import SUDO_USERS
-from strings import get_string as _
+from strings import _
 
 
 @Client.on_message(

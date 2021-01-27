@@ -3,7 +3,7 @@ from pyrogram.handlers import MessageHandler
 import player
 from helpers import wrap
 from config import SUDO_FILTER
-from strings import get_string as _
+from strings import _
 
 
 @Client.on_message(filters.command("clearqueue", "/") & SUDO_FILTER)

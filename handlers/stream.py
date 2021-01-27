@@ -3,7 +3,7 @@ from pyrogram import Client, filters
 import player
 from helpers import func, State
 from config import SUDO_FILTER, LOG_GROUP
-from strings import get_string as _
+from strings import _
 
 
 @Client.on_message(

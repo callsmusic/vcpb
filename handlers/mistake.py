@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler
 from helpers import wrap
-from strings import get_string as _
+from strings import _
 
 
 @Client.on_message(
