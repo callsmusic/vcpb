@@ -1,6 +1,7 @@
 from pyrogram import Client
 from config import API_ID, API_HASH, TOKEN, LOG_GROUP
-print(None if LOG_GROUP else ["playlist"])
+
+
 app = Client(
     "my_account",
     api_id=API_ID,
