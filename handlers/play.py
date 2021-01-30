@@ -29,6 +29,7 @@ def message(client, message):
 
     download(
         message.text,
+        message.from_user.id,
         message.from_user.first_name,
         func(
             player.play,
