@@ -27,6 +27,7 @@ def play_playlist(client, message):
         for item in playlist:
             download(
                 item["url"],
+                message.from_user.id,
                 message.from_user.first_name,
                 func(
                     player.play,
