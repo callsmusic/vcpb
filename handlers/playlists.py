@@ -138,7 +138,7 @@ def playlist_callback(client, query):
 
 
 __help__ = {
-    "play_playlist": [_("help_play_playlist"), False],
-    "clear_playlist": [_("help_clear_playlist"), False],
-    "playlist": [_("help_playlist"), False]
+    "play_playlist": [_("help_play_playlist"), True],
+    "clear_playlist": [_("help_clear_playlist"), True],
+    "playlist": [_("help_playlist"), True]
 }
