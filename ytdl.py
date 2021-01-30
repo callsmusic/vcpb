@@ -29,7 +29,7 @@ def worker():
 
         if (
             int(info["duration"] / 60) > DUR_LIMIT
-            and item["play_function"]["kwargs"]["sent_by_id"] not in SUDO_USERS
+            and item["sender_id"] not in SUDO_USERS
         ):
             if "on_duration_limit" in item:
                 if item["on_duration_limit"]:
@@ -89,6 +89,7 @@ threading.Thread(target=worker, daemon=True).start()
 
 def download(
     video,
+    sender_id,
     sender_name,
     play_function,
     on_start=None,
@@ -104,6 +105,7 @@ def download(
             "play_function": play_function,
             "on_is_live_error": on_is_live_error,
             "video": video,
+            "sender_id": sender_id,
             "sender_name": sender_name,
             "on_error": on_error,
             "on_duration_limit": on_duration_limit,
