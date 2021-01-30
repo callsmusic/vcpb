@@ -37,15 +37,6 @@ def help(client, message):
         "help_2") + "**" + "\n" + admin() if message.from_user.id in SUDO_USERS else user())
 
 
-__handlers__ = [
-    [
-        MessageHandler(
-            help,
-            filters.command("help", "/")
-            & filters.private
-        )
-    ]
-]
 __help__ = {
     "help": [_("help_help"), False]
 }

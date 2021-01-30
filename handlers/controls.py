@@ -43,9 +43,39 @@ def skip(client, message):
         message.reply_text(_("skip_2"))
 
 
+@Client.on_message(
+    filters.command("seekf", "/") & SUDO_FILTER
+)
+def seekf(client, message):
+    if player.pymplayer.get_state() in (player.State.PLAYING, player.State.PAUSED):
+        try:
+            if player.pymplayer.seek_forward(int(message.command[1])):
+                message.reply_text(_("seek_1"))
+        except:
+            message.reply_text(_("seek_2"))
+    else:
+        message.reply_text(_("seek_3"))
+
+
+@Client.on_message(
+    filters.command("seekb", "/") & SUDO_FILTER
+)
+def seekb(client, message):
+    if player.pymplayer.get_state() in (player.State.PLAYING, player.State.PAUSED):
+        try:
+            if player.pymplayer.seek_backward(int(message.command[1])):
+                message.reply_text(_("seek_1"))
+        except:
+            message.reply_text(_("seek_2"))
+    else:
+        message.reply_text(_("seek_3"))
+
+
 __help__ = {
     "pause": [_("help_pause"), True],
     "resume": [_("help_resume"), True],
     "play": [_("help_play"), True],
-    "skip": [_("help_skip"), True]
+    "skip": [_("help_skip"), True],
+    "seekf": [_("help_seekf"), True],
+    "seekb": [_("help_seekb"), True],
 }

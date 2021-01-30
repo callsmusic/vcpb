@@ -17,6 +17,11 @@ help_tts: "Say something."
 help_volume: "Check the current volume."
 help_1: "User commands:"
 help_2: "Admin commands:"
+help_seekb: "Seek backward."
+help_seekf: "Seek forward. (Example: /seekf 5, will seek forward 5 seconds)"
+help_playlist: "See the items in the custom playlist."
+help_play_playlist: "Play the items in the custom playlist."
+help_clear_playlist: "Remove all of the items in the custom playlist."
 
 # Bot
 bot: "Bot is updating and restarting..."
@@ -82,6 +87,11 @@ pause_1: "Paused."
 pause_2: "There is nothing playing to pause."
 pause_3: "Resumed."
 pause_4: "There is nothing paused to resume."
+
+# Seek
+seek_1: "Seeked."
+seek_2: "Could not seek."
+seek_3: "There is nothing playing to seek."
 
 # Group
 group_1: "<b>Title:</b> {0}\n<b>Duration:</b> {1}"

@@ -135,3 +135,10 @@ def playlist_callback(client, query):
             query.answer(_("playlist_7"))
         else:
             query.answer(_("playlist_8"))
+
+
+__help__ = {
+    "play_playlist": [_("help_play_playlist"), False],
+    "clear_playlist": [_("help_clear_playlist"), False],
+    "playlist": [_("help_playlist"), False]
+}
