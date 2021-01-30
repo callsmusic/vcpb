@@ -12,14 +12,10 @@ from strings import _
 )
 @wrap
 def pause(client, message):
-    if player.STATE in State.Playing:
-        player.STATE = State.Paused
-        player.pause_resume()
+    if player.pymplayer.pause():
         message.reply_text(_("pause_1"))
-    elif player.STATE == State.Paused:
-        message.reply_text(_("pause_2"))
     else:
-        message.reply_text(_("pause_3"))
+        message.reply_text(_("pause_2"))
 
 
 @Client.on_message(
@@ -30,12 +26,10 @@ def pause(client, message):
 )
 @wrap
 def resume(client, message):
-    if player.STATE == State.Paused:
-        player.STATE = State.Playing
-        player.pause_resume()
-        message.reply_text(_("pause_4"))
+    if player.pymplayer.resume():
+        message.reply_text(_("pause_3"))
     else:
-        message.reply_text(_("pause_5"))
+        message.reply_text(_("pause_4"))
 
 
 @Client.on_message(
@@ -43,9 +37,7 @@ def resume(client, message):
 )
 @wrap
 def skip(client, message):
-    if player.STATE in (State.Playing, State.Streaming, State.Paused):
-        player.STATE = State.Skipped
-        player.abort()
+    if player.pymplayer.quit():
         message.reply_text(_("skip_1"))
     else:
         message.reply_text(_("skip_2"))

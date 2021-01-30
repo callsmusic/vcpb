@@ -10,8 +10,8 @@ from strings import _
 @wrap
 def clear_queue(client, message):
     try:
-        with player.q.mutex:
-            player.q.queue.clear()
+        with player.queue.mutex:
+            player.queue.queue.clear()
         message.reply_text(_("queue_4"))
     except:
         message.reply_text(_("error"))
@@ -20,12 +20,12 @@ def clear_queue(client, message):
 @Client.on_message(filters.command("queue", "/"))
 @wrap
 def queue(client, message):
-    qsize = player.q.qsize()
+    qsize = player.queue.qsize()
 
     if qsize == 0:
         return
 
-    queue_ = player.q.queue
+    queue_ = player.queue.queue
     human_queue = _("queue_1").format(qsize) + "\n"
     count = 1
 
@@ -38,10 +38,6 @@ def queue(client, message):
                     item["title"],
                 ),
                 item["duration"],
-                '<a href="tg://user?id={}">{}</a>'.format(
-                    item["sent_by_id"],
-                    item["sent_by_name"],
-                ),
             )
             + "\n"
         )

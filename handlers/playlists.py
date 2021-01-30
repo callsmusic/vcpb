@@ -27,10 +27,9 @@ def play_playlist(client, message):
         for item in playlist:
             download(
                 item["url"],
+                message.from_user.first_name,
                 func(
                     player.play,
-                    sent_by_id=message.from_user.id,
-                    sent_by_name=message.from_user.first_name,
                     log=func(
                         client.send_photo,
                         chat_id=LOG_GROUP,
@@ -75,10 +74,12 @@ def playlist(client, message):
     _all = ""
 
     for i in range(len(all_)):
-        _all += str(i + 1) + ". " + all_[i]["title"] + ": " + all_[i]["url"] + "\n"
+        _all += str(i + 1) + ". " + \
+            all_[i]["title"] + ": " + all_[i]["url"] + "\n"
 
     if len(_all) < 4096:
-        message.reply_text(_all, parse_mode=None, disable_web_page_preview=True)
+        message.reply_text(_all, parse_mode=None,
+                           disable_web_page_preview=True)
     else:
         message.reply_text(
             "https://nekobin.com/"
@@ -104,7 +105,8 @@ def playlist_callback(client, query):
                 InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(_("playlist_6"), "rm_from_playlist"),
+                            InlineKeyboardButton(
+                                _("playlist_6"), "rm_from_playlist"),
                         ],
                     ]
                 )
@@ -119,12 +121,13 @@ def playlist_callback(client, query):
                 "url": cp["url"],
                 "title": cp["title"]
             }
-            ):
+        ):
             query.message.edit_reply_markup(
                 InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(_("playlist_3"), "add_to_playlist"),
+                            InlineKeyboardButton(
+                                _("playlist_3"), "add_to_playlist"),
                         ],
                     ]
                 )
@@ -132,4 +135,3 @@ def playlist_callback(client, query):
             query.answer(_("playlist_7"))
         else:
             query.answer(_("playlist_8"))
-

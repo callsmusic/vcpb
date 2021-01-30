@@ -29,10 +29,9 @@ def message(client, message):
 
     download(
         message.text,
+        message.from_user.first_name,
         func(
             player.play,
-            sent_by_id=message.from_user.id,
-            sent_by_name=message.from_user.first_name,
             log=func(
                 client.send_photo,
                 chat_id=LOG_GROUP,
@@ -56,12 +55,10 @@ def message(client, message):
             else None,
             on_start=func(message.reply_text, _("player_1"),),
             on_end=func(message.reply_text, _("player_2"),),
-            on_skip=func(message.reply_text, _("skip_3"),),
         ),
         func(m.edit, _("ytdl_1")),
-        func(m.edit, _("ytdl_2").format(player.q.qsize() + 1)),
+        func(m.edit, _("ytdl_2").format(player.queue.qsize() + 1)),
         func(m.edit, _("ytdl_3")),
         func(m.edit, _("error")),
         func(m.edit, _("ytdl_4")),
     )
-

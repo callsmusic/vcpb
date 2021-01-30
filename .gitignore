@@ -6,3 +6,4 @@ downloads/*
 __pycache__
 data
 *vsc*
+*pipe

@@ -79,17 +79,16 @@ skip_3: "This song was skipped by an admin."
 
 # Pause
 pause_1: "Paused."
-pause_2: "Can't pause because already paused."
-pause_3: "There is nothing playing to pause."
-pause_4: "Resumed."
-pause_5: "There is nothing paused to resume."
+pause_2: "There is nothing playing to pause."
+pause_3: "Resumed."
+pause_4: "There is nothing paused to resume."
 
 # Group
-group_1: "<b>Title:</b> {0}\n<b>Duration:</b> {1}\n<b>Requested by:</b> {2}"
+group_1: "<b>Title:</b> {0}\n<b>Duration:</b> {1}"
 group_2: "<b>NOW STREAMING</b>\n<b>URL:</b> <code>{0}</code>"
 
 # Song
-song_1: "<b>Title:</b> {0}\n<b>Duration:</b> {1}\n<b>Requested by:</b> {2}"
+song_1: "<b>Title:</b> {0}\n<b>Duration:</b> {1}"
 song_2: "No song is currently playing."
 
 
@@ -111,7 +110,7 @@ cleardownloads: "Removed all files in your downloads folder."
 
 # Queue
 queue_1: "There are {0} items in the queue, here are the first 10 of them:"
-queue_2: "{0}. {1}, duration: {2}, requested by: {3}"
+queue_2: "{0}. {1}, duration: {2}"
 queue_3: "Removed that item in the queue."
 queue_4: "Queue cleared."
 

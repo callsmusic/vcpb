@@ -1,69 +1,50 @@
 import os
 import threading
-import queue
-from subprocess import Popen, PIPE
-from helpers import run, State
+from queue import Queue
+from pymplayer import PyMPlayer, State
+from helpers import run
 
-q = queue.Queue()
+pymplayer = PyMPlayer()
+queue = Queue()
 currently_playing = {}
-
-process = None
-STATE = State.NothingSpecial
 
 
 def worker():
-    global process, STATE, currently_playing
+    global queue, currently_playing
+
     while True:
-        item = q.get()
+        # Blocks until there is an item in the queue, so there won't be a lot of hardware usage
+        item = queue.get()
+        # Add the current playing item to a different variable, as Queue.queue will not show
         currently_playing = item
-        log = None
+        log = None  # Group "Now Playing" message to be deleted if sent
 
-        if "stream_url" in item:
-            STATE = State.Streaming
-            if "log" in item:
-                if item["log"]:
-                    log = run(item["log"])
-            process = Popen(["mplayer", "-novideo", item["stream_url"]], stdin=PIPE)
-            process.wait()
-        else:
-            if "on_start" in item:
-                if item["on_start"]:
-                    run(item["on_start"], quote=True)
+        if "on_start" in item:  # Avoid KeyError
+            if item["on_start"]:  # Make sure it is not None
+                # True quote to make sure the users understands which song
+                run(item["on_start"], quote=True)
 
-            if "log" in item:
-                if item["log"]:
-                    caption = item["log"]["kwargs"]["caption"]
-                    caption = caption.format(
-                        item["url"],
-                        item["title"],
-                        item["duration"],
-                        item["sent_by_id"],
-                        item["sent_by_name"],
-                    )
-                    log = run(item["log"], caption=caption)
+        if "log" in item:
+            if item["log"]:
+                caption = item["log"]["kwargs"]["caption"]
+                caption = caption.format(
+                    item["url"],
+                    item["title"],
+                    item["duration"],
+                )  # Edit the caption and add the video title (with a link to it) and it's duration
+                log = run(item["log"], caption=caption)
 
-            STATE = State.Playing
+        pymplayer.play(item["file"])
+        pymplayer.wait_until_ends()
 
-            process = Popen(["mplayer", "-novideo", item["file"]], stdin=PIPE)
-            process.wait()
+        if "on_end" in item:
+            if item["on_end"]:
+                run(item["on_end"], quote=True)
 
-            if STATE == State.Playing:
-                if "on_end" in item:
-                    if item["on_end"]:
-                        run(item["on_end"], quote=True)
-            elif STATE == State.Skipped:
-                if "on_skip" in item:
-                    if item["on_skip"]:
-                        run(item["on_skip"], quote=True)
-
-        process = None
-        STATE = State.NothingSpecial
-
-        if log:
+        if log:  # As said below, if the "Now Playing" message was sent, delete it
             log.delete()
 
-        if q:
-            q.task_done()
+        queue.task_done()
 
 
 threading.Thread(target=worker, daemon=True).start()
@@ -74,49 +55,22 @@ def play(
     title,
     duration,
     url,
-    sent_by_id,
-    sent_by_name,
     log=None,
     on_start=None,
     on_end=None,
-    on_skip=None
-) -> int:
-    q.put(
+):
+    queue.put(
         {
             "file": file,
             "on_start": on_start,
             "on_end": on_end,
             "title": title,
             "url": url,
-            "sent_by_id": sent_by_id,
-            "sent_by_name": sent_by_name,
             "log": log,
             "duration": duration,
-            "on_skip": on_skip,
         }
     )
-    return q.qsize()
-
-
-def stream(stream_url, log) -> int:
-    q.put({"stream_url": stream_url, "log": log})
-    return q.qsize()
 
 
 def is_currently_playing() -> bool:
-    return STATE in (State.Playing, State.Paused)
-
-
-def abort() -> bool:
-    if process:
-        process.terminate()
-        return True
-    return False
-
-
-def pause_resume():
-    if process:
-        process.stdin.write(b"p")
-        process.stdin.flush()
-        return True
-    return False
+    return pymplayer.get_state() != State.NOTHING
