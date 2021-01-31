@@ -23,8 +23,6 @@ if __name__ == "__main__":
 
     def stop_and_restart():
         app.stop()
-        player.q = None
-        player.abort()
         os.system("git pull")
         os.execl(sys.executable, sys.executable, *sys.argv)
 
