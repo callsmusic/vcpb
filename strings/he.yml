@@ -17,6 +17,11 @@ help_tts: "טקסט לדיבור"
 help_volume: "ראה את עוצמת השמע."
 help_1: "פקודות לכל המשתמשים:"
 help_2: "פקודות למנהלים:"
+help_seekb: "דלג לאחורה."
+help_seekf: "דלג לנקודת זמן. (לדוגמה: /seekf 5, מדלג ל 5 שניות)"
+help_playlist: "ראה את הדברים בפלייליסט."
+help_play_playlist: "נגן דברים בפלייליסט."
+help_clear_playlist: "מחק את כל הדברים בפלייליסט."
 # Bot
 bot: "הבוט מתעדכן ומופעל מחדש..."
 # Start
@@ -39,7 +44,6 @@ ban_8: "רשימת המשתמשים החסומים:"
 play_1: "הקישור הזה לא חוקי."
 play_2: "תשלח לי קישור לסרטון, לא לפלייליסט."
 play_3: "ההורדה מתוזמנת."
-play_4: "🗑 סגור"
 # Player
 player_1: "מנגן..."
 player_2: "ניגון השיר הסתיים."
@@ -72,12 +76,15 @@ pause_1: "הניגון הופסק."
 pause_2: "אתה לא יכול להפסיק שיר שכבר מופסק."
 pause_3: "שום דבר לא מנוגן בשביל לעצור."
 pause_4: "הנוגן הומשך."
-pause_5: "שום דבר לא מופסק בשביל להמשיך את הניגון."
+# Seek
+seek_1: "דולג."
+seek_2: "לא יכול לדלג."
+seek_3: "לא מנוגן שום דבר בשביל לדלג."
 # Group
-group_1: "<b>כותרת:</b> {0}\n<b>משך זמן:</b> {1}\n<b>מבוקש על ידי:</b> {2}"
+group_1: "<b>כותרת:</b> {0}\n<b>משך זמן:</b> {1}"
 group_2: "<b>עכשיו מזרים</b>\n<b>קישור:</b> <code>{0}</code>"
 # Song
-song_1: "<b>כותרת:</b> {0}\n<b>משך זמן:</b> {1}\n<b>מבוקש על ידי:</b> {2}"
+song_1: "<b>כותרת:</b> {0}\n<b>משך זמן:</b> {1}"
 song_2: "אין שיר שמנוגן כרגע."
 # Not for you
 n4u: "זה לא בשבילך."
