@@ -30,7 +30,7 @@ python3 bot.py \
 --api-id 1 \
 --api-hash abcdef1234 \
 --token 1234567890:ABCDEF \
---sudo-users 111111 22222 33333 \
+--sudo-users 111111_22222_33333 \
 --mongo-db-uri mongodb+srv://user:pass@subdomain.domain.extention/vcpb \
 --group -1001876543112 \
 --dur-limit 10 \
