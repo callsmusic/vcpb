@@ -197,6 +197,8 @@ These are apt package manager instructions but you can install the required pack
 
 * `start`  - start the bot
 
+* `help`   - get the commands of the bot
+
 * `song`   - check the playing song
 
 * `volume` - check the current volume
@@ -219,7 +221,11 @@ These are apt package manager instructions but you can install the required pack
 
 * `clear_playlist` - clear the items in the playlist (sudo users only)
 
+* `clearqueue` - clear the items in the queue (sudo users only)
+
 * `play_playlist` - play the items in the playlist (sudo users only)
+
+* `r` - restart the bot
 
 ## TODOS
 
