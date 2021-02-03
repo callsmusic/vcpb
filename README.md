@@ -18,7 +18,7 @@ If you face an error, want to discuss this project or get support for it, join [
 
 #### Cloning
 ```
-    git clone https://github.com/rojserbest/vcpb.git vcbot && cd vcpb
+    git clone https://github.com/rojserbest/vcpb.git vcpb && cd vcpb
 ```
 
 #### Configuring
@@ -68,7 +68,7 @@ These are apt package manager instructions but you can install the required pack
 `sudo apt update && sudo apt upgrade -y`
 
 2. Install requirements:
-`sudo apt install python3-pip xrdp pulseaudio mpv screen -y`
+`sudo apt install python3-pip xrdp pulseaudio mpv libmpv-dev screen -y`
 
 3. Download tdesktop:
 `cd ~ && wget https://telegram.org/dl/desktop/linux -O tdesktop.tar.xz && tar -xf tdesktop.tar.xz && rm tdesktop.tar.xz`
@@ -110,7 +110,7 @@ These are apt package manager instructions but you can install the required pack
 `sudo apt update && sudo apt upgrade -y`
 
 2. Install requirements:
-`sudo apt install pulseaudio mpv pavucontrol screen -y`
+`sudo apt install pulseaudio mpv libmpv-dev pavucontrol screen -y`
 
 3. If you have Telegram skip this step, otherwise download it [here](https://desktop.telegram.org).
 
