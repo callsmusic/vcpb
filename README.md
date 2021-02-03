@@ -9,7 +9,7 @@ If you face an error, want to discuss this project or get support for it, join [
 * Bot token from [@BotFather](https://t.me/BotFather)
 * API ID & hash from [my.telegram.org](https://my.telegram.org)
 * Python3 & pip3
-* Mplayer
+* MPV
 * A software to forward audio to tdesktop (Linux: pulseaudio, Windows: voicemeeter)
 
 ## Deploying
@@ -62,12 +62,12 @@ These are apt package manager instructions but you can install the required pack
 
 1. Update and upgrade apt:
 ```
-    sudo apt update && sudo apt upgrade
+    sudo apt update && sudo apt upgrade -y
 ```
 
 2. Install requirements:
 ```
-    sudo apt install xrdp pulseaudio mplayer screen
+    sudo apt install python3-pip xrdp pulseaudio mpv screen -y
 ```
 
 3. Download tdesktop:
@@ -124,12 +124,12 @@ These are apt package manager instructions but you can install the required pack
 
 1. Update and upgrade apt:
 ```
-    sudo apt update && sudo apt upgrade
+    sudo apt update && sudo apt upgrade -y
 ```
 
 2. Install requirements:
 ```
-    sudo apt install pulseaudio mplayer pavucontrol screen
+    sudo apt install pulseaudio mpv pavucontrol screen -y
 ```
 
 3. If you have Telegram skip this step, otherwise download it [here](https://desktop.telegram.org).
@@ -167,7 +167,7 @@ These are apt package manager instructions but you can install the required pack
 
 5. Set Voicemeeter input and Voicemeeter output as default and click OK.
 
-6. Download mplayer [here](https://sourceforge.net/projects/mplayerwin/), extract it and add it to path.
+6. Download MPV.
 
 7. Start Voicemeeter engine.
 

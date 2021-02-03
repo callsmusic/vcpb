@@ -1,10 +1,10 @@
 import os
 import threading
 from queue import Queue
-from pymplayer import PyMPlayer, State
+from mpv import MPV
 from helpers import run
 
-pymplayer = PyMPlayer()
+mpv = MPV()
 queue = Queue()
 currently_playing = {}
 
@@ -34,8 +34,8 @@ def worker():
                 )  # Edit the caption and add the video title (with a link to it) and it's duration
                 log = run(item["log"], caption=caption)
 
-        pymplayer.play(item["file"])
-        pymplayer.wait_until_ends()
+        mpv.play(item["file"])
+        mpv.wait_for_playback()
 
         if "on_end" in item:
             if item["on_end"]:
@@ -73,4 +73,4 @@ def play(
 
 
 def is_currently_playing() -> bool:
-    return pymplayer.get_state() != State.NOTHING
+    return mpv.filename
