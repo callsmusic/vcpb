@@ -12,7 +12,8 @@ from strings import _
 )
 @wrap
 def pause(client, message):
-    if player.mpv.pause():
+    if not player.mpv.pause:
+        player.mpv.pause = True
         message.reply_text(_("pause_1"))
     else:
         message.reply_text(_("pause_2"))
