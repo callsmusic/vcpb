@@ -39,10 +39,10 @@ def resume(client, message):
 )
 @wrap
 def skip(client, message):
-    try:
+    if player.mpv.filename:
         player.mpv.stop()
         message.reply_text(_("skip_1"))
-    except:
+    else:
         message.reply_text(_("skip_2"))
 
 
