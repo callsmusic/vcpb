@@ -27,7 +27,8 @@ def pause(client, message):
 )
 @wrap
 def resume(client, message):
-    if player.mpv.resume():
+    if player.mpv.pause:
+        player.mpv.pause = False
         message.reply_text(_("pause_3"))
     else:
         message.reply_text(_("pause_4"))
