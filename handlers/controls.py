@@ -12,7 +12,8 @@ from strings import _
 )
 @wrap
 def pause(client, message):
-    if player.pymplayer.pause():
+    if not player.mpv.pause:
+        player.mpv.pause = True
         message.reply_text(_("pause_1"))
     else:
         message.reply_text(_("pause_2"))
@@ -26,7 +27,8 @@ def pause(client, message):
 )
 @wrap
 def resume(client, message):
-    if player.pymplayer.resume():
+    if player.mpv.pause:
+        player.mpv.pause = False
         message.reply_text(_("pause_3"))
     else:
         message.reply_text(_("pause_4"))
@@ -37,7 +39,8 @@ def resume(client, message):
 )
 @wrap
 def skip(client, message):
-    if player.pymplayer.quit():
+    if player.mpv.filename:
+        player.mpv.stop()
         message.reply_text(_("skip_1"))
     else:
         message.reply_text(_("skip_2"))
@@ -47,10 +50,10 @@ def skip(client, message):
     filters.command("seekf", "/") & SUDO_FILTER
 )
 def seekf(client, message):
-    if player.pymplayer.get_state() in (player.State.PLAYING, player.State.PAUSED):
+    if player.mpv.filename or player.mpv.pause:
         try:
-            if player.pymplayer.seek_forward(int(message.command[1])):
-                message.reply_text(_("seek_1"))
+            player.mpv.seek(int(message.command[1]))
+            message.reply_text(_("seek_1"))
         except:
             message.reply_text(_("seek_2"))
     else:
@@ -61,10 +64,10 @@ def seekf(client, message):
     filters.command("seekb", "/") & SUDO_FILTER
 )
 def seekb(client, message):
-    if player.pymplayer.get_state() in (player.State.PLAYING, player.State.PAUSED):
+    if player.mpv.filename or player.mpv.pause:
         try:
-            if player.pymplayer.seek_backward(int(message.command[1])):
-                message.reply_text(_("seek_1"))
+            player.mpv.seek(-int(message.command[1]))
+            message.reply_text(_("seek_1"))
         except:
             message.reply_text(_("seek_2"))
     else:

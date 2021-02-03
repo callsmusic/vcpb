@@ -8,3 +8,4 @@ pillow
 pymongo
 dnspython
 requests
+python-mpv
