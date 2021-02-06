@@ -39,15 +39,24 @@ python3 bot.py \
 
 ##### Config file
 Copy `config/sample_config.py` to `config/config.py` and make it use your credentials (you can also give those as an arg when running bot.py):
+
 `API_ID` int: your api id from [my.telegram.org](https://my.telegram.org)
+
 `API_HASH` str: your api hash from [my.telegram.org](https://my.telegram.org)
 `TOKEN` str: your bot token from [@BotFather](https://t.me/BotFather)
+
 `SUDO_USERS` list(int): a list of user ids which can pause, skip and change volume
+
 `MONGO_DB_URI` str: your MongoDB URI (you can get one for free in their [official website](https://mongodb.com/), sign up, create a cluster and a database named "vcpb")
+
 `GROUP` int: the id of the group where your bot plays (not required if both `USERS_MUST_JOIN` and `LOG` are false)
+
 `USERS_MUST_JOIN` bool: if true, only users which are in the group can use the bot
+
 `LOG` bool: if true, now playing messages will be sent to the group
+
 `LANG` str: your bot language, choose an available language code in [strings/](https://github.com/rojserbest/VoiceChatPyroBot/tree/main/strings)
+
 `DUR_LIMIT` int: max video duration in minutes for downloads
 
 #### PIP requirements
