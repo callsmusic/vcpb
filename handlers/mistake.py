@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
-from pyrogram.handlers import MessageHandler
+from pyrogram.types import Message
+
 from helpers import wrap
 from strings import _
 
@@ -8,5 +9,5 @@ from strings import _
     (filters.all & ~ filters.text) & filters.private
 )
 @wrap
-def mistake(client, message):
+def mistake(client: Client, message: Message):
     message.reply_text(_("mistake"))

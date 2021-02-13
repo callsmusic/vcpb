@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
-from pyrogram.handlers import MessageHandler
+from pyrogram.types import Message
+
 import player
 from helpers import wrap
 from config import SUDO_FILTER
@@ -8,7 +9,7 @@ from strings import _
 
 @Client.on_message(filters.command("clearqueue", "/") & SUDO_FILTER)
 @wrap
-def clear_queue(client, message):
+def clear_queue(client: Client, message: Message):
     try:
         with player.queue.mutex:
             player.queue.queue.clear()
@@ -19,7 +20,7 @@ def clear_queue(client, message):
 
 @Client.on_message(filters.command("queue", "/"))
 @wrap
-def queue(client, message):
+def queue(client: Client, message: Message):
     qsize = player.queue.qsize()
 
     if qsize == 0:

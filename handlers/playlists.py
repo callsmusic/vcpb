@@ -1,6 +1,7 @@
-from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import requests
+from pyrogram import Client, filters
+from pyrogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
+
 from database import playlists as db
 import player
 from helpers import wrap, func
@@ -14,7 +15,7 @@ db.create_playlist("custom")
 
 @Client.on_message(filters.command("play_playlist", "/") & SUDO_FILTER)
 @wrap
-def play_playlist(client, message):
+def play_playlist(client: Client, message: Message):
     playlist = db.get_playlist("custom")["items"]
 
     if not playlist:
@@ -57,7 +58,7 @@ def play_playlist(client, message):
 
 
 @Client.on_message(filters.command("clear_playlist", "/") & SUDO_FILTER)
-def clear_playlist(client, message):
+def clear_playlist(client: Client, message: Message):
     if db.reset_playlist("custom", []):
         message.reply_text(_("playlist_10"))
     else:
@@ -65,7 +66,7 @@ def clear_playlist(client, message):
 
 
 @Client.on_message(filters.command("playlist", "/") & SUDO_FILTER)
-def playlist(client, message):
+def playlist(client, Client, message: Message):
     all_ = db.get_playlist("custom")["items"]
 
     if not all_:
@@ -91,7 +92,7 @@ def playlist(client, message):
 
 
 @Client.on_callback_query(filters.regex(".+playlist") & SUDO_FILTER)
-def playlist_callback(client, query):
+def playlist_callback(client: Client, query: CallbackQuery):
     cp = player.currently_playing
 
     if query.data.startswith("add_to"):

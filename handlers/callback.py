@@ -1,13 +1,14 @@
 import subprocess
+
 from pyrogram import Client, filters
-from pyrogram.handlers import CallbackQueryHandler
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
+
 from config import SUDO_FILTER
 from strings import _
 
 
 @Client.on_callback_query(filters.regex(".+volume") & SUDO_FILTER)
-def callback(client, query):
+def callback(client: Client, query: CallbackQuery):
     current_volume = int(query.message.text.split()[-1].replace("%", ""))
 
     if query.data == "decrease_volume":
@@ -25,8 +26,10 @@ def callback(client, query):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("➖", callback_data="decrease_volume"),
-                        InlineKeyboardButton("➕", callback_data="increase_volume"),
+                        InlineKeyboardButton(
+                            "➖", callback_data="decrease_volume"),
+                        InlineKeyboardButton(
+                            "➕", callback_data="increase_volume"),
                     ]
                 ]
             ),
@@ -49,8 +52,10 @@ def callback(client, query):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("➖", callback_data="decrease_volume"),
-                        InlineKeyboardButton("➕", callback_data="increase_volume"),
+                        InlineKeyboardButton(
+                            "➖", callback_data="decrease_volume"),
+                        InlineKeyboardButton(
+                            "➕", callback_data="increase_volume"),
                     ]
                 ]
             ),
@@ -58,4 +63,3 @@ def callback(client, query):
         )
         query.message.delete()
         query.answer()
-

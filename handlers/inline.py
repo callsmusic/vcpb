@@ -1,14 +1,14 @@
-from pyrogram.handlers import InlineQueryHandler
 from youtubesearchpython import VideosSearch
-from pyrogram.types import InlineQueryResultArticle, InputTextMessageContent
 from pyrogram import Client, errors
+from pyrogram.types import InlineQuery, InlineQueryResultArticle, InputTextMessageContent
+
 from helpers import wrap
 from strings import _
 
 
 @Client.on_inline_query()
 @wrap
-def search(client, query):
+def search(client: Client, query: InlineQuery):
     answers = []
     string = query.query.lower().strip().rstrip()
 
@@ -51,12 +51,3 @@ def search(client, query):
                 switch_pm_text=_("inline_3"),
                 switch_pm_parameter="",
             )
-
-
-__handlers__ = [
-    [
-        InlineQueryHandler(
-            search
-        )
-    ]
-]

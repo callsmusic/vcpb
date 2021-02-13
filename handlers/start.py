@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
-from pyrogram.handlers import MessageHandler
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+
 from helpers import wrap
 from strings import _
 
@@ -9,7 +9,7 @@ from strings import _
     filters.command("start", "/") & filters.private
 )
 @wrap
-def start(client, message):
+def start(client: Client, message: Message):
     message.reply_text(
         _("start_1"),
         reply_markup=InlineKeyboardMarkup(

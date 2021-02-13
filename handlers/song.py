@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
-from pyrogram.handlers import MessageHandler
+from pyrogram.types import Message
+
 import player
 from helpers import wrap
 from strings import _
@@ -7,7 +8,7 @@ from strings import _
 
 @Client.on_message(filters.command("song", "/"))
 @wrap
-def mistake(client, message):
+def mistake(client: Client, message: Message):
     if player.is_currently_playing():
         message.reply_text(
             _("song_1").format(

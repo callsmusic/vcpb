@@ -1,9 +1,9 @@
 import subprocess
 import re
+
 from pyrogram import Client, filters
-from pyrogram.handlers import MessageHandler
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-import player
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+
 from helpers import wrap
 from config import SUDO_USERS
 from strings import _
@@ -13,7 +13,7 @@ from strings import _
     filters.command("volume", "/")
 )
 @wrap
-def volume(client, message):
+def volume(client: Client, message: Message):
     if len(message.text.split()) == 2 and message.from_user.id in SUDO_USERS:
         try:
             volume = int(message.text.split()[1])

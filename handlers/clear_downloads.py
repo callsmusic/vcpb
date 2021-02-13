@@ -1,8 +1,8 @@
-
 import os
+
 from pyrogram import Client, filters
-from pyrogram.handlers import MessageHandler
-import player
+from pyrogram.types import Message
+
 from config import SUDO_FILTER
 from strings import _
 
@@ -10,7 +10,7 @@ from strings import _
 @Client.on_message(
     filters.command("cleardownloads", "/") & SUDO_FILTER
 )
-def clear_downloads(client, message):
+def clear_downloads(client: Client, message: Message):
     try:
         for file in os.listdir("downloads"):
             try:
@@ -23,15 +23,6 @@ def clear_downloads(client, message):
         message.reply_text(_("error"))
 
 
-__handlers__ = [
-    [
-        MessageHandler(
-            clear_downloads,
-            filters.command("cleardownloads", "/")
-            & SUDO_FILTER
-        )
-    ]
-]
 __help__ = {
     "cleardownloads": [_("help_cleardownloads"), True]
 }

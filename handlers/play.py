@@ -1,8 +1,8 @@
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+
 from helpers import is_youtube
 from ytdl import download
-import requests
 import player
 from helpers import wrap, func
 from config import SUDO_FILTER, LOG_GROUP
@@ -13,7 +13,7 @@ from strings import _
     filters.text & filters.private & ~filters.regex(r"^x .+"), group=2
 )
 @wrap
-def message(client, message):
+def message(client: Client, message: Message):
     if message.text.startswith("/"):
         return
 

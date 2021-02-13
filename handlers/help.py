@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
-from pyrogram.handlers import MessageHandler
+from pyrogram.types import Message
+
 from handlers import all_help
 from helpers import wrap
 from config import SUDO_USERS
@@ -32,7 +33,7 @@ def admin():
     filters.command("help", "/") & filters.private
 )
 @wrap
-def help(client, message):
+def help(client: Client, message: Message):
     message.reply_text("**" + _("help_1") + "**" + "\n" + user() + "\n" + "**" + _(
         "help_2") + "**" + "\n" + admin() if message.from_user.id in SUDO_USERS else user())
 

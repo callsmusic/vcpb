@@ -1,6 +1,6 @@
-
 from pyrogram import Client, filters
-from pyrogram.handlers import MessageHandler
+from pyrogram.types import Message
+
 import player
 from helpers import wrap, State
 from config import SUDO_FILTER
@@ -11,7 +11,7 @@ from strings import _
     filters.command("pause", "/") & SUDO_FILTER
 )
 @wrap
-def pause(client, message):
+def pause(client: Client, message: Message):
     if not player.mpv.pause:
         player.mpv.pause = True
         message.reply_text(_("pause_1"))
@@ -26,7 +26,7 @@ def pause(client, message):
     ) & SUDO_FILTER
 )
 @wrap
-def resume(client, message):
+def resume(client: Client, message: Message):
     if player.mpv.pause:
         player.mpv.pause = False
         message.reply_text(_("pause_3"))
@@ -38,7 +38,7 @@ def resume(client, message):
     filters.command("skip", "/") & SUDO_FILTER
 )
 @wrap
-def skip(client, message):
+def skip(client: Client, message: Message):
     if player.mpv.filename:
         player.mpv.stop()
         message.reply_text(_("skip_1"))
@@ -49,7 +49,7 @@ def skip(client, message):
 @Client.on_message(
     filters.command("seekf", "/") & SUDO_FILTER
 )
-def seekf(client, message):
+def seekf(client: Client, message: Message):
     if player.mpv.filename or player.mpv.pause:
         try:
             player.mpv.seek(int(message.command[1]))
@@ -63,7 +63,7 @@ def seekf(client, message):
 @Client.on_message(
     filters.command("seekb", "/") & SUDO_FILTER
 )
-def seekb(client, message):
+def seekb(client: Client, message: Message):
     if player.mpv.filename or player.mpv.pause:
         try:
             player.mpv.seek(-int(message.command[1]))
