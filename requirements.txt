@@ -1,11 +1,7 @@
-pyrogram
-tgcrypto
+Pyrogram
+TgCrypto
 youtube_dl
 gTTS
 pyaml
 youtube-search-python
-pillow
-pymongo
-dnspython
-requests
 python-mpv

@@ -1,65 +1,50 @@
 from pyrogram import Client, filters
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import Message
 
-from helpers import is_youtube
-from ytdl import download
-import player
-from helpers import wrap, func
-from config import SUDO_FILTER, LOG_GROUP
-from strings import _
+from vcpb import ytdl, player
+
+from helpers.regex import is_youtube
+from helpers.queues import func
+from helpers.decorators import errors
+
+from config import CHAT_ID
 
 
-@Client.on_message(
-    filters.text & filters.private & ~filters.regex(r"^x .+"), group=2
-)
-@wrap
-def message(client: Client, message: Message):
-    if message.text.startswith("/"):
-        return
-
+@Client.on_message(filters.text & filters.private)
+@errors
+def play(client: Client, message: Message):
     if not is_youtube(message.text):
-        message.reply_text(_("play_1"))
+        return
+    elif "list=" in message.text:
+        message.reply_text("<b>❌ Can’t play playlists</b>", quote=True)
+        return
+    elif player.is_streaming():
+        message.reply_text("<b>❌ Can’t play while streaming</b>", quote=True)
         return
 
-    if "list=" in message.text:
-        message.reply_text(_("play_2"))
-        return
+    m = message.reply_text("<b>✅ Download scheduled</b>", quote=True)
 
-    m = message.reply_text(_("play_3"), quote=True)
-
-    download(
-        message.text,
-        message.from_user.id,
-        message.from_user.first_name,
-        func(
+    ytdl.download(
+        video=message.text,
+        sender_id=message.from_user.id,
+        sender_name=message.from_user.first_name,
+        play_function=func(
             player.play,
             log=func(
-                client.send_photo,
-                chat_id=LOG_GROUP,
-                caption=_("group_1").format(
+                client.send_message,
+                CHAT_ID,
+                "<b>▶️ Playing</b> {}\n<b>🕔 Duration:</b> {}\n<b>👤 Requester:</b> {}".format(
                     '<a href="{}">{}</a>',
                     "{}",
-                    '<a href="tg://user?id={}">{}</a>',
+                    message.from_user.mention(),
                 ),
-                parse_mode="HTML",
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(
-                                _("playlist_3"), "add_to_playlist"
-                            ),
-                        ],
-                    ]
-                ),
-            )
-            if LOG_GROUP
-            else None,
-            on_start=func(message.reply_text, _("player_1"),),
-            on_end=func(message.reply_text, _("player_2"),),
+                disable_web_page_preview=True
+            ),
+            on_start=func(message.reply_text, "<b>▶️ Playing...</b>", ),
+            on_end=func(message.reply_text, "<b>✅ Finished playing</b>", ),
         ),
-        func(m.edit, _("ytdl_1")),
-        func(m.edit, _("ytdl_2").format(player.queue.qsize() + 1)),
-        func(m.edit, _("ytdl_3")),
-        func(m.edit, _("error")),
-        func(m.edit, _("ytdl_4")),
+        on_start=func(m.edit, "<b>🔄 Downloading...</b>"),
+        on_end=func(m.edit, "<b>#️⃣ Scheduled to play at position {}</b>".format(player.queue.qsize() + 1)),
+        on_is_live_error=func(m.edit, "<b>❌ Can’t download live video</b>"),
+        on_error=func(m.edit, "{}: {}"),
     )

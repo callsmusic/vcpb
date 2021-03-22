@@ -1,9 +1,7 @@
-*pyc
-*session
-*journal
-config.py
-downloads/*
-__pycache__
-data
-*vsc*
-*pipe
+__pycache__/
+downloads/
+venv/
+.idea/
+config/config.py
+*.session
+*.session-journal
