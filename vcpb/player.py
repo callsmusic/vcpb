@@ -15,7 +15,10 @@ def worker():
         if "stream" in item:
             mpv.play(item["url"])
             mpv.wait_for_playback()
-            play(stream=True, url=item["url"])
+            
+            if is_streaming():
+                play(stream=True, url=item["url"])
+            
             queue.task_done()
         else:
             run(item["on_start"], quote=True)
