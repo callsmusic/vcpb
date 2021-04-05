@@ -1,4 +1,4 @@
-# VoiceChatPyroBot
+# VoiceChatPyroBot — The first Telegram voice chat bot to be open-sourced
 
 ## Deployment
 
