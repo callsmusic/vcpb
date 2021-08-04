@@ -1,4 +1,4 @@
-# 🎧 VoiceChatPyroBot — The first Telegram voice chat bot to be open-sourced
+# 🎧 VoiceChatPyroBot — The first Telegram voice chat bot to be open-sourced [![Mentioned in Awesome Telegram Calls](https://awesome.re/mentioned-badge-flat.svg)](https://github.com/tgcalls/awesome-tgcalls)
 
 ## 💭 Logic
 
